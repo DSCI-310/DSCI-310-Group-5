@@ -1,4 +1,3 @@
-
 # Contributing to DSCI 310 Group 5 Project  
 
 First off, thanks for taking the time to contribute! 
