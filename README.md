@@ -4,7 +4,6 @@
 - Tien Nguyen
 - Claudio Torres Cantú
 - Edison Le
-- Clichy Bazenga Mwangombe
 
 ## Summary
 The present project seeks to provide a prediction to the problematic of ___, which comes from the question "___". 
