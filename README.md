@@ -9,20 +9,21 @@
 ## Summary
 The present project seeks to provide a prediction to the problematic of spotting clear patterns of benign and malignant tumors, which comes from the question "Is there a way to efficiently classify whether a tumor is malignant or benign with high accuracy,  given a set of different features observed from the tumor in its development stage, using the support of the  computing technologies currently available?". 
 Such problematic was resolved using a predictive model. Our initial hypothesis was that it could be possible to do so yet it would be very inefficient and would have a high error rate. Another method of thinking and problem approaching was necessary.
-After implementing EDA methods, like summary statistics and data cleaning and visualization, 
-we performed a Logistic Regression model to see if our hypothesis was right. The outputs predicted that 
+After performing EDA, like summary statistics and data cleaning and visualization, 
+we tested multiple different classification models and arrived at a K-Nearest-Neighbor model with tuned hyperparameters with very good accuracy, recall, precision and f1 score. 
 
 ## Instructions for Execution
 The project was developed in Python, specifically in Python version 3.9.10
 This project relies heavily in Python Packages related to Machine Learning and Scientific Computation in Python. Pandas, NumPy, Matplotlib, Seaborn and Scikit-Learn. 
 The dependencies needed are:
 
-Name:       Version:
-Pandas       1.3.4
-Numpy        1.20.3
-matplotlib   3.4.3
-seaborn      0.11.2
-scikit-learn 0.24.2
+|Dependency  |   Version|
+|____________|__________|
+|Pandas      |   1.3.4  |
+|Numpy       |   1.20.3 |
+|matplotlib  |   3.4.3  |
+|seaborn     |   0.11.2 |
+|scikit-learn|   0.24.2 |
 
 In order to run the code,advise you to use the Dockerfile listed in the main branch to have a suitable environment and avoid any problems with dependencies. The code is intended to run in JupyterLab.
 
