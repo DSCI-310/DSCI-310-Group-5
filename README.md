@@ -4,6 +4,7 @@
 - Tien Nguyen
 - Claudio Torres Cantú
 - Edison Le
+- Clichy Bazenga Mwangombe
 
 
 ## Summary
@@ -25,7 +26,7 @@ The dependencies needed are:
 |seaborn     |   0.11.2 |
 |scikit-learn|   0.24.2 |
 
-In order to run the code,advise you to use the Dockerfile listed in the main branch to have a suitable environment and avoid any problems with dependencies. The code is intended to run in JupyterLab.
+In order to run the code, we advise you to use the Dockerfile listed in the main branch to have a suitable environment and avoid any problems with dependencies. The code is intended to run in JupyterLab.
 
 using the command:
 
