@@ -27,9 +27,19 @@ The dependencies needed are:
 
 In order to run the code,advise you to use the Dockerfile listed in the main branch to have a suitable environment and avoid any problems with dependencies. The code is intended to run in JupyterLab.
 
-using the command: docker pull DSCI-310-Group-5/Dockerfile (if you're pulling it alone)
-Another option would be to clone the remote repository to your local one, and run the command: 
-docker run -it DSCI-310-Group-5/Dockerfile
+using the command:
+
+`docker pull nhantien/dsci310group5:<tagname>`
+
+where `<tagname>` is the version of the image.
+
+Another option would be to clone the remote repository to your local one, and run the command:
+
+`docker run -it nhantien/dsci310group5:<tagname>`
+
+or if you want to remove the container after exit and keep the image:
+
+`docker run -it --rm nhantien/dsci310group5:<tagname>`
 
 Once you have activated the new environment, you can type "Jupyter lab" in the command line which will take you to the web version of jupyter notebook. Once there you should see the repository you copied. 
 
