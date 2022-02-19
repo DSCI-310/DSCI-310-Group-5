@@ -14,6 +14,26 @@ we performed a Logistic Regression model to see if our hypothesis was right. The
 
 ## Instructions for Execution
 The project was developed in Python, specifically in Python version 3.9.10
-This project relies heavily in Python Packages related to Machine Learning and Scientific Computation in Python. Pandas, NumPy, Matplotlib and Scikit-Learn. 
+This project relies heavily in Python Packages related to Machine Learning and Scientific Computation in Python. Pandas, NumPy, Matplotlib, Seaborn and Scikit-Learn. 
+The dependencies needed are:
+
+Name:       Version:
+Pandas       1.3.4
+Numpy        1.20.3
+matplotlib   3.4.3
+seaborn      0.11.2
+scikit-learn 0.24.2
+
+In order to run the code,advise you to use the Dockerfile listed in the main branch to have a suitable environment and avoid any problems with dependencies. The code is intended to run in JupyterLab.
+
+using the command: docker pull DSCI-310-Group-5/Dockerfile (if you're pulling it alone)
+Another option would be to clone the remote repository to your local one, and run the command: 
+docker run -it DSCI-310-Group-5/Dockerfile
+
+Once you have activated the new environment, you can type "Jupyter lab" in the command line which will take you to the web version of jupyter notebook. Once there you should see the repository you copied. 
+
+Finally, the license we are using for the current project is the MIT License. It is briefly described in Github.com as "A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code" 
+Further information can be found at:
+https://opensource.org/licenses/MIT
 
 
