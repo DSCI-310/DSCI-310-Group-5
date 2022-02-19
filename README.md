@@ -18,7 +18,7 @@ This project relies heavily in Python Packages related to Machine Learning and S
 The dependencies needed are:
 
 |Dependency  |   Version|
-|____________|__________|
+|------------|----------|
 |Pandas      |   1.3.4  |
 |Numpy       |   1.20.3 |
 |matplotlib  |   3.4.3  |
