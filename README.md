@@ -8,7 +8,7 @@
 
 
 ## Summary
-The present project seeks to provide a prediction to the problematic of spotting benign and malignant tumors, which comes from the question "Is there a way to efficiently classify whether a tumor is malignant or benign with high accuracy,  given a set of different features observed from the tumor in its development stage?". 
+The project seeks to provide a solution to the prediction problem of spotting benign and malignant tumors, which comes from the question "Is there a way to efficiently classify whether a tumor is malignant or benign with high accuracy,  given a set of different features observed from the tumor in its development stage?". 
 Such problem was resolved using a predictive model. Our initial hypothesis was that it is possible to do so yet it would have a high error rate due to tumors features' variations. 
 After performing EDA, such as summary statistics and data cleaning and visualization, we were able to spot some clear distinctions between benign and malignant tumors in some features.
 We then tested multiple different classification models and arrived at a K-Nearest-Neighbor model with tuned hyperparameters with very good accuracy, recall, precision and f1 score. 
