@@ -19,13 +19,13 @@ All members are expected to show up and contribute during the meeting as this wi
 
 ## Distribution of work and expected work hours: 
 
-After each meeting, all members should be assigned equal amount of work and all assignments and deadlines must be made in consensus. 
+After each meeting, all members should be assigned equal amount of work and all assignments and deadlines must be made in consensus in fairness for all members. 
 
-Each member will work at least 4-5 hours per work on their assignments to meet the deadlines set out during the meeting. If a member were to encounter difficulties, they should inform other members in advance for assistance so that the task will be completed in time. 
+Each member will work at least 4-5 hours per week on their assignments to meet the deadlines set out during the meeting. If a member were to encounter difficulties, they should inform other members in advance for assistance so that the task will be completed in time. If a member were to realize their work task turn out to take a lot more time than expected and cannot finish in time for deadline, inform the group either through Discord/GitHub/Email for help. 
 
 ## Reviews: 
 
-Each member will work on their assigned work individually, if any code issues arise then they should refer to the GitHub platform communicate that with the team members for assistance. After each work session, members are expected to commit their work to Github and send a clear commit message detailing all changes made.Members are expected to add teammates as reviewers to have all pull request reviewed by another teammate. Pull request should be reviewed within 24 hours after creation.
+Each member will work on their assigned work individually, if any code issues arise then they should refer to the GitHub platform communicate that with the team members for assistance. After each work session, members are expected to commit their work to Github and send a clear commit message detailing all changes made. Members are expected to add teammates as reviewers to have all pull request reviewed by another teammate. Pull request should be reviewed within 24 hours after creation. Quality of work will also be commented on during reviews to upkeep progression of the project and to avoid member's not contributing as serious as others. 
 
 ## Breach of Contract: 
 
