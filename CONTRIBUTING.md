@@ -6,11 +6,11 @@ The following is a set of guidelines for contributing to our project, which are 
 
 ## Code of conduct 
 
-This project and everyone participating in it is governed by the our Code of Conduct. By participating, you are expected to uphold this code. Please report unacceptable behavior to kimpdung47@gmail.com. 
+This project and everyone participating in it is governed by the our Code of Conduct (https://github.com/DSCI-310/DSCI-310-Group-5/blob/main/CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to kimpdung47@gmail.com. 
 
 ## How Can I Contribute? 
 
-his section guides you through how to contribute as a direct or external partner. Following these guidelines helps maintainers and the community understand your report, reproduce the behavior, and find related reports. Contributions and bug reports are tracked as GitHub issues.
+This section guides you through how to contribute as a direct or external partner. Following these guidelines helps maintainers and the community understand your report, reproduce the behavior, and find related reports. Contributions and bug reports are tracked as GitHub issues.
 
 If you are creating a bug report, please include as many details as possible:
 
