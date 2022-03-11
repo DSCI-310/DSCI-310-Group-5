@@ -13,7 +13,7 @@ class Data:
         col_names = ["id", "clump", "unif_size",
                      "unif_shape", "adhesion", "epi_size", "nuclei",
                      "chromatin", "nucleoli", "mitoses", "class"]
-        dataset = pd.read_csv("breast_cancer_1.txt",
+        dataset = pd.read_csv("data/breast_cancer.txt",
                               names=col_names, sep=",")
         dataset = dataset[(dataset != '?').all(axis=1)]
         dataset['nuclei'] = dataset['nuclei'].astype(int)
@@ -59,7 +59,7 @@ def test_mean_cross_val_correct():
     pipe_knn = make_pipeline(scale,
                              DecisionTreeClassifier(random_state=123))
     scoring = ['accuracy', "f1", "recall", "precision"]
-    result = mean_cross_val.mean_cross_val_scores(
+    result = mean_cross_val_scores(
         pipe_knn, dataset.X_train, dataset.y_train,
         return_train_score=True, scoring=scoring)
     assert all(result) <= 1
