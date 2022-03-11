@@ -4,6 +4,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.tree import DecisionTreeClassifier
+from src.mean_cross_val_scores import mean_cross_val_scores
 
 
 class Data:
@@ -38,7 +40,7 @@ def test_mean_cross_val_correct_simple():
     pipe_knn = make_pipeline(scale,
                              KNeighborsClassifier(n_neighbors=5))
     scoring = ['accuracy']
-    result = mean_cross_val.mean_cross_val_scores(
+    result = mean_cross_val_scores(
         pipe_knn, dataset.X_train, dataset.y_train,
         return_train_score=True, scoring=scoring)
     assert all(result) <= 1
@@ -56,7 +58,7 @@ def test_mean_cross_val_correct():
     dataset = Data()
     scale = StandardScaler()
     pipe_knn = make_pipeline(scale,
-                             KNeighborsClassifier(n_neighbors=5))
+                             DecisionTreeClassifier(random_state=123))
     scoring = ['accuracy', "f1", "recall", "precision"]
     result = mean_cross_val.mean_cross_val_scores(
         pipe_knn, dataset.X_train, dataset.y_train,
