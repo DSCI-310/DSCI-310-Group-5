@@ -41,7 +41,7 @@ Visiting http://<hostname>:10000/?token=<token> in a browser loads JupyterLab, w
 
 * `<hostname>` is the name of the computer running Docker
 
-* `<token></token>` is the secret token printed in the console.
+* `<token>` is the secret token printed in the console.
 
 The container will be cleaned up and removed after the Jupyter Server exits with the flag `--rm`. Simply remove the flag from the origial command if you want the container to remain intact upon exit.
 
