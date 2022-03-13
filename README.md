@@ -25,27 +25,25 @@ The dependencies needed are:
 |matplotlib  |   3.4.3  |
 |seaborn     |   0.11.2 |
 |scikit-learn|   0.24.2 |
+|pytest      |   6.2.4  |
 
 In order to run the code, we advise you to use the Dockerfile listed in the main branch to have a suitable environment and avoid any problems with dependencies. The code is intended to run in JupyterLab.
 
-using the command:
+Using the command to pull the repository to your local machine:
 
-`docker pull nhantien/dsci310group5:<tagname>`
+`docker pull nhantien/dsci310group5:v0.3.0`
 
-where `<tagname>` is the version of the image.
+This command pulls the *nhantien/dsci310group5* image tagged *v0.3.0* from Docker Hub if it is not already present on the local host. It then starts a container running a Jupyter Server and exposes the container’s internal port 8888 to port 8888 of the host machine:
 
-Another option would be to clone the remote repository to your local one, and run the command:
+`docker run -it --rm -p 8888:8888 nhantien/dsci310group5:v0.3.0`
 
-`docker run -it nhantien/dsci310group5:<tagname>`
+Visiting http://<hostname>:10000/?token=<token> in a browser loads JupyterLab, where:
 
-or if you want to remove the container after exit and keep the image:
+* `<hostname>` is the name of the computer running Docker
 
-`docker run -it --rm nhantien/dsci310group5:<tagname>`
+* `<token></token>` is the secret token printed in the console.
 
-Once you have activated the new environment, you can type "Jupyter lab" in the command line which will take you to the web version of jupyter notebook. Once there you should see the repository you copied. 
+The container will be cleaned up and removed after the Jupyter Server exits with the flag `--rm`. Simply remove the flag from the origial command if you want the container to remain intact upon exit.
 
-Finally, the license we are using for the current project is the MIT License. It is briefly described in Github.com as "A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code" 
-Further information can be found at:
-https://opensource.org/licenses/MIT
-
-
+## License
+The licenses for this project can be found inside the LICENSE file. Please take a look at them before proceeding further.

@@ -13,7 +13,7 @@ class Data:
         col_names = ["id", "clump", "unif_size",
                      "unif_shape", "adhesion", "epi_size", "nuclei",
                      "chromatin", "nucleoli", "mitoses", "class"]
-        dataset = pd.read_csv("data/breast_cancer.txt",
+        dataset = pd.read_csv("data/raw/breast_cancer.txt",
                               names=col_names, sep=",")
         dataset = dataset[(dataset != '?').all(axis=1)]
         dataset['nuclei'] = dataset['nuclei'].astype(int)
