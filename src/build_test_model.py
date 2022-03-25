@@ -17,7 +17,6 @@ from mean_cross_val_scores import mean_cross_val_scores
 from sklearn.compose import make_column_transformer
 
 
-np.random.seed(123)
 scoring = [
     "accuracy",
     "f1",
@@ -28,7 +27,9 @@ scoring = [
 results = {}
 
 
-def build_test_model(train_df, test_df):
+def build_test_model(train_df, test_df, cross_val_output, tuned_para_output,
+                     classification_output, confusion_matrix_output):
+    np.random.seed(123)
     train_df = pd.read_csv(train_df) 
     test_df = pd.read_csv(test_df)
     X_train = train_df.drop(columns=["class"])
@@ -56,9 +57,10 @@ def build_test_model(train_df, test_df):
         return_train_score=True,
         scoring = scoring)
     cross_val_table = pd.DataFrame(results).T
-    cross_val_table.to_csv('../results/cross_val_models.csv')
-
+    cross_val_table.to_csv(cross_val_output) 
+    
     #tune hyperparameters 
+    np.random.seed(123)
     search = GridSearchCV(pipe_knn,
                           param_grid={'kneighborsclassifier__n_neighbors': range(1,50),
                                       'kneighborsclassifier__weights': ['uniform', 'distance']},
@@ -73,7 +75,7 @@ def build_test_model(train_df, test_df):
     tuned_para = tuned_para.rename(columns = {0:"Value"})
     tuned_para = tuned_para.T
     tuned_para['knn_best_score'] = best_score
-    tuned_para.to_csv('../results/tuned_parameters.csv')
+    tuned_para.to_csv(tuned_para_output)
 
     #model on test set 
     pipe_knn_tuned = make_pipeline(ct,KNeighborsClassifier(
@@ -85,18 +87,23 @@ def build_test_model(train_df, test_df):
     report = classification_report(y_test, pipe_knn_tuned.predict(X_test), 
                                    output_dict=True, target_names=["benign", "malignant"])
     report = pd.DataFrame(report).transpose()
-    report.to_csv('../results/classification_report.csv')
+    report.to_csv(classification_output)
 
     #confusion matrix 
     cm = confusion_matrix(y_test, pipe_knn_tuned.predict(X_test), labels=pipe_knn_tuned.classes_)
     disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=pipe_knn_tuned.classes_)
     disp.plot()
-    plt.savefig("../results/confusion_matrix.png")
+    plt.savefig(confusion_matrix_output)
     
     
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Build and test model")
     parser.add_argument("train_df", type=str, help="Path to train_df")
     parser.add_argument("test_df", type=str, help="Path to test_df")
+    parser.add_argument("cross_val_output", type=str, help="Path to cross val scores output")
+    parser.add_argument("tuned_para_output", type=str, help="Path to tuned parameters output")
+    parser.add_argument("classification_output", type=str, help="Path to classification report output")
+    parser.add_argument("confusion_matrix_output", type=str, help="Path to confusion matrix output")
     args = parser.parse_args()
-    build_test_model(args.train_df, args.test_df)
+    build_test_model(args.train_df, args.test_df, args.cross_val_output, args.tuned_para_output,
+                    args.classification_output, args.confusion_matrix_output)
