@@ -8,7 +8,7 @@
 # example usage:
 # make all
 
-all : doc/analysis_report.md
+jbook: data/raw/breast_cancer.csv data/processed/train_df.csv data/processed/test_df.csv results/figures/hist_plot.png results/figures/boxplot_plot.png results/tables/cross_val.csv results/tables/tuned_para.csv results/tables/classification_report.csv results/figures/confusion_matrix.png doc/jbook/_build/html/index.html doc/jbook/_build/latex/python.pdf
 
 #load data 
 data/raw/breast_cancer.csv : data/raw/breast_cancer.txt src/load_data.py 
@@ -26,8 +26,8 @@ results/figures/hist_plot.png results/figures/boxplot_plot.png : data/processed/
 results/tables/cross_val.csv results/tables/tuned_para.csv results/tables/classification_report.csv results/figures/confusion_matrix.png : data/processed/train_df.csv data/processed/test_df.csv build_test_model.py
     python build_test_model.py data/processed/train_df.csv data/processed/test_df.csv results/tables/cross_val.csv results/tables/tuned_para.csv results/tables/classification_report.csv results/figures/confusion_matrix.png
 
-# write the report
-doc/analysis_report.md : doc/analysis_report.Rmd data/raw/breast_cancer.csv data/processed/train_df.csv data/processed/test_df.csv results/figures/hist_plot.png results/figures/boxplot_plot.png results/tables/cross_val.csv results/tables/tuned_para.csv results/tables/classification_report.csv results/figures/confusion_matrix.png
+# render the report
+
 
     
 clean :
@@ -35,4 +35,4 @@ clean :
     rm -rf data/raw/*.csv
     rm -rf results/tables/*.csv
     rm -rf results/figures/*.png
-    rm -rf doc/analysis_report.md doc/analysis_report.html doc/analysis_report.pdf
+    rm -rf doc/jbook/_build
