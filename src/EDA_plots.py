@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 
 def EDA_plot(train_df, hist_output, boxplot_output):
-    train_df = pd.read_csv(train_df)
+    train_df = pd.read_csv(str(train_df))
     X_train = train_df.drop(columns=["class"])
     numeric_looking_columns = X_train.select_dtypes(
         include=np.number).columns.tolist()
@@ -18,16 +18,16 @@ def EDA_plot(train_df, hist_output, boxplot_output):
         plot_hist_overlay(benign_cases, malignant_cases, 
                           x, labels=["0 - benign", "1 - malignant"],
                           fig_no=f"1.{idx}")
-        plt.savefig(hist_output)
+        plt.savefig(str(hist_output))
     #plot boxplot 
     boxplot_plotting(3, 3, 20, 25, numeric_looking_columns, train_df, 2)
-    plt.savefig(boxplot_output)
+    plt.savefig(str(boxplot_output))
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Plots EDA")
-    parser.add_argument("train_df", type=str, help="Path to train_df")
-    parser.add_argument("hist_output", type=str, help="Path to histogram output")
-    parser.add_argument("boxplot_output", type=str, help="Path to boxplot output")
+    parser.add_argument("train_df", help="Path to train_df")
+    parser.add_argument("hist_output", help="Path to histogram output")
+    parser.add_argument("boxplot_output", help="Path to boxplot output")
     args = parser.parse_args()
     EDA_plot(args.train_df, args.hist_output, args.boxplot_output)
