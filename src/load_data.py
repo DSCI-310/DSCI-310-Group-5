@@ -7,7 +7,7 @@ def load_data(input_path, output_path):
                  "epi_size", "nuclei", "chromatin", "nucleoli",
                  "mitoses", "class"]
     dataset = pd.read_csv(str(input_path), names=col_names, sep=",")
-    return dataset.to_csv(str(output_path))
+    return dataset.to_csv(str(output_path), index=False)
 
 
 if __name__ == '__main__':
