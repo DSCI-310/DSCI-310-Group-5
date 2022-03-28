@@ -10,7 +10,6 @@ def plot_hist_overlay(df0, df1, columns, labels, fig_no="1",alpha=0.7, bins=5, *
     one single Figure object
 
     REQUIRED: target label are binary i.e 0 or 1, negative or positive
-
     Parameters
     -------
     df0:
@@ -29,7 +28,6 @@ def plot_hist_overlay(df0, df1, columns, labels, fig_no="1",alpha=0.7, bins=5, *
         An int denotes the number of bins for the matplotlib hist function
     **kwargs:
         Other parameters for the plotting function 
-
     Returns
     -------
     A matplotlib.figure.Figure object
@@ -71,6 +69,5 @@ def plot_hist_overlay(df0, df1, columns, labels, fig_no="1",alpha=0.7, bins=5, *
         subplot.set_title(f"Figure {fig_no}.{idx+1}: Histogram of {col_name} for each target class label", 
                           fontsize=14)
     fig.suptitle(f"Figure {fig_no}: Distribution of the target class for each numeric feature", fontsize=20)
-    fig.savefig("../results/histograms.png", facecolor="white")
 
     return fig
