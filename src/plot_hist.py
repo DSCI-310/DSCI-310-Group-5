@@ -58,8 +58,7 @@ def plot_hist_overlay(df0, df1, columns, labels, fig_no="1",alpha=0.7, bins=5, *
     fig = plt.figure(1, figsize=(22,22))
 
     for idx, x in enumerate(columns):
-        pos = (dim * 100 + dim * 10) + (idx + 1)
-        subplot=plt.subplot(pos)
+        subplot=plt.subplot(dim, dim, idx+1)
         col_name = x.title().replace("_", " ")
         subplot.hist(df0[x], alpha=alpha, bins=bins, label=labels[0], **kwargs)
         subplot.hist(df1[x], alpha=alpha, bins=bins, label=labels[1], **kwargs)

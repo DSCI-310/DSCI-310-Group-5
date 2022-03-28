@@ -14,8 +14,8 @@ def clean_data(input_path, output_path_train, output_path_test):
     df['class'] = df['class'].replace([4],1) 
     #split train/test data
     train_df, test_df = train_test_split(df, test_size=0.3, random_state=123)
-    train_df.to_csv(str(output_path_train))
-    test_df.to_csv(str(output_path_test))
+    train_df.to_csv(str(output_path_train), index=False)
+    test_df.to_csv(str(output_path_test), index=False)
 
 
 if __name__ == '__main__':

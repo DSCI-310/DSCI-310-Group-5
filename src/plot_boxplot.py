@@ -41,4 +41,4 @@ def boxplot_plotting (num_rows,num_columns,width,height,variables,datafr,number)
     fig,ax= plt.subplots(num_rows,num_columns,figsize=(width,height))
     for idx, (var,subplot) in enumerate(zip(variables,ax.flatten())):
         a = sns.boxplot(x='class',y=var,data=datafr,ax=subplot).set_title(f"Figure {number}.{idx}")
-    return a
+    return fig
