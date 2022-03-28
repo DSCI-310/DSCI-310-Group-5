@@ -8,6 +8,7 @@ def plot_hist_overlay(df0, df1, columns, labels, fig_no="1",alpha=0.7, bins=5, *
     classification label against each numerical features.
     The resulting histograms will be a grid layout contained in
     one single Figure object
+
     REQUIRED: target label are binary i.e 0 or 1, negative or positive
     Parameters
     -------
@@ -30,10 +31,12 @@ def plot_hist_overlay(df0, df1, columns, labels, fig_no="1",alpha=0.7, bins=5, *
     Returns
     -------
     A matplotlib.figure.Figure object
+
     Examples
     -------
     benign_cases = train_df[train_df["class"] == 0]   # df0             
     malignant_cases = train_df[train_df["class"] == 1] # df1
+
     plot_hist_overlay(benign_cases, malignant_cases,["unif_size"], labels=["0 - benign", "1 - malignant"]
     
     """
