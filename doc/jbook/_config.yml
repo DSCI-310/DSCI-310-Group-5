@@ -1,0 +1,10 @@
+title: "Breast Cancer Prediction with Multiple Classification Algorithms"
+author: "Tien Nguyen, Edison Le, Claudio Torres Cantú"
+date: "2022-04-1"
+sphinx:
+  config:
+    bibtex_reference_style: author_year
+execute:
+ execute_notebook: force
+bibtex_bibfiles:
+ - references.bib
