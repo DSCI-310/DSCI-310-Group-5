@@ -97,7 +97,7 @@ dataset.head()
 dataset.info()
 
 
-# We see that the dataset uses "?" for missing data so we eliminate rows that contain "?". As shown above, all of the variables are numeric except for variables nuclei, we decide to transform it into type int for ease of data analysis later on. Finally, "id" feature does not appear to be useful for the prediction task; hence, it is dropped before carrying on to further analysis. 
+# We see that the dataset uses "?" for missing data so we eliminate rows that contain "?". As shown above, all of the variables are numeric except for variables nuclei, we decide to transform it into type int for ease of data analysis later on. Finally, "id" feature does not appear to be useful for the prediction task; hence, it is dropped before carrying on to further analysis.
 
 # In[5]:
 
@@ -107,7 +107,7 @@ dataset['nuclei'] = dataset['nuclei'].astype(int)
 dataset = dataset.drop(columns=["id"])
 
 
-# We also decide to replace benign class from 2 to 0 and malignant class from 4 to 1 since if we keep values of 2 and 4, it would be hard for predictive models to calculate accuracy, precision, and so on. 
+# We also decide to replace benign class from 2 to 0 and malignant class from 4 to 1 since if we keep values of 2 and 4, it would be hard for predictive models to calculate accuracy, precision, and so on.
 
 # In[6]:
 
@@ -119,8 +119,7 @@ dataset['class'].value_counts(normalize = True)
 
 # There is an imbalance in the dataset between benign and malignant. We want to further investigate the malignant examples (class = 4); hence the classes should have same importance so recall would be the most appropriate and main metric for this project. This is due to the fact that in a medical diagnosis setting, false negative result for a disease like cancer will cause a lot more harm than a false positive result.
 # 
-# Then we split the data into training and testing sets (X_train, X_test, y_train, y_test) and extract names of numeric features for further exploration. 
-#  
+# Then we split the data into training and testing sets (X_train, X_test, y_train, y_test) and extract names of numeric features for further exploration.
 
 # In[7]:
 
@@ -165,17 +164,11 @@ fig = boxplot_plotting(3,3,20,25,numeric_looking_columns,train_df,2)
 # 
 # As for unif_size, unif_shape, adhesion and nucleoli, the histograms show that regarding to benign tumors, these features tend to range in small values while malignant tumors' ranges are more evenly spread out. This proposes tumors with smaller values of said features are more likely to be benign. But the proposal is not as strong as the one discussed above as the distinction is not as prominent.
 # 
-# Lastly, mitoses and epi_size feature indicate to have an overlap in values between benign and malignant tumors shown in histograms. Hence, they might not be as useful in prediction task as other features. 
+# Lastly, mitoses and epi_size feature indicate to have an overlap in values between benign and malignant tumors shown in histograms. Hence, they might not be as useful in prediction task as other features.
 
-# 
-# 
-# 
-# 
-# 
+# ## Preprocessing
 
-# ## Preprocessing 
-
-# Since all features are numeric, we decide to scale our data to ensure that there is no bias presents when predicting results. 
+# Since all features are numeric, we decide to scale our data to ensure that there is no bias presents when predicting results.
 
 # In[11]:
 
@@ -187,7 +180,7 @@ ct = make_column_transformer(
 
 # ## Data analysis 
 # 
-# Even though the main score we will be comparing when choosing the models is recall, we still want to look into accuracy and decision. Because between a model performs well on recall but have very low accuracy and precision and a model performs just a bit worse on recall but have excellent accuracy and precision, the latter model will still have an upper hand and be more preferable. 
+# Even though the main score we will be comparing when choosing the models is recall, we still want to look into accuracy and decision. Because between a model performs well on recall but have very low accuracy and precision and a model performs just a bit worse on recall but have excellent accuracy and precision, the latter model will still have an upper hand and be more preferable.
 
 # In[12]:
 
@@ -203,7 +196,6 @@ scoring = [
 # We create a function which applies the given model for X_train, y_train and then returns mean and std of cross-validation scores. 
 # 
 # We decide to test 3 models: Decision Tree, kNN and Logistic Regression. Decision Tree, kNN, Logistic Regression are simple models with fast fit_time and moderate precision and accuracy and suitable for the classification/prediction task.
-# 
 
 # In[13]:
 
@@ -236,7 +228,7 @@ pd.DataFrame(results).T
 
 # As shown above, kNN model is the best performing model with the highest test_recall score, 0.952, and high test_precision and test_accuracy, 0.946 and 0.964 respectively. Even though Logistics Regression has higher precision score (0.952 > 0.946), its fit_time is larger and recall score is lower than those of kNN (0.011 > 0.009 and 0.946 < 0.952 respectively). Overall, kNN model still performs better than Logistics Regression. Decision Tree performs the worst since it displays the lowest scores among 3 models. 
 # 
-# After choosing the most efficient model, kNN, we move onto tuning its hyperparameters to increase its performance. We decide to tune n_neighbors which determines the number of neighbors k and weights which determines weight function used in prediction. 
+# After choosing the most efficient model, kNN, we move onto tuning its hyperparameters to increase its performance. We decide to tune n_neighbors which determines the number of neighbors k and weights which determines weight function used in prediction.
 
 # In[14]:
 
@@ -256,13 +248,13 @@ print(search.best_score_)
 print(search.best_params_)
 
 
-# After tuning hyperparameters, we successfully increase recall score from 0.952 to 0.964 with n_neighbors: 5, weights': 'uniform'.  
+# After tuning hyperparameters, we successfully increase recall score from 0.952 to 0.964 with n_neighbors: 5, weights': 'uniform'.
 
-# ## Model on test set 
+# ## Model on test set
 
 # We then apply tuned hyperparameters, n_neighbors: 5, weights': 'uniform', to kNN model and test the model's generalization on test set. 
 # 
-# We also print a result plot and plot a confusion matrix for X_test and y_test to visualize the test results. 
+# We also print a result plot and plot a confusion matrix for X_test and y_test to visualize the test results.
 
 # In[15]:
 
@@ -292,9 +284,9 @@ plt.title("Figure 3: Confusion Matrix")
 
 # After applying the model to the test set, we obtain the score of 0.985 which indicates that this model generalizes well for prediction task. Moreover, from the plot above (Figure 3), we can see that out of 205 observations in test set, we only falsely predict 1 tumor to be benign and 2 tumors to malignant. This aligns with our decision at the beginning of the project which is to optimize recall score of the model. 
 # 
-# With the recall score of 0.99 for malignant tumors and 0.98 for benign tumors reported above, we have statistical evidence that the model generalizes well for the prediction task.  
+# With the recall score of 0.99 for malignant tumors and 0.98 for benign tumors reported above, we have statistical evidence that the model generalizes well for the prediction task.
 
-# ## IV. Summary of results and discussion  
+# ## IV. Summary of results and discussion
 
 # In[18]:
 

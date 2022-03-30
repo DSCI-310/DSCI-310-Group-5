@@ -1,2 +1,2 @@
 format: jb-book
-root: jbook
+root: "breast_cancer_prediction.md"

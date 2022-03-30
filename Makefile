@@ -8,7 +8,7 @@
 # example usage:
 # make all
 
-all: results/figures/hist_plot.png results/figures/boxplot_plot.png results/tables/cross_val.csv results/tables/tuned_para.csv results/tables/classification_report.csv results/figures/confusion_matrix.png doc/jbook/_build/html/index.html doc/jbook/_build/latex/python.pdf
+all: results/figures/hist_plot.png results/figures/boxplot_plot.png results/tables/cross_val.csv results/tables/tuned_para.csv results/tables/classification_report.csv results/figures/confusion_matrix.png doc/jbook/_build/html/index.html
 
 jbook: results/figures/hist_plot.png results/figures/boxplot_plot.png results/tables/cross_val.csv results/tables/tuned_para.csv results/tables/classification_report.csv results/figures/confusion_matrix.png
 
@@ -29,11 +29,8 @@ results/tables/cross_val.csv results/tables/tuned_para.csv results/tables/classi
 	python3 src/build_test_model.py data/processed/train_df.csv data/processed/test_df.csv results/tables/cross_val.csv results/tables/tuned_para.csv results/tables/classification_report.csv results/figures/confusion_matrix.png
 
 # render the report
-doc/jbook/_build/html/index.html: doc/jbook/_config.yml doc/jbook/_toc.yml doc/jbook/breast_cancer_prediction.ipynb doc/jbook/references.bib
+doc/jbook/_build/html/index.html: doc/jbook/_config.yml doc/jbook/_toc.yml doc/jbook/breast_cancer_prediction.md doc/jbook/references.bib
 	jb build doc/jbook/
-doc/jbook/_build/latex/python.pdf: doc/jbook/_config.yml doc/jbook/_toc.yml doc/jbook/breast_cancer_prediction.ipynb doc/jbook/references.bib
-	jb build doc/jbook/ --builder pdflatex
-
 	
 clean:
 	rm -rf data/processed/*.csv
