@@ -1,5 +1,5 @@
 # Makefile
-# Edison 25th March 2022
+# Edison, Tien
 
 # This driver script completes the textual analysis of
 # breast cancer dataset and creates tables and figures for the analysis.

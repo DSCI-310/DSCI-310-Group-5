@@ -57,7 +57,7 @@ def build_test_model(train_df, test_df, cross_val_output, tuned_para_output,
         return_train_score=True,
         scoring = scoring)
     cross_val_table = pd.DataFrame(results).T
-    cross_val_table.to_csv(str(cross_val_output), index=False)
+    cross_val_table.to_csv(str(cross_val_output))
     
     #tune hyperparameters 
     np.random.seed(123)
@@ -75,7 +75,7 @@ def build_test_model(train_df, test_df, cross_val_output, tuned_para_output,
     tuned_para = tuned_para.rename(columns = {0:"Value"})
     tuned_para = tuned_para.T
     tuned_para['knn_best_score'] = best_score
-    tuned_para.to_csv(str(tuned_para_output), index=False)
+    tuned_para.to_csv(str(tuned_para_output))
 
     #model on test set 
     pipe_knn_tuned = make_pipeline(ct,KNeighborsClassifier(
@@ -87,7 +87,7 @@ def build_test_model(train_df, test_df, cross_val_output, tuned_para_output,
     report = classification_report(y_test, pipe_knn_tuned.predict(X_test), 
                                    output_dict=True, target_names=["benign", "malignant"])
     report = pd.DataFrame(report).transpose()
-    report.to_csv(str(classification_output), index=False)
+    report.to_csv(str(classification_output))
 
     #confusion matrix 
     cm = confusion_matrix(y_test, pipe_knn_tuned.predict(X_test), labels=pipe_knn_tuned.classes_)

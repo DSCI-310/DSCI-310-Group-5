@@ -158,7 +158,7 @@ const thebe_selector_output = ".output, .cell_output"
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/breast_cancer_prediction.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/breast_cancer_prediction.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -217,22 +217,22 @@ const thebe_selector_output = ".output, .cell_output"
      Exploratory Data Analysis
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preprocessing">
+     Preprocessing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-analysis">
+     Data analysis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-on-test-set">
+     Model on test set
+    </a>
+   </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#preprocessing">
-   Preprocessing
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-analysis">
-   Data analysis
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#model-on-test-set">
-   Model on test set
-  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#iv-summary-of-results-and-discussion">
@@ -318,22 +318,22 @@ const thebe_selector_output = ".output, .cell_output"
      Exploratory Data Analysis
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preprocessing">
+     Preprocessing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-analysis">
+     Data analysis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-on-test-set">
+     Model on test set
+    </a>
+   </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#preprocessing">
-   Preprocessing
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-analysis">
-   Data analysis
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#model-on-test-set">
-   Model on test set
-  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#iv-summary-of-results-and-discussion">
@@ -375,7 +375,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h1>Predicting Breast Cancer With Multiple Classification Algorithms<a class="headerlink" href="#predicting-breast-cancer-with-multiple-classification-algorithms" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="imports">
 <h2>Imports<a class="headerlink" href="#imports" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="s1">&#39;../..&#39;</span> <span class="p">)</span>
@@ -448,7 +448,7 @@ This raises the question:</p>
 <div class="section" id="exploratory-data-analysis">
 <h3>Exploratory Data Analysis<a class="headerlink" href="#exploratory-data-analysis" title="Permalink to this headline">¶</a></h3>
 <p>Since the dataset did not come with column headers, we will first manually add them and load data. The headers will correspond to the order of their respective description above.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;clump&quot;</span><span class="p">,</span> <span class="s2">&quot;unif_size&quot;</span><span class="p">,</span> <span class="s2">&quot;unif_shape&quot;</span><span class="p">,</span> <span class="s2">&quot;adhesion&quot;</span><span class="p">,</span> <span class="s2">&quot;epi_size&quot;</span><span class="p">,</span>
              <span class="s2">&quot;nuclei&quot;</span><span class="p">,</span> <span class="s2">&quot;chromatin&quot;</span><span class="p">,</span> <span class="s2">&quot;nucleoli&quot;</span><span class="p">,</span> <span class="s2">&quot;mitoses&quot;</span><span class="p">,</span> <span class="s2">&quot;class&quot;</span><span class="p">]</span>
@@ -458,7 +458,7 @@ This raises the question:</p>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -571,7 +571,7 @@ This raises the question:</p>
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
@@ -601,7 +601,7 @@ memory usage: 60.2+ KB
 </div>
 </div>
 <p>We see that the dataset uses “?” for missing data so we eliminate rows that contain “?”. As shown above, all of the variables are numeric except for variables nuclei, we decide to transform it into type int for ease of data analysis later on. Finally, “id” feature does not appear to be useful for the prediction task; hence, it is dropped before carrying on to further analysis.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[(</span><span class="n">dataset</span> <span class="o">!=</span> <span class="s1">&#39;?&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
 <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;nuclei&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;nuclei&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
@@ -611,7 +611,7 @@ memory usage: 60.2+ KB
 </div>
 </div>
 <p>We also decide to replace benign class from 2 to 0 and malignant class from 4 to 1 since if we keep values of 2 and 4, it would be hard for predictive models to calculate accuracy, precision, and so on.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">2</span><span class="p">],</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">4</span><span class="p">],</span><span class="mi">1</span><span class="p">)</span> 
@@ -629,7 +629,7 @@ Name: class, dtype: float64
 </div>
 <p>There is an imbalance in the dataset between benign and malignant. We want to further investigate the malignant examples (class = 4); hence the classes should have same importance so recall would be the most appropriate and main metric for this project. This is due to the fact that in a medical diagnosis setting, false negative result for a disease like cancer will cause a lot more harm than a false positive result.</p>
 <p>Then we split the data into training and testing sets (X_train, X_test, y_train, y_test) and extract names of numeric features for further exploration.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
 <span class="n">X_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">])</span>
@@ -664,7 +664,7 @@ memory usage: 41.1 KB
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">benign_cases</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="n">train_df</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
 <span class="n">malignant_cases</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="n">train_df</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
@@ -678,7 +678,7 @@ memory usage: 41.1 KB
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plot_hist_overlay</span><span class="p">(</span><span class="n">df0</span><span class="o">=</span><span class="n">benign_cases</span><span class="p">,</span> <span class="n">df1</span><span class="o">=</span><span class="n">malignant_cases</span><span class="p">,</span>
                  <span class="n">columns</span><span class="o">=</span><span class="n">numeric_looking_columns</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;0 - benign&quot;</span><span class="p">,</span> <span class="s2">&quot;1 - malignant&quot;</span><span class="p">],</span>
@@ -690,7 +690,7 @@ memory usage: 41.1 KB
 <img alt="_images/breast_cancer_prediction_16_0.png" src="_images/breast_cancer_prediction_16_0.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">boxplot_plotting</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="n">numeric_looking_columns</span><span class="p">,</span><span class="n">train_df</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
@@ -706,11 +706,10 @@ memory usage: 41.1 KB
 <p>As for unif_size, unif_shape, adhesion and nucleoli, the histograms show that regarding to benign tumors, these features tend to range in small values while malignant tumors’ ranges are more evenly spread out. This proposes tumors with smaller values of said features are more likely to be benign. But the proposal is not as strong as the one discussed above as the distinction is not as prominent.</p>
 <p>Lastly, mitoses and epi_size feature indicate to have an overlap in values between benign and malignant tumors shown in histograms. Hence, they might not be as useful in prediction task as other features.</p>
 </div>
-</div>
 <div class="section" id="preprocessing">
-<h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h2>
+<h3>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h3>
 <p>Since all features are numeric, we decide to scale our data to ensure that there is no bias presents when predicting results.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numeric_transformer</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
 <span class="n">ct</span> <span class="o">=</span> <span class="n">make_column_transformer</span><span class="p">(</span>
@@ -721,9 +720,9 @@ memory usage: 41.1 KB
 </div>
 </div>
 <div class="section" id="data-analysis">
-<h2>Data analysis<a class="headerlink" href="#data-analysis" title="Permalink to this headline">¶</a></h2>
+<h3>Data analysis<a class="headerlink" href="#data-analysis" title="Permalink to this headline">¶</a></h3>
 <p>Even though the main score we will be comparing when choosing the models is recall, we still want to look into accuracy and decision. Because between a model performs well on recall but have very low accuracy and precision and a model performs just a bit worse on recall but have excellent accuracy and precision, the latter model will still have an upper hand and be more preferable.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scoring</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">&quot;accuracy&quot;</span><span class="p">,</span>
@@ -737,7 +736,7 @@ memory usage: 41.1 KB
 </div>
 <p>We create a function which applies the given model for X_train, y_train and then returns mean and std of cross-validation scores.</p>
 <p>We decide to test 3 models: Decision Tree, kNN and Logistic Regression. Decision Tree, kNN, Logistic Regression are simple models with fast fit_time and moderate precision and accuracy and suitable for the classification/prediction task.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
 
@@ -800,8 +799,8 @@ memory usage: 41.1 KB
   <tbody>
     <tr>
       <th>kNN</th>
-      <td>0.002857</td>
-      <td>0.004494</td>
+      <td>0.002337</td>
+      <td>0.003910</td>
       <td>0.964452</td>
       <td>0.971236</td>
       <td>0.948880</td>
@@ -813,8 +812,8 @@ memory usage: 41.1 KB
     </tr>
     <tr>
       <th>Decision Tree</th>
-      <td>0.002907</td>
-      <td>0.002417</td>
+      <td>0.002484</td>
+      <td>0.002103</td>
       <td>0.951842</td>
       <td>1.000000</td>
       <td>0.930415</td>
@@ -826,8 +825,8 @@ memory usage: 41.1 KB
     </tr>
     <tr>
       <th>Logistic Regression</th>
-      <td>0.003769</td>
-      <td>0.002231</td>
+      <td>0.003590</td>
+      <td>0.002135</td>
       <td>0.964408</td>
       <td>0.966525</td>
       <td>0.948501</td>
@@ -843,7 +842,7 @@ memory usage: 41.1 KB
 </div>
 <p>As shown above, kNN model is the best performing model with the highest test_recall score, 0.952, and high test_precision and test_accuracy, 0.946 and 0.964 respectively. Even though Logistics Regression has higher precision score (0.952 &gt; 0.946), its fit_time is larger and recall score is lower than those of kNN (0.011 &gt; 0.009 and 0.946 &lt; 0.952 respectively). Overall, kNN model still performs better than Logistics Regression. Decision Tree performs the worst since it displays the lowest scores among 3 models.</p>
 <p>After choosing the most efficient model, kNN, we move onto tuning its hyperparameters to increase its performance. We decide to tune n_neighbors which determines the number of neighbors k and weights which determines weight function used in prediction.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
 
@@ -871,10 +870,10 @@ memory usage: 41.1 KB
 <p>After tuning hyperparameters, we successfully increase recall score from 0.952 to 0.964 with n_neighbors: 5, weights’: ‘uniform’.</p>
 </div>
 <div class="section" id="model-on-test-set">
-<h2>Model on test set<a class="headerlink" href="#model-on-test-set" title="Permalink to this headline">¶</a></h2>
+<h3>Model on test set<a class="headerlink" href="#model-on-test-set" title="Permalink to this headline">¶</a></h3>
 <p>We then apply tuned hyperparameters, n_neighbors: 5, weights’: ‘uniform’, to kNN model and test the model’s generalization on test set.</p>
 <p>We also print a result plot and plot a confusion matrix for X_test and y_test to visualize the test results.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe_knn_tuned</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">ct</span><span class="p">,</span><span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="s1">&#39;uniform&#39;</span><span class="p">))</span>
 <span class="n">pipe_knn_tuned</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -888,7 +887,7 @@ memory usage: 41.1 KB
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span>
     <span class="n">y_test</span><span class="p">,</span> <span class="n">pipe_knn_tuned</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">),</span> <span class="n">target_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;benign&quot;</span><span class="p">,</span> <span class="s2">&quot;malignant&quot;</span><span class="p">]))</span>
@@ -908,7 +907,7 @@ weighted avg       0.99      0.99      0.99       205
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictions</span> <span class="o">=</span> <span class="n">pipe_knn_tuned</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">pipe_knn_tuned</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
@@ -929,9 +928,10 @@ weighted avg       0.99      0.99      0.99       205
 <p>After applying the model to the test set, we obtain the score of 0.985 which indicates that this model generalizes well for prediction task. Moreover, from the plot above (Figure 3), we can see that out of 205 observations in test set, we only falsely predict 1 tumor to be benign and 2 tumors to malignant. This aligns with our decision at the beginning of the project which is to optimize recall score of the model.</p>
 <p>With the recall score of 0.99 for malignant tumors and 0.98 for benign tumors reported above, we have statistical evidence that the model generalizes well for the prediction task.</p>
 </div>
+</div>
 <div class="section" id="iv-summary-of-results-and-discussion">
 <h2>IV. Summary of results and discussion<a class="headerlink" href="#iv-summary-of-results-and-discussion" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
     <span class="n">classification_report</span><span class="p">(</span>

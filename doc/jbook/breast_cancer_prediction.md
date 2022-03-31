@@ -18,6 +18,8 @@ kernelspec:
 ## Imports
 
 ```{code-cell} ipython3
+:tags: [hide-cell]
+
 import sys
 sys.path.append( '../..' )
 import matplotlib.pyplot as plt
@@ -91,6 +93,8 @@ With the relevant target class:
 Since the dataset did not come with column headers, we will first manually add them and load data. The headers will correspond to the order of their respective description above.
 
 ```{code-cell} ipython3
+:tags: [hide-cell]
+
 col_names = ["id", "clump", "unif_size", "unif_shape", "adhesion", "epi_size",
              "nuclei", "chromatin", "nucleoli", "mitoses", "class"]
 
@@ -98,16 +102,22 @@ dataset = pd.read_csv("../../data/raw/breast_cancer.txt", names=col_names, sep="
 ```
 
 ```{code-cell} ipython3
+:tags: [hide-cell]
+
 dataset.head()
 ```
 
 ```{code-cell} ipython3
+:tags: [hide-cell]
+
 dataset.info()
 ```
 
 We see that the dataset uses "?" for missing data so we eliminate rows that contain "?". As shown above, all of the variables are numeric except for variables nuclei, we decide to transform it into type int for ease of data analysis later on. Finally, "id" feature does not appear to be useful for the prediction task; hence, it is dropped before carrying on to further analysis. 
 
 ```{code-cell} ipython3
+:tags: [hide-cell]
+
 dataset = dataset[(dataset != '?').all(axis=1)]
 dataset['nuclei'] = dataset['nuclei'].astype(int)
 dataset = dataset.drop(columns=["id"])
@@ -116,6 +126,8 @@ dataset = dataset.drop(columns=["id"])
 We also decide to replace benign class from 2 to 0 and malignant class from 4 to 1 since if we keep values of 2 and 4, it would be hard for predictive models to calculate accuracy, precision, and so on. 
 
 ```{code-cell} ipython3
+:tags: [hide-cell]
+
 dataset['class'] = dataset['class'].replace([2],0)
 dataset['class'] = dataset['class'].replace([4],1) 
 dataset['class'].value_counts(normalize = True)
@@ -127,6 +139,8 @@ Then we split the data into training and testing sets (X_train, X_test, y_train,
  
 
 ```{code-cell} ipython3
+:tags: [hide-cell]
+
 train_df, test_df = train_test_split(dataset, test_size=0.3, random_state=123)
 X_train = train_df.drop(columns=["class"])
 X_test = test_df.drop(columns=["class"])
@@ -138,18 +152,24 @@ train_df.info()
 ```
 
 ```{code-cell} ipython3
+:tags: [hide-cell]
+
 benign_cases = train_df[train_df["class"] == 0]
 malignant_cases = train_df[train_df["class"] == 1]
 print(len(numeric_looking_columns))
 ```
 
 ```{code-cell} ipython3
+:tags: [hide-cell]
+
 fig = plot_hist_overlay(df0=benign_cases, df1=malignant_cases,
                  columns=numeric_looking_columns, labels=["0 - benign", "1 - malignant"],
                  fig_no="1")
 ```
 
 ```{code-cell} ipython3
+:tags: [hide-cell]
+
 fig = boxplot_plotting(3,3,20,25,numeric_looking_columns,train_df,2)
 ```
 
@@ -172,23 +192,27 @@ Lastly, mitoses and epi_size feature indicate to have an overlap in values betwe
 
 +++
 
-## Preprocessing 
+### Preprocessing 
 
 +++
 
 Since all features are numeric, we decide to scale our data to ensure that there is no bias presents when predicting results. 
 
 ```{code-cell} ipython3
+:tags: [hide-cell]
+
 numeric_transformer = StandardScaler()
 ct = make_column_transformer(
     (numeric_transformer, numeric_looking_columns))
 ```
 
-## Data analysis 
+### Data analysis 
 
 Even though the main score we will be comparing when choosing the models is recall, we still want to look into accuracy and decision. Because between a model performs well on recall but have very low accuracy and precision and a model performs just a bit worse on recall but have excellent accuracy and precision, the latter model will still have an upper hand and be more preferable. 
 
 ```{code-cell} ipython3
+:tags: [hide-cell]
+
 scoring = [
     "accuracy",
     "f1",
@@ -202,6 +226,8 @@ We create a function which applies the given model for X_train, y_train and then
 We decide to test 3 models: Decision Tree, kNN and Logistic Regression. Decision Tree, kNN, Logistic Regression are simple models with fast fit_time and moderate precision and accuracy and suitable for the classification/prediction task.
 
 ```{code-cell} ipython3
+:tags: [hide-cell]
+
 np.random.seed(123)
 
 pipe_knn = make_pipeline(ct, KNeighborsClassifier(n_neighbors=5))
@@ -233,6 +259,8 @@ As shown above, kNN model is the best performing model with the highest test_rec
 After choosing the most efficient model, kNN, we move onto tuning its hyperparameters to increase its performance. We decide to tune n_neighbors which determines the number of neighbors k and weights which determines weight function used in prediction. 
 
 ```{code-cell} ipython3
+:tags: [hide-cell]
+
 np.random.seed(123)
 
 search = GridSearchCV(pipe_knn,
@@ -252,7 +280,7 @@ After tuning hyperparameters, we successfully increase recall score from 0.952 t
 
 +++
 
-## Model on test set 
+### Model on test set 
 
 +++
 
@@ -261,17 +289,23 @@ We then apply tuned hyperparameters, n_neighbors: 5, weights': 'uniform', to kNN
 We also print a result plot and plot a confusion matrix for X_test and y_test to visualize the test results. 
 
 ```{code-cell} ipython3
+:tags: [hide-cell]
+
 pipe_knn_tuned = make_pipeline(ct,KNeighborsClassifier(n_neighbors=5, weights='uniform'))
 pipe_knn_tuned.fit(X_train, y_train)
 pipe_knn_tuned.score(X_test, y_test)
 ```
 
 ```{code-cell} ipython3
+:tags: [hide-cell]
+
 print(classification_report(
     y_test, pipe_knn_tuned.predict(X_test), target_names=["benign", "malignant"]))
 ```
 
 ```{code-cell} ipython3
+:tags: [hide-cell]
+
 predictions = pipe_knn_tuned.predict(X_test)
 cm = confusion_matrix(y_test, predictions, labels=pipe_knn_tuned.classes_)
 disp = ConfusionMatrixDisplay(confusion_matrix=cm,
@@ -289,6 +323,8 @@ With the recall score of 0.99 for malignant tumors and 0.98 for benign tumors re
 ## IV. Summary of results and discussion  
 
 ```{code-cell} ipython3
+:tags: [hide-cell]
+
 print(
     classification_report(
         y_test, pipe_knn_tuned.predict(X_test), target_names=["benign", "malignant"]
@@ -332,5 +368,6 @@ Shen, Li, et al. “Deep Learning to Improve Breast Cancer Detection on Screenin
 UCI Machine Learning Repository: Breast Cancer Wisconsin (Original) Data Set, https://archive.ics.uci.edu/ml/datasets/breast+cancer+wisconsin+%28original%29.
 
 ```{code-cell} ipython3
+:tags: [hide-cell]
 
 ```

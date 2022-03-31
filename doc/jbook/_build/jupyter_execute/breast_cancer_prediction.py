@@ -166,7 +166,7 @@ fig = boxplot_plotting(3,3,20,25,numeric_looking_columns,train_df,2)
 # 
 # Lastly, mitoses and epi_size feature indicate to have an overlap in values between benign and malignant tumors shown in histograms. Hence, they might not be as useful in prediction task as other features.
 
-# ## Preprocessing
+# ### Preprocessing
 
 # Since all features are numeric, we decide to scale our data to ensure that there is no bias presents when predicting results.
 
@@ -178,7 +178,7 @@ ct = make_column_transformer(
     (numeric_transformer, numeric_looking_columns))
 
 
-# ## Data analysis 
+# ### Data analysis 
 # 
 # Even though the main score we will be comparing when choosing the models is recall, we still want to look into accuracy and decision. Because between a model performs well on recall but have very low accuracy and precision and a model performs just a bit worse on recall but have excellent accuracy and precision, the latter model will still have an upper hand and be more preferable.
 
@@ -250,7 +250,7 @@ print(search.best_params_)
 
 # After tuning hyperparameters, we successfully increase recall score from 0.952 to 0.964 with n_neighbors: 5, weights': 'uniform'.
 
-# ## Model on test set
+# ### Model on test set
 
 # We then apply tuned hyperparameters, n_neighbors: 5, weights': 'uniform', to kNN model and test the model's generalization on test set. 
 # 
