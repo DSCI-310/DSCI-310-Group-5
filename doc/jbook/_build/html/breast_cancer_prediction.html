@@ -181,11 +181,6 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#imports">
-   Imports
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#i-summary">
    I. Summary
   </a>
@@ -282,11 +277,6 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#imports">
-   Imports
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#i-summary">
    I. Summary
   </a>
@@ -373,43 +363,6 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="predicting-breast-cancer-with-multiple-classification-algorithms">
 <h1>Predicting Breast Cancer With Multiple Classification Algorithms<a class="headerlink" href="#predicting-breast-cancer-with-multiple-classification-algorithms" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="imports">
-<h2>Imports<a class="headerlink" href="#imports" title="Permalink to this headline">¶</a></h2>
-<div class="cell tag_hide-cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="s1">&#39;../..&#39;</span> <span class="p">)</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">from</span> <span class="nn">src.mean_cross_val_scores</span> <span class="kn">import</span> <span class="n">mean_cross_val_scores</span>
-<span class="kn">from</span> <span class="nn">src.plot_boxplot</span> <span class="kn">import</span> <span class="n">boxplot_plotting</span>
-<span class="kn">from</span> <span class="nn">src.plot_hist</span> <span class="kn">import</span> <span class="n">plot_hist_overlay</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">classification_report</span><span class="p">,</span>
-    <span class="n">confusion_matrix</span><span class="p">,</span>
-    <span class="n">f1_score</span><span class="p">,</span>
-    <span class="n">ConfusionMatrixDisplay</span>
-<span class="p">)</span>
-<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
-<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span><span class="p">,</span> <span class="n">make_column_transformer</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">GridSearchCV</span><span class="p">,</span>
-    <span class="n">cross_validate</span><span class="p">,</span>
-    <span class="n">train_test_split</span>
-<span class="p">)</span>
-<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span><span class="p">,</span> <span class="n">make_pipeline</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
-<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
-<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
 <div class="section" id="i-summary">
 <h2>I. Summary<a class="headerlink" href="#i-summary" title="Permalink to this headline">¶</a></h2>
 <p>In this project, we perform data analysis to look for the most efficient model to predict whether it is benign and malignant tumour based on different measurements/traits observed from the data. We use various machine learning algorithms that classify whether a breast tumour is malignant or benign accordingly, and eventually decide on the best algorithm for that task based on recall score. The dataset is obtained from <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/breast+cancer+wisconsin+%28original%29">https://archive.ics.uci.edu/ml/datasets/breast+cancer+wisconsin+(original)</a></p>
@@ -418,7 +371,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h2>II. Introduction<a class="headerlink" href="#ii-introduction" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="background">
 <h3>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h3>
-<p>Breast cancer is the development of cancerous tissue of the breast. A malignant (cancerous) tumour can destroy other healthy tissue surrounding it and the disease could potentially metastasize, causing numerous other health complications. However, a tumour might or might not be cancerous. A benign (non-cancerous) tumour will not cause as much harm to the patient compared to a malignant one. With that in mind, an early diagnosis of a <strong>malignant tumour</strong> would give both patients and health care providers valuable time to quickly devise various treatment plans to stop the progression of the disease. This is important especially for a silent killer like cancer, in which the earlier a correct diagnosis has been made, the drastically better the prognosis.
+<p>Breast cancer is the development of cancerous tissue of the breast. A malignant (cancerous) tumour can destroy other healthy tissue surrounding it and the disease could potentially metastasize, causing numerous other health complications. However, a tumour might or might not be cancerous. A benign (non-cancerous) tumour will not cause as much harm to the patient compared to a malignant one. With that in mind, an early diagnosis of a <strong>malignant tumour</strong> would give both patients and health care providers valuable time to quickly devise various treatment plans to stop the progression of the disease. This is important especially for a silent killer like cancer, in which the earlier a correct diagnosis has been made, the drastically better the prognosis <span id="id1">[<a class="reference internal" href="#id3" title="Vishabh Goel. Building a Simple Machine Learning Model on Breast Cancer Data. Towards Data Science, 2018. URL: https://towardsdatascience.com/building-a-simple-machine-learning-model-on-breast-cancer-data-eca4b3b99fa3.">Goel, 2018</a>, <a class="reference internal" href="#id4" title="Sid Lee. What Is Breast Cancer? URL: https://cancer.ca/en/cancer-information/cancer-types/breast/what-is-breast-cancer.">Lee, n.d.</a>, <a class="reference internal" href="#id5" title="Li. et al Shen. Deep Learning to Improve Breast Cancer Detection on Screening Mammography. Nature Publishing Group, 2019. URL: https://www.nature.com/articles/s41598-019-48995-4.">Shen, 2019</a>, <a class="reference internal" href="#id6" title="University of Wisconsin Hospitals WIlliam H. Wolberg. UCI Machine Learning Repository: Breast Cancer Wisconsin (Original) Data Set. 1992. URL: https://archive.ics.uci.edu/ml/datasets/breast+cancer+wisconsin+%28original%29.">WIlliam H. Wolberg, 1992</a>]</span>.
 This raises the question:</p>
 <p><strong>Can we predict whether a tumor is malignant or benign based  on the different features observed from the tumour?</strong></p>
 </div>
@@ -448,22 +401,6 @@ This raises the question:</p>
 <div class="section" id="exploratory-data-analysis">
 <h3>Exploratory Data Analysis<a class="headerlink" href="#exploratory-data-analysis" title="Permalink to this headline">¶</a></h3>
 <p>Since the dataset did not come with column headers, we will first manually add them and load data. The headers will correspond to the order of their respective description above.</p>
-<div class="cell tag_hide-cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;clump&quot;</span><span class="p">,</span> <span class="s2">&quot;unif_size&quot;</span><span class="p">,</span> <span class="s2">&quot;unif_shape&quot;</span><span class="p">,</span> <span class="s2">&quot;adhesion&quot;</span><span class="p">,</span> <span class="s2">&quot;epi_size&quot;</span><span class="p">,</span>
-             <span class="s2">&quot;nuclei&quot;</span><span class="p">,</span> <span class="s2">&quot;chromatin&quot;</span><span class="p">,</span> <span class="s2">&quot;nucleoli&quot;</span><span class="p">,</span> <span class="s2">&quot;mitoses&quot;</span><span class="p">,</span> <span class="s2">&quot;class&quot;</span><span class="p">]</span>
-
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../../data/raw/breast_cancer.txt&quot;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">col_names</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_hide-cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -570,55 +507,8 @@ This raises the question:</p>
   </tbody>
 </table>
 </div></div></div>
-</div>
-<div class="cell tag_hide-cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 699 entries, 0 to 698
-Data columns (total 11 columns):
- #   Column      Non-Null Count  Dtype 
----  ------      --------------  ----- 
- 0   id          699 non-null    int64 
- 1   clump       699 non-null    int64 
- 2   unif_size   699 non-null    int64 
- 3   unif_shape  699 non-null    int64 
- 4   adhesion    699 non-null    int64 
- 5   epi_size    699 non-null    int64 
- 6   nuclei      699 non-null    object
- 7   chromatin   699 non-null    int64 
- 8   nucleoli    699 non-null    int64 
- 9   mitoses     699 non-null    int64 
- 10  class       699 non-null    int64 
-dtypes: int64(10), object(1)
-memory usage: 60.2+ KB
-</pre></div>
-</div>
-</div>
-</div>
 <p>We see that the dataset uses “?” for missing data so we eliminate rows that contain “?”. As shown above, all of the variables are numeric except for variables nuclei, we decide to transform it into type int for ease of data analysis later on. Finally, “id” feature does not appear to be useful for the prediction task; hence, it is dropped before carrying on to further analysis.</p>
-<div class="cell tag_hide-cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[(</span><span class="n">dataset</span> <span class="o">!=</span> <span class="s1">&#39;?&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
-<span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;nuclei&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;nuclei&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>We also decide to replace benign class from 2 to 0 and malignant class from 4 to 1 since if we keep values of 2 and 4, it would be hard for predictive models to calculate accuracy, precision, and so on.</p>
-<div class="cell tag_hide-cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">2</span><span class="p">],</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">4</span><span class="p">],</span><span class="mi">1</span><span class="p">)</span> 
-<span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0.650073
 1    0.349927
@@ -626,145 +516,30 @@ Name: class, dtype: float64
 </pre></div>
 </div>
 </div>
-</div>
 <p>There is an imbalance in the dataset between benign and malignant. We want to further investigate the malignant examples (class = 4); hence the classes should have same importance so recall would be the most appropriate and main metric for this project. This is due to the fact that in a medical diagnosis setting, false negative result for a disease like cancer will cause a lot more harm than a false positive result.</p>
 <p>Then we split the data into training and testing sets (X_train, X_test, y_train, y_test) and extract names of numeric features for further exploration.</p>
-<div class="cell tag_hide-cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
-<span class="n">X_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">])</span>
-<span class="n">X_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">])</span>
-
-<span class="n">y_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span>
-<span class="n">y_test</span> <span class="o">=</span> <span class="n">test_df</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span>
-<span class="n">numeric_looking_columns</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-<span class="n">train_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-</pre></div>
+<div class="figure align-default" id="histograms">
+<a class="reference internal image-reference" href="_images/hist_plot.png"><img alt="_images/hist_plot.png" src="_images/hist_plot.png" style="height: 500px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Histograms of Class Targets with respecto to each Explanatory Variable</span><a class="headerlink" href="#histograms" title="Permalink to this image">¶</a></p>
 </div>
+<div class="figure align-default" id="boxplots">
+<a class="reference internal image-reference" href="_images/boxplot_plot.png"><img alt="_images/boxplot_plot.png" src="_images/boxplot_plot.png" style="height: 500px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Boxplots of Class Targets with respecto to each Explanatory Variable</span><a class="headerlink" href="#boxplots" title="Permalink to this image">¶</a></p>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-Int64Index: 478 entries, 696 to 525
-Data columns (total 10 columns):
- #   Column      Non-Null Count  Dtype
----  ------      --------------  -----
- 0   clump       478 non-null    int64
- 1   unif_size   478 non-null    int64
- 2   unif_shape  478 non-null    int64
- 3   adhesion    478 non-null    int64
- 4   epi_size    478 non-null    int64
- 5   nuclei      478 non-null    int64
- 6   chromatin   478 non-null    int64
- 7   nucleoli    478 non-null    int64
- 8   mitoses     478 non-null    int64
- 9   class       478 non-null    int64
-dtypes: int64(10)
-memory usage: 41.1 KB
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_hide-cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">benign_cases</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="n">train_df</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
-<span class="n">malignant_cases</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="n">train_df</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">numeric_looking_columns</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_hide-cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plot_hist_overlay</span><span class="p">(</span><span class="n">df0</span><span class="o">=</span><span class="n">benign_cases</span><span class="p">,</span> <span class="n">df1</span><span class="o">=</span><span class="n">malignant_cases</span><span class="p">,</span>
-                 <span class="n">columns</span><span class="o">=</span><span class="n">numeric_looking_columns</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;0 - benign&quot;</span><span class="p">,</span> <span class="s2">&quot;1 - malignant&quot;</span><span class="p">],</span>
-                 <span class="n">fig_no</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/breast_cancer_prediction_16_0.png" src="_images/breast_cancer_prediction_16_0.png" />
-</div>
-</div>
-<div class="cell tag_hide-cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">boxplot_plotting</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="n">numeric_looking_columns</span><span class="p">,</span><span class="n">train_df</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/breast_cancer_prediction_17_0.png" src="_images/breast_cancer_prediction_17_0.png" />
-</div>
-</div>
-<p><em>Comment on features visualizations:</em></p>
-<p>Judging from the histograms, it is indicated that benign tumors tend to have smaller values for all the features listed in the dataset (clump, unif_size and so on) while malignant tumors have different tendencies for each features.</p>
-<p>From the boxplots above, chromatin and clump feature display the clearest differentiation between benign and malignant tumor. Benign tumors seem to have clump thickness and bland chromatin on the lower ends. These characteristics are also displayed clearly in the histograms. Moreover, it might not be as obvious in boxplot, but in histogram, the majority of benign tumors is on the lower end of the nuclei’s spectrum while the majority of malignant tumors are on the upper end. This suggests tumors with higher values of clump thickness, chromatin and nuclei have a higher chance of being malignant.</p>
-<p>As for unif_size, unif_shape, adhesion and nucleoli, the histograms show that regarding to benign tumors, these features tend to range in small values while malignant tumors’ ranges are more evenly spread out. This proposes tumors with smaller values of said features are more likely to be benign. But the proposal is not as strong as the one discussed above as the distinction is not as prominent.</p>
-<p>Lastly, mitoses and epi_size feature indicate to have an overlap in values between benign and malignant tumors shown in histograms. Hence, they might not be as useful in prediction task as other features.</p>
+<p>Judging from the <a class="reference internal" href="#histograms"><span class="std std-ref">histograms</span></a>, it is indicated that benign tumors tend to have smaller values for all the features listed in the dataset (clump, unif_size and so on) while malignant tumors have different tendencies for each features.</p>
+<p>From the <a class="reference internal" href="#boxplots"><span class="std std-ref">boxplots</span></a> above, chromatin and clump feature display the clearest differentiation between benign and malignant tumor. Benign tumors seem to have clump thickness and bland chromatin on the lower ends. These characteristics are also displayed clearly in the histograms. Moreover, it might not be as obvious in <a class="reference internal" href="#boxplots"><span class="std std-ref">boxplot</span></a>, but in  <a class="reference internal" href="#histograms"><span class="std std-ref">histogram</span></a>, the majority of benign tumors is on the lower end of the nuclei’s spectrum while the majority of malignant tumors are on the upper end. This suggests tumors with higher values of clump thickness, chromatin and nuclei have a higher chance of being malignant.</p>
+<p>As for unif_size, unif_shape, adhesion and nucleoli, the <a class="reference internal" href="#histograms"><span class="std std-ref">histogram</span></a> show that regarding to benign tumors, these features tend to range in small values while malignant tumors’ ranges are more evenly spread out. This proposes tumors with smaller values of said features are more likely to be benign. But the proposal is not as strong as the one discussed above as the distinction is not as prominent.</p>
+<p>Lastly, mitoses and epi_size feature indicate to have an overlap in values between benign and malignant tumors shown in  <a class="reference internal" href="#histograms"><span class="std std-ref">histogram</span></a>. Hence, they might not be as useful in prediction task as other features.</p>
 </div>
 <div class="section" id="preprocessing">
 <h3>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h3>
 <p>Since all features are numeric, we decide to scale our data to ensure that there is no bias presents when predicting results.</p>
-<div class="cell tag_hide-cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numeric_transformer</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
-<span class="n">ct</span> <span class="o">=</span> <span class="n">make_column_transformer</span><span class="p">(</span>
-    <span class="p">(</span><span class="n">numeric_transformer</span><span class="p">,</span> <span class="n">numeric_looking_columns</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 <div class="section" id="data-analysis">
 <h3>Data analysis<a class="headerlink" href="#data-analysis" title="Permalink to this headline">¶</a></h3>
 <p>Even though the main score we will be comparing when choosing the models is recall, we still want to look into accuracy and decision. Because between a model performs well on recall but have very low accuracy and precision and a model performs just a bit worse on recall but have excellent accuracy and precision, the latter model will still have an upper hand and be more preferable.</p>
-<div class="cell tag_hide-cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scoring</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;accuracy&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;f1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;recall&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;precision&quot;</span><span class="p">,</span>
-<span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>We create a function which applies the given model for X_train, y_train and then returns mean and std of cross-validation scores.</p>
 <p>We decide to test 3 models: Decision Tree, kNN and Logistic Regression. Decision Tree, kNN, Logistic Regression are simple models with fast fit_time and moderate precision and accuracy and suitable for the classification/prediction task.</p>
-<div class="cell tag_hide-cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
-
-<span class="n">pipe_knn</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">ct</span><span class="p">,</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
-<span class="n">pipe_dt</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">ct</span><span class="p">,</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">))</span>
-<span class="n">pipe_reg</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">ct</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">100000</span><span class="p">))</span>
-
-<span class="n">classifiers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;kNN&quot;</span><span class="p">:</span> <span class="n">pipe_knn</span><span class="p">,</span>
-    <span class="s2">&quot;Decision Tree&quot;</span><span class="p">:</span> <span class="n">pipe_dt</span><span class="p">,</span>
-    <span class="s2">&quot;Logistic Regression&quot;</span> <span class="p">:</span> <span class="n">pipe_reg</span>
-<span class="p">}</span>
-
-<span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
-
-<span class="k">for</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span> <span class="ow">in</span> <span class="n">classifiers</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="n">results</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean_cross_val_scores</span><span class="p">(</span>
-        <span class="n">model</span><span class="p">,</span> 
-        <span class="n">X_train</span><span class="p">,</span> 
-        <span class="n">y_train</span><span class="p">,</span> 
-        <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
-        <span class="n">scoring</span> <span class="o">=</span> <span class="n">scoring</span>
-    <span class="p">)</span>
-
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-</pre></div>
-</div>
-</div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -799,8 +574,8 @@ memory usage: 41.1 KB
   <tbody>
     <tr>
       <th>kNN</th>
-      <td>0.002337</td>
-      <td>0.003910</td>
+      <td>0.002284</td>
+      <td>0.003952</td>
       <td>0.964452</td>
       <td>0.971236</td>
       <td>0.948880</td>
@@ -812,8 +587,8 @@ memory usage: 41.1 KB
     </tr>
     <tr>
       <th>Decision Tree</th>
-      <td>0.002484</td>
-      <td>0.002103</td>
+      <td>0.002561</td>
+      <td>0.002198</td>
       <td>0.951842</td>
       <td>1.000000</td>
       <td>0.930415</td>
@@ -825,8 +600,8 @@ memory usage: 41.1 KB
     </tr>
     <tr>
       <th>Logistic Regression</th>
-      <td>0.003590</td>
-      <td>0.002135</td>
+      <td>0.003740</td>
+      <td>0.002176</td>
       <td>0.964408</td>
       <td>0.966525</td>
       <td>0.948501</td>
@@ -839,129 +614,270 @@ memory usage: 41.1 KB
   </tbody>
 </table>
 </div></div></div>
-</div>
 <p>As shown above, kNN model is the best performing model with the highest test_recall score, 0.952, and high test_precision and test_accuracy, 0.946 and 0.964 respectively. Even though Logistics Regression has higher precision score (0.952 &gt; 0.946), its fit_time is larger and recall score is lower than those of kNN (0.011 &gt; 0.009 and 0.946 &lt; 0.952 respectively). Overall, kNN model still performs better than Logistics Regression. Decision Tree performs the worst since it displays the lowest scores among 3 models.</p>
 <p>After choosing the most efficient model, kNN, we move onto tuning its hyperparameters to increase its performance. We decide to tune n_neighbors which determines the number of neighbors k and weights which determines weight function used in prediction.</p>
-<div class="cell tag_hide-cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
-
-<span class="n">search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipe_knn</span><span class="p">,</span>
-                      <span class="n">param_grid</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;kneighborsclassifier__n_neighbors&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span>
-                                  <span class="s1">&#39;kneighborsclassifier__weights&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;uniform&#39;</span><span class="p">,</span> <span class="s1">&#39;distance&#39;</span><span class="p">]},</span>
-                      <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> 
-                      <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>  
-                      <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;recall&quot;</span><span class="p">,</span> 
-                      <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">best_score_</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9639705882352942
-{&#39;kneighborsclassifier__n_neighbors&#39;: 5, &#39;kneighborsclassifier__weights&#39;: &#39;uniform&#39;}
-</pre></div>
-</div>
-</div>
-</div>
 <p>After tuning hyperparameters, we successfully increase recall score from 0.952 to 0.964 with n_neighbors: 5, weights’: ‘uniform’.</p>
 </div>
 <div class="section" id="model-on-test-set">
 <h3>Model on test set<a class="headerlink" href="#model-on-test-set" title="Permalink to this headline">¶</a></h3>
 <p>We then apply tuned hyperparameters, n_neighbors: 5, weights’: ‘uniform’, to kNN model and test the model’s generalization on test set.</p>
 <p>We also print a result plot and plot a confusion matrix for X_test and y_test to visualize the test results.</p>
-<div class="cell tag_hide-cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe_knn_tuned</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">ct</span><span class="p">,</span><span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="s1">&#39;uniform&#39;</span><span class="p">))</span>
-<span class="n">pipe_knn_tuned</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">pipe_knn_tuned</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9853658536585366
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_hide-cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span>
-    <span class="n">y_test</span><span class="p">,</span> <span class="n">pipe_knn_tuned</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">),</span> <span class="n">target_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;benign&quot;</span><span class="p">,</span> <span class="s2">&quot;malignant&quot;</span><span class="p">]))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-      benign       0.99      0.98      0.99       132
-   malignant       0.97      0.99      0.98        73
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-    accuracy                           0.99       205
-   macro avg       0.98      0.99      0.98       205
-weighted avg       0.99      0.99      0.99       205
-</pre></div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>clump</th>
+      <th>unif_size</th>
+      <th>unif_shape</th>
+      <th>adhesion</th>
+      <th>epi_size</th>
+      <th>nuclei</th>
+      <th>chromatin</th>
+      <th>nucleoli</th>
+      <th>mitoses</th>
+      <th>class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+      <td>precision</td>
+      <td>recall</td>
+      <td>f1-score</td>
+      <td>support</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>benign</td>
+      <td>0.9923664122137404</td>
+      <td>0.9848484848484849</td>
+      <td>0.9885931558935361</td>
+      <td>132.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>malignant</td>
+      <td>0.972972972972973</td>
+      <td>0.9863013698630136</td>
+      <td>0.979591836734694</td>
+      <td>73.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>accuracy</td>
+      <td>0.9853658536585366</td>
+      <td>0.9853658536585366</td>
+      <td>0.9853658536585366</td>
+      <td>0.9853658536585366</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>macro avg</td>
+      <td>0.9826696925933567</td>
+      <td>0.9855749273557493</td>
+      <td>0.9840924963141151</td>
+      <td>205.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>weighted avg</td>
+      <td>0.9854604558011745</td>
+      <td>0.9853658536585366</td>
+      <td>0.9853878080955094</td>
+      <td>205.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+<div class="figure align-default" id="conf-matrix">
+<a class="reference internal image-reference" href="_images/confusion_matrix.png"><img alt="_images/confusion_matrix.png" src="_images/confusion_matrix.png" style="height: 500px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Confusion matrix for Algorithms Classification</span><a class="headerlink" href="#conf-matrix" title="Permalink to this image">¶</a></p>
 </div>
-</div>
-</div>
-<div class="cell tag_hide-cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictions</span> <span class="o">=</span> <span class="n">pipe_knn_tuned</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">pipe_knn_tuned</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
-<span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span>
-                              <span class="n">display_labels</span><span class="o">=</span><span class="n">pipe_knn_tuned</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
-<span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Figure 3: Confusion Matrix&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Figure 3: Confusion Matrix&#39;)
-</pre></div>
-</div>
-<img alt="_images/breast_cancer_prediction_33_1.png" src="_images/breast_cancer_prediction_33_1.png" />
-</div>
-</div>
-<p>After applying the model to the test set, we obtain the score of 0.985 which indicates that this model generalizes well for prediction task. Moreover, from the plot above (Figure 3), we can see that out of 205 observations in test set, we only falsely predict 1 tumor to be benign and 2 tumors to malignant. This aligns with our decision at the beginning of the project which is to optimize recall score of the model.</p>
+<p>After applying the model to the test set, we obtain the score of 0.985 which indicates that this model generalizes well for prediction task. Moreover, from the plot above <a class="reference internal" href="#conf-matrix"><span class="std std-ref">(Figure 3)</span></a>, we can see that out of 205 observations in test set, we only falsely predict 1 tumor to be benign and 2 tumors to malignant. This aligns with our decision at the beginning of the project which is to optimize recall score of the model.</p>
 <p>With the recall score of 0.99 for malignant tumors and 0.98 for benign tumors reported above, we have statistical evidence that the model generalizes well for the prediction task.</p>
 </div>
 </div>
 <div class="section" id="iv-summary-of-results-and-discussion">
 <h2>IV. Summary of results and discussion<a class="headerlink" href="#iv-summary-of-results-and-discussion" title="Permalink to this headline">¶</a></h2>
-<div class="cell tag_hide-cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
-    <span class="n">classification_report</span><span class="p">(</span>
-        <span class="n">y_test</span><span class="p">,</span> <span class="n">pipe_knn_tuned</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">),</span> <span class="n">target_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;benign&quot;</span><span class="p">,</span> <span class="s2">&quot;malignant&quot;</span><span class="p">]</span>
-    <span class="p">)</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-      benign       0.99      0.98      0.99       132
-   malignant       0.97      0.99      0.98        73
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-    accuracy                           0.99       205
-   macro avg       0.98      0.99      0.98       205
-weighted avg       0.99      0.99      0.99       205
-</pre></div>
-</div>
-</div>
-</div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>clump</th>
+      <th>unif_size</th>
+      <th>unif_shape</th>
+      <th>adhesion</th>
+      <th>epi_size</th>
+      <th>nuclei</th>
+      <th>chromatin</th>
+      <th>nucleoli</th>
+      <th>mitoses</th>
+      <th>class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+      <td>precision</td>
+      <td>recall</td>
+      <td>f1-score</td>
+      <td>support</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>benign</td>
+      <td>0.9923664122137404</td>
+      <td>0.9848484848484849</td>
+      <td>0.9885931558935361</td>
+      <td>132.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>malignant</td>
+      <td>0.972972972972973</td>
+      <td>0.9863013698630136</td>
+      <td>0.979591836734694</td>
+      <td>73.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>accuracy</td>
+      <td>0.9853658536585366</td>
+      <td>0.9853658536585366</td>
+      <td>0.9853658536585366</td>
+      <td>0.9853658536585366</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>macro avg</td>
+      <td>0.9826696925933567</td>
+      <td>0.9855749273557493</td>
+      <td>0.9840924963141151</td>
+      <td>205.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>weighted avg</td>
+      <td>0.9854604558011745</td>
+      <td>0.9853658536585366</td>
+      <td>0.9853878080955094</td>
+      <td>205.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 <div class="section" id="summary-of-findings">
 <h3>Summary of Findings<a class="headerlink" href="#summary-of-findings" title="Permalink to this headline">¶</a></h3>
-<p><em>EDA</em></p>
 <p>The boxplots and histograms allow us to see how the displayed data is distributed across our dataset and how they differentiate benign and malignant tumors. We believe certain variables will give us significantly more information on how to correctly classify a tumor. Such features which can play a decisive factor in prediction task are:</p>
-<p>Nucleoli (Figures 1.7 &amp; 2.7): This feature plays an important role in classifying tumor types as shown in both plots. Observing (1.7) we notice that benign tumors tend to have a nucleoli value in between 0 and 2 (for discrete values), and we primarily see malignant tumors for values greater than 2. This is further supported in (2.7), where we see that only outliers from benign tumors are entangled with the malignant tumor’s box and lower whisker.</p>
-<p>Chromatin (Figures 1.6 &amp; 2.6): It is a variable which at first sight could serve us as a way to determine the class label for a given test example. The problem with this variable is the intersection between 2 &amp; 4 in the x axis for figure (1.6). This is problematic because the probability of falsely predicting an observation increases if the value of chromatin of said observation lies within that given interval.</p>
+<p>Chromatin (Figures <a class="reference internal" href="#histograms"><span class="std std-ref"> 1.7</span></a> &amp; <a class="reference internal" href="#boxplots"><span class="std std-ref"> 2.7</span></a>): It is a variable which at first sight could serve us as a way to determine the class label for a given test example. The problem with this variable is the intersection between 2 &amp; 4 in the x axis for figure <a class="reference internal" href="#histograms"><span class="std std-ref"> 1.7</span></a>. This is problematic because the probability of falsely predicting an observation increases if the value of chromatin of said observation lies within that given interval.</p>
+<p>Nucleoli (Figures<a class="reference internal" href="#histograms"><span class="std std-ref"> 1.8</span></a>  &amp; <a class="reference internal" href="#boxplots"><span class="std std-ref"> 2.8</span></a>): This feature plays an important role in classifying tumor types as shown in both plots. Observing <a class="reference internal" href="#histograms"><span class="std std-ref"> 1.8</span></a> we notice that benign tumors tend to have a nucleoli value in between 0 and 2 (for discrete values), and we primarily see malignant tumors for values greater than 2. This is further supported in <a class="reference internal" href="#boxplots"><span class="std std-ref"> 2.8</span></a>, where we see that only outliers from benign tumors are entangled with the malignant tumor’s box and lower whisker.</p>
 <p>Other variables like nuclei or adhesion can also be useful, but if we were able to set them only for certain values of the “x” variable. The problem is that if we, for example, take nuclei as the decisive rule to classify, we would have almost a 50/50 chance of correctly classifying it if “x” was between 2 and 4 approximately.</p>
-<p><em>Methods &amp; Results</em></p>
 <p>By comparing cross-val scores (recall scores) among kNN, Decision Tree, and Logistics Regression, we found that kNN performs the best with highest recall score. By using <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> to computationally optimize the hyperparameters for <code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier</span></code>, it turns out our best model is <code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier(n_neighbors=5,</span> <span class="pre">weights='uniform')</span></code> with <strong>98.5% overall accuracy, 99% recall, 98% precision and an F1-score of 98%</strong> when deploying on test set. This means that the model generalized very well for this prediction problem, and with such a high recall we also achieved our goal of maximizing the True Positive and minimizing the False Negative instances, which would be of tremendous importance when it comes to computational-aided medical diagnostic.</p>
 </div>
 <div class="section" id="impacts-of-our-findings">
@@ -980,10 +896,21 @@ weighted avg       0.99      0.99      0.99       205
 </div>
 <div class="section" id="v-references">
 <h2>V. References<a class="headerlink" href="#v-references" title="Permalink to this headline">¶</a></h2>
-<p>Goel, Vishabh. “Building a Simple Machine Learning Model on Breast Cancer Data.” Medium, Towards Data Science, 12 Oct. 2018, <a class="reference external" href="https://towardsdatascience.com/building-a-simple-machine-learning-model-on-breast-cancer-data-eca4b3b99fa3">https://towardsdatascience.com/building-a-simple-machine-learning-model-on-breast-cancer-data-eca4b3b99fa3</a>.</p>
-<p>Lee, Sid. “What Is Breast Cancer?” Canadian Cancer Society, <a class="reference external" href="https://cancer.ca/en/cancer-information/cancer-types/breast/what-is-breast-cancer">https://cancer.ca/en/cancer-information/cancer-types/breast/what-is-breast-cancer</a>.</p>
-<p>Shen, Li, et al. “Deep Learning to Improve Breast Cancer Detection on Screening Mammography.” Nature News, Nature Publishing Group, 29 Aug. 2019, <a class="reference external" href="https://www.nature.com/articles/s41598-019-48995-4">https://www.nature.com/articles/s41598-019-48995-4</a>.</p>
-<p>UCI Machine Learning Repository: Breast Cancer Wisconsin (Original) Data Set, <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/breast+cancer+wisconsin+%28original%29">https://archive.ics.uci.edu/ml/datasets/breast+cancer+wisconsin+(original)</a>.</p>
+<p id="id2"><dl class="citation">
+<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Vishabh Goel. <em>Building a Simple Machine Learning Model on Breast Cancer Data.</em> Towards Data Science, 2018. URL: <a class="reference external" href="https://towardsdatascience.com/building-a-simple-machine-learning-model-on-breast-cancer-data-eca4b3b99fa3">https://towardsdatascience.com/building-a-simple-machine-learning-model-on-breast-cancer-data-eca4b3b99fa3</a>.</p>
+</dd>
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id1">2</a></span></dt>
+<dd><p>Sid Lee. <em>What Is Breast Cancer?</em> URL: <a class="reference external" href="https://cancer.ca/en/cancer-information/cancer-types/breast/what-is-breast-cancer">https://cancer.ca/en/cancer-information/cancer-types/breast/what-is-breast-cancer</a>.</p>
+</dd>
+<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id1">3</a></span></dt>
+<dd><p>Li. et al Shen. <em>Deep Learning to Improve Breast Cancer Detection on Screening Mammography</em>. Nature Publishing Group, 2019. URL: <a class="reference external" href="https://www.nature.com/articles/s41598-019-48995-4">https://www.nature.com/articles/s41598-019-48995-4</a>.</p>
+</dd>
+<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id1">4</a></span></dt>
+<dd><p>University of Wisconsin Hospitals WIlliam H. Wolberg. <em>UCI Machine Learning Repository: Breast Cancer Wisconsin (Original) Data Set</em>. 1992. URL: <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/breast+cancer+wisconsin+%28original%29">https://archive.ics.uci.edu/ml/datasets/breast+cancer+wisconsin+%28original%29</a>.</p>
+</dd>
+</dl>
+</p>
 </div>
 </div>
 

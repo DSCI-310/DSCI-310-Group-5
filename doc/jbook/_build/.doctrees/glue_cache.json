@@ -1,1 +1,68 @@
-{}
+{
+  "breast_cancer_prediction": {
+    "predictions": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "predictions",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "             id               clump           unif_size          unif_shape  \\\n0           NaN           precision              recall            f1-score   \n1        benign  0.9923664122137404  0.9848484848484849  0.9885931558935361   \n2     malignant   0.972972972972973  0.9863013698630136   0.979591836734694   \n3      accuracy  0.9853658536585366  0.9853658536585366  0.9853658536585366   \n4     macro avg  0.9826696925933567  0.9855749273557493  0.9840924963141151   \n5  weighted avg  0.9854604558011745  0.9853658536585366  0.9853878080955094   \n\n             adhesion  epi_size  nuclei  chromatin  nucleoli  mitoses  class  \n0             support       NaN     NaN        NaN       NaN      NaN    NaN  \n1               132.0       NaN     NaN        NaN       NaN      NaN    NaN  \n2                73.0       NaN     NaN        NaN       NaN      NaN    NaN  \n3  0.9853658536585366       NaN     NaN        NaN       NaN      NaN    NaN  \n4               205.0       NaN     NaN        NaN       NaN      NaN    NaN  \n5               205.0       NaN     NaN        NaN       NaN      NaN    NaN  ",
+        "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>id</th>\n      <th>clump</th>\n      <th>unif_size</th>\n      <th>unif_shape</th>\n      <th>adhesion</th>\n      <th>epi_size</th>\n      <th>nuclei</th>\n      <th>chromatin</th>\n      <th>nucleoli</th>\n      <th>mitoses</th>\n      <th>class</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>NaN</td>\n      <td>precision</td>\n      <td>recall</td>\n      <td>f1-score</td>\n      <td>support</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>benign</td>\n      <td>0.9923664122137404</td>\n      <td>0.9848484848484849</td>\n      <td>0.9885931558935361</td>\n      <td>132.0</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>malignant</td>\n      <td>0.972972972972973</td>\n      <td>0.9863013698630136</td>\n      <td>0.979591836734694</td>\n      <td>73.0</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>accuracy</td>\n      <td>0.9853658536585366</td>\n      <td>0.9853658536585366</td>\n      <td>0.9853658536585366</td>\n      <td>0.9853658536585366</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n    </tr>\n    <tr>\n      <th>4</th>\n      <td>macro avg</td>\n      <td>0.9826696925933567</td>\n      <td>0.9855749273557493</td>\n      <td>0.9840924963141151</td>\n      <td>205.0</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n    </tr>\n    <tr>\n      <th>5</th>\n      <td>weighted avg</td>\n      <td>0.9854604558011745</td>\n      <td>0.9853658536585366</td>\n      <td>0.9853878080955094</td>\n      <td>205.0</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+      }
+    },
+    "header": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "header",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "        id  clump  unif_size  unif_shape  adhesion  epi_size nuclei  \\\n0  1000025      5          1           1         1         2      1   \n1  1002945      5          4           4         5         7     10   \n2  1015425      3          1           1         1         2      2   \n3  1016277      6          8           8         1         3      4   \n4  1017023      4          1           1         3         2      1   \n\n   chromatin  nucleoli  mitoses  class  \n0          3         1        1      2  \n1          3         2        1      2  \n2          3         1        1      2  \n3          3         7        1      2  \n4          3         1        1      2  ",
+        "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>id</th>\n      <th>clump</th>\n      <th>unif_size</th>\n      <th>unif_shape</th>\n      <th>adhesion</th>\n      <th>epi_size</th>\n      <th>nuclei</th>\n      <th>chromatin</th>\n      <th>nucleoli</th>\n      <th>mitoses</th>\n      <th>class</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>1000025</td>\n      <td>5</td>\n      <td>1</td>\n      <td>1</td>\n      <td>1</td>\n      <td>2</td>\n      <td>1</td>\n      <td>3</td>\n      <td>1</td>\n      <td>1</td>\n      <td>2</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>1002945</td>\n      <td>5</td>\n      <td>4</td>\n      <td>4</td>\n      <td>5</td>\n      <td>7</td>\n      <td>10</td>\n      <td>3</td>\n      <td>2</td>\n      <td>1</td>\n      <td>2</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>1015425</td>\n      <td>3</td>\n      <td>1</td>\n      <td>1</td>\n      <td>1</td>\n      <td>2</td>\n      <td>2</td>\n      <td>3</td>\n      <td>1</td>\n      <td>1</td>\n      <td>2</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>1016277</td>\n      <td>6</td>\n      <td>8</td>\n      <td>8</td>\n      <td>1</td>\n      <td>3</td>\n      <td>4</td>\n      <td>3</td>\n      <td>7</td>\n      <td>1</td>\n      <td>2</td>\n    </tr>\n    <tr>\n      <th>4</th>\n      <td>1017023</td>\n      <td>4</td>\n      <td>1</td>\n      <td>1</td>\n      <td>3</td>\n      <td>2</td>\n      <td>1</td>\n      <td>3</td>\n      <td>1</td>\n      <td>1</td>\n      <td>2</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+      }
+    },
+    "predict": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "predict",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "             id               clump           unif_size          unif_shape  \\\n0           NaN           precision              recall            f1-score   \n1        benign  0.9923664122137404  0.9848484848484849  0.9885931558935361   \n2     malignant   0.972972972972973  0.9863013698630136   0.979591836734694   \n3      accuracy  0.9853658536585366  0.9853658536585366  0.9853658536585366   \n4     macro avg  0.9826696925933567  0.9855749273557493  0.9840924963141151   \n5  weighted avg  0.9854604558011745  0.9853658536585366  0.9853878080955094   \n\n             adhesion  epi_size  nuclei  chromatin  nucleoli  mitoses  class  \n0             support       NaN     NaN        NaN       NaN      NaN    NaN  \n1               132.0       NaN     NaN        NaN       NaN      NaN    NaN  \n2                73.0       NaN     NaN        NaN       NaN      NaN    NaN  \n3  0.9853658536585366       NaN     NaN        NaN       NaN      NaN    NaN  \n4               205.0       NaN     NaN        NaN       NaN      NaN    NaN  \n5               205.0       NaN     NaN        NaN       NaN      NaN    NaN  ",
+        "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>id</th>\n      <th>clump</th>\n      <th>unif_size</th>\n      <th>unif_shape</th>\n      <th>adhesion</th>\n      <th>epi_size</th>\n      <th>nuclei</th>\n      <th>chromatin</th>\n      <th>nucleoli</th>\n      <th>mitoses</th>\n      <th>class</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>NaN</td>\n      <td>precision</td>\n      <td>recall</td>\n      <td>f1-score</td>\n      <td>support</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>benign</td>\n      <td>0.9923664122137404</td>\n      <td>0.9848484848484849</td>\n      <td>0.9885931558935361</td>\n      <td>132.0</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>malignant</td>\n      <td>0.972972972972973</td>\n      <td>0.9863013698630136</td>\n      <td>0.979591836734694</td>\n      <td>73.0</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>accuracy</td>\n      <td>0.9853658536585366</td>\n      <td>0.9853658536585366</td>\n      <td>0.9853658536585366</td>\n      <td>0.9853658536585366</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n    </tr>\n    <tr>\n      <th>4</th>\n      <td>macro avg</td>\n      <td>0.9826696925933567</td>\n      <td>0.9855749273557493</td>\n      <td>0.9840924963141151</td>\n      <td>205.0</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n    </tr>\n    <tr>\n      <th>5</th>\n      <td>weighted avg</td>\n      <td>0.9854604558011745</td>\n      <td>0.9853658536585366</td>\n      <td>0.9853878080955094</td>\n      <td>205.0</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>NaN</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+      }
+    },
+    "vals": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "vals",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "0    0.650073\n1    0.349927\nName: class, dtype: float64"
+      }
+    },
+    "df_table": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "df_table",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "                     fit_time  score_time  test_accuracy  train_accuracy  \\\nkNN                  0.002284    0.003952       0.964452        0.971236   \nDecision Tree        0.002561    0.002198       0.951842        1.000000   \nLogistic Regression  0.003740    0.002176       0.964408        0.966525   \n\n                      test_f1  train_f1  test_recall  train_recall  \\\nkNN                  0.948880  0.958788     0.951872      0.963853   \nDecision Tree        0.930415  1.000000     0.927451      1.000000   \nLogistic Regression  0.948501  0.951652     0.945633      0.948804   \n\n                     test_precision  train_precision  \nkNN                        0.946145         0.953845  \nDecision Tree              0.934969         1.000000  \nLogistic Regression        0.951817         0.954543  ",
+        "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>fit_time</th>\n      <th>score_time</th>\n      <th>test_accuracy</th>\n      <th>train_accuracy</th>\n      <th>test_f1</th>\n      <th>train_f1</th>\n      <th>test_recall</th>\n      <th>train_recall</th>\n      <th>test_precision</th>\n      <th>train_precision</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>kNN</th>\n      <td>0.002284</td>\n      <td>0.003952</td>\n      <td>0.964452</td>\n      <td>0.971236</td>\n      <td>0.948880</td>\n      <td>0.958788</td>\n      <td>0.951872</td>\n      <td>0.963853</td>\n      <td>0.946145</td>\n      <td>0.953845</td>\n    </tr>\n    <tr>\n      <th>Decision Tree</th>\n      <td>0.002561</td>\n      <td>0.002198</td>\n      <td>0.951842</td>\n      <td>1.000000</td>\n      <td>0.930415</td>\n      <td>1.000000</td>\n      <td>0.927451</td>\n      <td>1.000000</td>\n      <td>0.934969</td>\n      <td>1.000000</td>\n    </tr>\n    <tr>\n      <th>Logistic Regression</th>\n      <td>0.003740</td>\n      <td>0.002176</td>\n      <td>0.964408</td>\n      <td>0.966525</td>\n      <td>0.948501</td>\n      <td>0.951652</td>\n      <td>0.945633</td>\n      <td>0.948804</td>\n      <td>0.951817</td>\n      <td>0.954543</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+      }
+    }
+  }
+}

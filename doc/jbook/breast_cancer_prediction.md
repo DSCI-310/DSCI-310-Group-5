@@ -13,10 +13,6 @@ kernelspec:
 
 # Predicting Breast Cancer With Multiple Classification Algorithms
 
-+++
-
-## Imports
-
 ```{code-cell} ipython3
 :tags: [remove-cell]
 
@@ -59,7 +55,7 @@ In this project, we perform data analysis to look for the most efficient model t
 
 ### Background
 
-Breast cancer is the development of cancerous tissue of the breast. A malignant (cancerous) tumour can destroy other healthy tissue surrounding it and the disease could potentially metastasize, causing numerous other health complications. However, a tumour might or might not be cancerous. A benign (non-cancerous) tumour will not cause as much harm to the patient compared to a malignant one. With that in mind, an early diagnosis of a **malignant tumour** would give both patients and health care providers valuable time to quickly devise various treatment plans to stop the progression of the disease. This is important especially for a silent killer like cancer, in which the earlier a correct diagnosis has been made, the drastically better the prognosis.
+Breast cancer is the development of cancerous tissue of the breast. A malignant (cancerous) tumour can destroy other healthy tissue surrounding it and the disease could potentially metastasize, causing numerous other health complications. However, a tumour might or might not be cancerous. A benign (non-cancerous) tumour will not cause as much harm to the patient compared to a malignant one. With that in mind, an early diagnosis of a **malignant tumour** would give both patients and health care providers valuable time to quickly devise various treatment plans to stop the progression of the disease. This is important especially for a silent killer like cancer, in which the earlier a correct diagnosis has been made, the drastically better the prognosis {cite}`MLbreastCancer, BreastCancer, DeepLearnCancer, Databas`.
 This raises the question:
 
 **Can we predict whether a tumor is malignant or benign based  on the different features observed from the tumour?**
@@ -200,7 +196,6 @@ name: Boxplots
 ---
 Boxplots of Class Targets with respecto to each Explanatory Variable 
 ```
-*Comment on features visualizations:*
 
 Judging from the {ref}`histograms <Histograms>`, it is indicated that benign tumors tend to have smaller values for all the features listed in the dataset (clump, unif_size and so on) while malignant tumors have different tendencies for each features.
 
@@ -395,8 +390,6 @@ glue("predictions", preds)
 
 ### Summary of Findings
 
-*EDA* 
-
 The boxplots and histograms allow us to see how the displayed data is distributed across our dataset and how they differentiate benign and malignant tumors. We believe certain variables will give us significantly more information on how to correctly classify a tumor. Such features which can play a decisive factor in prediction task are: 
 
 Chromatin (Figures {ref}` 1.7 <Histograms>` & {ref}` 2.7 <Boxplots>`): It is a variable which at first sight could serve us as a way to determine the class label for a given test example. The problem with this variable is the intersection between 2 & 4 in the x axis for figure {ref}` 1.7 <Histograms>`. This is problematic because the probability of falsely predicting an observation increases if the value of chromatin of said observation lies within that given interval.
@@ -404,8 +397,6 @@ Chromatin (Figures {ref}` 1.7 <Histograms>` & {ref}` 2.7 <Boxplots>`): It is a v
 Nucleoli (Figures{ref}` 1.8 <Histograms>`  & {ref}` 2.8 <Boxplots>`): This feature plays an important role in classifying tumor types as shown in both plots. Observing {ref}` 1.8 <Histograms>` we notice that benign tumors tend to have a nucleoli value in between 0 and 2 (for discrete values), and we primarily see malignant tumors for values greater than 2. This is further supported in {ref}` 2.8 <Boxplots>`, where we see that only outliers from benign tumors are entangled with the malignant tumor's box and lower whisker.
 
 Other variables like nuclei or adhesion can also be useful, but if we were able to set them only for certain values of the "x" variable. The problem is that if we, for example, take nuclei as the decisive rule to classify, we would have almost a 50/50 chance of correctly classifying it if "x" was between 2 and 4 approximately. 
-
-*Methods & Results*
 
 By comparing cross-val scores (recall scores) among kNN, Decision Tree, and Logistics Regression, we found that kNN performs the best with highest recall score. By using `GridSearchCV` to computationally optimize the hyperparameters for `KNeighborsClassifier`, it turns out our best model is `KNeighborsClassifier(n_neighbors=5, weights='uniform')` with **98.5% overall accuracy, 99% recall, 98% precision and an F1-score of 98%** when deploying on test set. This means that the model generalized very well for this prediction problem, and with such a high recall we also achieved our goal of maximizing the True Positive and minimizing the False Negative instances, which would be of tremendous importance when it comes to computational-aided medical diagnostic.
 
@@ -418,15 +409,7 @@ We hope to aid other researchers and medical professionals in breast cancer diag
 1. Develop a better systematic approach/procedure between medical professional and these technologies to diagnose breast cancer more efficiently.
 1. Research into developing better technologies, not limited to AI/ML, to aid with breast cancer (or any cancer) diagnostic.
 
-some text {cite}`MLbreastCancer, BreastCancer, DeepLearnCancer, Databas`
-
 ## V. References
 ```{bibliography} ../../doc/jbook/references.bib
 :style: plain
-```
-
-
-```{code-cell} ipython3
-:tags: [remove-cell]
-
 ```
