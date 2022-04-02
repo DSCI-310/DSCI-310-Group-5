@@ -26,19 +26,21 @@ The dependencies needed are:
 |seaborn     |   0.11.2 |
 |scikit-learn|   0.24.2 |
 |pytest      |   6.2.4  |
+|jupytext    |   1.13.6 |  
+|jupyter-book|   0.12.2 | 
 
-In order to run the code, we advise you to use the Dockerfile listed in the main branch to have a suitable environment and avoid any problems with dependencies. The code is intended to run in JupyterLab.
+In order to run the code, we advise you to use the Dockerfile in the main branch to initiate a proper containerized environment and avoid any problems with dependencies. The code is intended to run in JupyterLab.
 
 First, clone the project repository from Github to your local machine by running:
 `git clone https://github.com/DSCI-310/DSCI-310-Group-5.git`
 
 Using the command to pull the repository to your local machine:
 
-`docker pull nhantien/dsci310group5:v0.3.0`
+`docker pull nhantien/dsci310group5:v0.5.0`
 
-This command pulls the *nhantien/dsci310group5* image tagged *v0.3.0* from Docker Hub if it is not already present on the local host. It then starts a container running a Jupyter Server and exposes the container’s internal port 8888 to port 8888 of the host machine. It also mount a volume from the project folder on your machine to the Docker containter's folder at `/home/jovyan/work`:
+This command pulls the *nhantien/dsci310group5* image tagged *v0.5.0* from Docker Hub if it is not already present on the local host. It then starts a container running a Jupyter Server and exposes the container’s internal port 8888 to port 8888 of the host machine. It also mount a volume from the project folder on your machine to the Docker containter's folder at `/home/jovyan/work`:
 
-`docker run --rm -p 8888:8888 -v "${PWD}":/home/jovyan/work nhantien/dsci310group5:v0.3.0`
+`docker run --rm -p 8888:8888 -v "${PWD}":/home/jovyan/work nhantien/dsci310group5:v0.5.0`
 
 The container will be cleaned up and removed after the Jupyter Server exits with the flag `--rm`. Simply remove the flag from the origial command if you want the container to remain intact upon exit.
 
