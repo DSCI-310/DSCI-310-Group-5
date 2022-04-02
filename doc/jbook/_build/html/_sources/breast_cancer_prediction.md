@@ -175,7 +175,7 @@ fig = plot_hist_overlay(df0=benign_cases, df1=malignant_cases,
 
 ```{figure} ../../results/figures/hist_plot.png
 ---
-height: 500px
+height: 700px
 name: Histograms
 ---
 Histograms of Class Targets with respecto to each Explanatory Variable 
@@ -191,7 +191,7 @@ fig = boxplot_plotting(3,3,20,25,numeric_looking_columns,train_df,2)
 
 ```{figure} ../../results/figures/boxplot_plot.png
 ---
-height: 500px
+height: 700px
 name: Boxplots
 ---
 Boxplots of Class Targets with respecto to each Explanatory Variable 
@@ -207,19 +207,6 @@ Lastly, mitoses and epi_size feature indicate to have an overlap in values betwe
 
 +++
 
-
-
-
-
-
-+++
-
-### Preprocessing 
-
-+++
-
-Since all features are numeric, we decide to scale our data to ensure that there is no bias presents when predicting results. 
-
 ```{code-cell} ipython3
 :tags: [remove-cell]
 
@@ -229,6 +216,7 @@ ct = make_column_transformer(
 ```
 
 ### Data analysis 
+Since all features are numeric, we decide to scale our data to ensure that there is no bias presents when predicting results. 
 
 Even though the main score we will be comparing when choosing the models is recall, we still want to look into accuracy and decision. Because between a model performs well on recall but have very low accuracy and precision and a model performs just a bit worse on recall but have excellent accuracy and precision, the latter model will still have an upper hand and be more preferable. 
 
@@ -242,8 +230,6 @@ scoring = [
     "precision",
 ]
 ```
-
-We create a function which applies the given model for X_train, y_train and then returns mean and std of cross-validation scores. 
 
 We decide to test 3 models: Decision Tree, kNN and Logistic Regression. Decision Tree, kNN, Logistic Regression are simple models with fast fit_time and moderate precision and accuracy and suitable for the classification/prediction task.
 
@@ -273,13 +259,21 @@ for (name, model) in classifiers.items():
         scoring = scoring
     )
 
-table=pd.DataFrame(results).T
+pd.DataFrame(results).T
+
+table = pd.read_csv("../../results/tables/cross_val.csv", index_col=0, sep=",")
 glue("df_table",table)
+glue("knn-based-rec", np.around(table.iloc[0]["test_recall"], 3))
+glue("knn-based-prec", np.around(table.iloc[0]["test_precision"], 3))
+glue("knn-based-acc", np.around(table.iloc[0]["test_accuracy"], 3))
+glue("logit-prec", np.around(table.iloc[2]["test_precision"], 3))
+glue("logit-rec", np.around(table.iloc[2]["test_recall"], 3))
+
 ```
 
 ```{glue:} df_table
 ```
-As shown above, kNN model is the best performing model with the highest test_recall score, 0.952, and high test_precision and test_accuracy, 0.946 and 0.964 respectively. Even though Logistics Regression has higher precision score (0.952 > 0.946), its fit_time is larger and recall score is lower than those of kNN (0.011 > 0.009 and 0.946 < 0.952 respectively). Overall, kNN model still performs better than Logistics Regression. Decision Tree performs the worst since it displays the lowest scores among 3 models. 
+As shown above, kNN model is the best performing model with the highest `test_recall score`, {glue:text}`knn-based-rec`, and high `test_precision` and `test_accuracy`, {glue:text}`knn-based-prec` and {glue:text}`knn-based-acc` respectively. Even though Logistics Regression has higher precision score {glue:text}`logit-prec` than KNN's, its recall score is lower than those of kNN ({glue:text}`logit-rec` < {glue:text}`knn-based-rec` respectively). Overall, kNN model still performs better than Logistics Regression. Decision Tree performs the worst since it displays the lowest scores among 3 models. 
 
 After choosing the most efficient model, kNN, we move onto tuning its hyperparameters to increase its performance. We decide to tune n_neighbors which determines the number of neighbors k and weights which determines weight function used in prediction. 
 
@@ -301,7 +295,19 @@ print(search.best_score_)
 print(search.best_params_)
 ```
 
-After tuning hyperparameters, we successfully increase recall score from 0.952 to 0.964 with n_neighbors: 5, weights': 'uniform'.  
+```{code-cell} ipython3
+:tags: [remove-cell]
+tuned = pd.read_csv("../../results/tables/tuned_para.csv", index_col=0, sep=",")
+glue("tuned_para", tuned)
+glue("para1", tuned.iloc[0]["kneighborsclassifier__n_neighbors"])
+glue("para2", tuned.iloc[0]["kneighborsclassifier__weights"])
+glue("recall", np.around(tuned.iloc[0]["knn_best_score"], 3))
+```
+
+```{glue:} tuned_para
+```
+
+After tuning hyperparameters, we successfully increase recall score from {glue:text}`knn-based-rec` to {glue:text}`recall` with hyperparameters `n_neighbors=` {glue:text}`para1` and `weights=` {glue:text}`para2`.  
 
 +++
 
@@ -309,7 +315,7 @@ After tuning hyperparameters, we successfully increase recall score from 0.952 t
 
 +++
 
-We then apply tuned hyperparameters, n_neighbors: 5, weights': 'uniform', to kNN model and test the model's generalization on test set. 
+We then apply tuned hyperparameters, `n_neighbors=` {glue:text}`para1` and `weights=` {glue:text}`para2`, to kNN model and test the model's generalization on test set. 
 
 We also print a result plot and plot a confusion matrix for X_test and y_test to visualize the test results. 
 
@@ -329,9 +335,6 @@ print(classification_report(
 ```
 
 
-
-
-
 ```{code-cell} ipython3
 :tags: [remove-cell]
 
@@ -346,7 +349,7 @@ plt.title("Figure 3: Confusion Matrix")
 
 ```{code-cell} ipython3
 :tags: [remove-cell]
-preds = pd.read_csv("../../results/tables/classification_report.csv", names=col_names, sep=",")
+preds = pd.read_csv("../../results/tables/classification_report.csv", index_col=0, sep=",")
 glue("predict", preds)
 ```
 
@@ -381,7 +384,7 @@ print(
 
 ```{code-cell} ipython3
 :tags: [remove-cell]
-preds = pd.read_csv("../../results/tables/classification_report.csv", names=col_names, sep=",")
+preds = pd.read_csv("../../results/tables/classification_report.csv", index_col=0, sep=",")
 glue("predictions", preds)
 ```
 
@@ -398,7 +401,7 @@ Nucleoli (Figures{ref}` 1.8 <Histograms>`  & {ref}` 2.8 <Boxplots>`): This featu
 
 Other variables like nuclei or adhesion can also be useful, but if we were able to set them only for certain values of the "x" variable. The problem is that if we, for example, take nuclei as the decisive rule to classify, we would have almost a 50/50 chance of correctly classifying it if "x" was between 2 and 4 approximately. 
 
-By comparing cross-val scores (recall scores) among kNN, Decision Tree, and Logistics Regression, we found that kNN performs the best with highest recall score. By using `GridSearchCV` to computationally optimize the hyperparameters for `KNeighborsClassifier`, it turns out our best model is `KNeighborsClassifier(n_neighbors=5, weights='uniform')` with **98.5% overall accuracy, 99% recall, 98% precision and an F1-score of 98%** when deploying on test set. This means that the model generalized very well for this prediction problem, and with such a high recall we also achieved our goal of maximizing the True Positive and minimizing the False Negative instances, which would be of tremendous importance when it comes to computational-aided medical diagnostic.
+By comparing cross-val scores (recall scores) among kNN, Decision Tree, and Logistics Regression, we found that kNN performs the best with highest recall score. By using `GridSearchCV` to computationally optimize the hyperparameters for `KNeighborsClassifier`, it turns out our best model is `KNeighborsClassifier(n_neighbors=5, weights='uniform')` with **98.5% overall accuracy, 98.5% recall, 98.5% precision and an F1-score of 98.5%** when deploying on test set. This means that the model generalized very well for this prediction problem, and with such a high recall we also achieved our goal of maximizing the True Positive and minimizing the False Negative instances, which would be of tremendous importance when it comes to computational-aided medical diagnostic.
 
 ### Impacts of our Findings
 We hope to aid other researchers and medical professionals in breast cancer diagnostic process and treatment with our results. We also hope to inspire other researchers to build upon what we have to continually improve this machine learning model, or take on a different perspective and build other technologies that will hopefully be more powerful and geared towards the task than what we developed.

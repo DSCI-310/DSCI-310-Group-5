@@ -25,8 +25,7 @@ The dependencies needed are:
 |matplotlib  |   3.4.3  |
 |seaborn     |   0.11.2 |
 |scikit-learn|   0.24.2 |
-|pytest      |   6.2.4  |
-|jupytext    |   1.13.6 |  
+|pytest      |   6.2.4  | 
 |jupyter-book|   0.12.2 | 
 
 In order to run the code, we advise you to use the Dockerfile in the main branch to initiate a proper containerized environment and avoid any problems with dependencies. The code is intended to run in JupyterLab.

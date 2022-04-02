@@ -7,5 +7,4 @@ RUN conda install -y --quiet -c conda-forge \
 	seaborn=0.11.2 \
 	scikit-learn=0.24.2 \
 	pytest=6.2.4 \
-	jupyter-book=0.12.2 \
-	jupytext=1.13.6
+	jupyter-book=0.12.2
