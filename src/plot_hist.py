@@ -67,6 +67,6 @@ def plot_hist_overlay(df0, df1, columns, labels, fig_no="1",alpha=0.7, bins=5, *
         subplot.set_ylabel("Count", fontsize=14)
         subplot.set_title(f"Figure {fig_no}.{idx+1}: Histogram of {col_name} for each target class label", 
                           fontsize=14)
-    fig.suptitle(f"Figure {fig_no}: Distribution of the target class for each numeric feature", fontsize=20)
+    #fig.suptitle(f"Figure {fig_no}: Distribution of the target class for each numeric feature", fontsize=20)
 
     return fig
