@@ -226,7 +226,7 @@ Lastly, mitoses and epi_size feature indicate to have an overlap in values betwe
 Since all features are numeric, we decide to scale our data to ensure that there is no bias presents when predicting results. 
 
 ```{code-cell} ipython3
-:tags: [hide-cell]
+:tags: [remove-cell]
 
 numeric_transformer = StandardScaler()
 ct = make_column_transformer(
@@ -238,7 +238,7 @@ ct = make_column_transformer(
 Even though the main score we will be comparing when choosing the models is recall, we still want to look into accuracy and decision. Because between a model performs well on recall but have very low accuracy and precision and a model performs just a bit worse on recall but have excellent accuracy and precision, the latter model will still have an upper hand and be more preferable. 
 
 ```{code-cell} ipython3
-:tags: [hide-cell]
+:tags: [remove-cell]
 
 scoring = [
     "accuracy",
@@ -418,15 +418,13 @@ We hope to aid other researchers and medical professionals in breast cancer diag
 1. Develop a better systematic approach/procedure between medical professional and these technologies to diagnose breast cancer more efficiently.
 1. Research into developing better technologies, not limited to AI/ML, to aid with breast cancer (or any cancer) diagnostic.
 
+some text {cite}`MLbreastCancer, BreastCancer, DeepLearnCancer, Databas`
 
 ## V. References
-Goel, Vishabh. “Building a Simple Machine Learning Model on Breast Cancer Data.” Medium, Towards Data Science, 12 Oct. 2018, https://towardsdatascience.com/building-a-simple-machine-learning-model-on-breast-cancer-data-eca4b3b99fa3. 
+```{bibliography} ../../doc/jbook/references.bib
+:style: plain
+```
 
-Lee, Sid. “What Is Breast Cancer?” Canadian Cancer Society, https://cancer.ca/en/cancer-information/cancer-types/breast/what-is-breast-cancer. 
-
-Shen, Li, et al. “Deep Learning to Improve Breast Cancer Detection on Screening Mammography.” Nature News, Nature Publishing Group, 29 Aug. 2019, https://www.nature.com/articles/s41598-019-48995-4. 
-
-UCI Machine Learning Repository: Breast Cancer Wisconsin (Original) Data Set, https://archive.ics.uci.edu/ml/datasets/breast+cancer+wisconsin+%28original%29.
 
 ```{code-cell} ipython3
 :tags: [remove-cell]
