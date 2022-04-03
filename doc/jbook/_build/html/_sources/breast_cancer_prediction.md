@@ -55,14 +55,14 @@ In this project, we perform data analysis to look for the most efficient model t
 
 ### Background
 
-Breast cancer is the development of cancerous tissue of the breast. A malignant (cancerous) tumour can destroy other healthy tissue surrounding it and the disease could potentially metastasize, causing numerous other health complications. However, a tumour might or might not be cancerous. A benign (non-cancerous) tumour will not cause as much harm to the patient compared to a malignant one. With that in mind, an early diagnosis of a **malignant tumour** would give both patients and health care providers valuable time to quickly devise various treatment plans to stop the progression of the disease. This is important especially for a silent killer like cancer, in which the earlier a correct diagnosis has been made, the drastically better the prognosis {cite}`MLbreastCancer, BreastCancer, DeepLearnCancer, Databas`.
+Breast cancer is the development of cancerous tissue of the breast. A malignant (cancerous) tumour can destroy other healthy tissue surrounding it and the disease could potentially metastasize, causing numerous other health complications. However, a tumour might or might not be cancerous. A benign (non-cancerous) tumour will not cause as much harm to the patient compared to a malignant one. With that in mind, an early diagnosis of a **malignant tumour** would give both patients and health care providers valuable time to quickly devise various treatment plans to stop the progression of the disease. This is important especially for a silent killer like cancer, in which the earlier a correct diagnosis has been made, the drastically better the prognosis {cite}`MLbreastCancer, BreastCancer, DeepLearnCancer`.
 This raises the question:
 
 **Can we predict whether a tumor is malignant or benign based  on the different features observed from the tumour?**
 
 ### Dataset Description
 
-The dataset we use: Breast Cancer Wisconsin (Original) Data Set, created by Dr. WIlliam H. Wolberg (physician), contains the following features with 699 observations:
+The dataset we use: Breast Cancer Wisconsin (Original) Data Set, created by Dr. WIlliam H. Wolberg (physician), contains the following features with 699 observations {cite}`Database`:
 
 1. Sample code number: id number
 2. Clump Thickness: 1 - 10
@@ -351,6 +351,12 @@ plt.title("Figure 3: Confusion Matrix")
 :tags: [remove-cell]
 preds = pd.read_csv("../../results/tables/classification_report.csv", index_col=0, sep=",")
 glue("predict", preds)
+glue("fin-avg-acc", np.around(preds.iloc[2]["recall"], 3))
+glue("fin-avg-prec", np.around(preds.iloc[4]["precision"], 3))
+glue("fin-avg-rec", np.around(preds.iloc[4]["recall"], 3))
+glue("fin-avg-f1", np.around(preds.iloc[4]["f1-score"], 3))
+glue("fin-mal-rec", np.around(preds.iloc[1]["recall"], 3))
+glue("fin-be-rec", np.around(preds.iloc[0]["recall"], 3))
 ```
 
 ```{glue:} predict
@@ -364,9 +370,9 @@ name: Conf-Matrix
 Confusion matrix for Algorithms Classification
 ```
 
-After applying the model to the test set, we obtain the score of 0.985 which indicates that this model generalizes well for prediction task. Moreover, from the plot above {ref}`(Figure 3) <Conf-Matrix>`, we can see that out of 205 observations in test set, we only falsely predict 1 tumor to be benign and 2 tumors to malignant. This aligns with our decision at the beginning of the project which is to optimize recall score of the model. 
+After applying the model to the test set, we obtain the score of {glue:text}`fin-avg-acc` which indicates that this model generalizes well for prediction task. Moreover, from the plot above {ref}`(Figure 3) <Conf-Matrix>`, we can see that out of **205** observations in test set, we only falsely predict **1** tumor to be benign and **2** tumors to malignant. This aligns with our decision at the beginning of the project which is to optimize recall score of the model. 
 
-With the recall score of 0.99 for malignant tumors and 0.98 for benign tumors reported above, we have statistical evidence that the model generalizes well for the prediction task.  
+With the recall score of {glue:text}`fin-mal-rec` for malignant tumors and {glue:text}`fin-be-rec` for benign tumors reported above, we have statistical evidence that the model generalizes well for the prediction task.  
 
 +++
 
@@ -380,15 +386,15 @@ print(
         y_test, pipe_knn_tuned.predict(X_test), target_names=["benign", "malignant"]
     )
 )
+
+glue("fin-avg-acc-per", np.around(preds.iloc[2]["recall"], 3)*100)
+glue("fin-avg-prec-per", np.around(preds.iloc[4]["precision"], 3)*100)
+glue("fin-avg-rec-per", np.around(preds.iloc[4]["recall"], 3)*100)
+glue("fin-avg-f1-per", np.around(preds.iloc[4]["f1-score"], 3)*100)
 ```
 
-```{code-cell} ipython3
-:tags: [remove-cell]
-preds = pd.read_csv("../../results/tables/classification_report.csv", index_col=0, sep=",")
-glue("predictions", preds)
-```
 
-```{glue:} predictions
+```{glue:} predict
 ```
 
 ### Summary of Findings
@@ -401,7 +407,7 @@ Nucleoli (Figures{ref}` 1.8 <Histograms>`  & {ref}` 2.8 <Boxplots>`): This featu
 
 Other variables like nuclei or adhesion can also be useful, but if we were able to set them only for certain values of the "x" variable. The problem is that if we, for example, take nuclei as the decisive rule to classify, we would have almost a 50/50 chance of correctly classifying it if "x" was between 2 and 4 approximately. 
 
-By comparing cross-val scores (recall scores) among kNN, Decision Tree, and Logistics Regression, we found that kNN performs the best with highest recall score. By using `GridSearchCV` to computationally optimize the hyperparameters for `KNeighborsClassifier`, it turns out our best model is `KNeighborsClassifier(n_neighbors=5, weights='uniform')` with **98.5% overall accuracy, 98.5% recall, 98.5% precision and an F1-score of 98.5%** when deploying on test set. This means that the model generalized very well for this prediction problem, and with such a high recall we also achieved our goal of maximizing the True Positive and minimizing the False Negative instances, which would be of tremendous importance when it comes to computational-aided medical diagnostic.
+By comparing cross-val scores (recall scores) among kNN, Decision Tree, and Logistics Regression, we found that kNN performs the best with highest recall score. By using `GridSearchCV` to computationally optimize the hyperparameters for `KNeighborsClassifier`, it turns out our best model is `KNeighborsClassifier` with `n_neighbors=` {glue:text}`para1` and `weights=` {glue:text}`para2`. This model achieved an astounding {glue:text}`fin-avg-acc-per`**% overall accuracy**, {glue:text}`fin-avg-rec-per`**% recall**, {glue:text}`fin-avg-prec-per`**% precision and an F1-score of** {glue:text}`fin-avg-f1-per`**%** when deploying on test set. This means that the model generalized very well for this prediction problem, and with such a high recall we also achieved our goal of maximizing the True Positive and minimizing the False Negative instances, which would be of tremendous importance when it comes to computational-aided medical diagnostic.
 
 ### Impacts of our Findings
 We hope to aid other researchers and medical professionals in breast cancer diagnostic process and treatment with our results. We also hope to inspire other researchers to build upon what we have to continually improve this machine learning model, or take on a different perspective and build other technologies that will hopefully be more powerful and geared towards the task than what we developed.

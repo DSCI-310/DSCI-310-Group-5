@@ -361,13 +361,13 @@ const thebe_selector_output = ".output, .cell_output"
 <h2>II. Introduction<a class="headerlink" href="#ii-introduction" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="background">
 <h3>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h3>
-<p>Breast cancer is the development of cancerous tissue of the breast. A malignant (cancerous) tumour can destroy other healthy tissue surrounding it and the disease could potentially metastasize, causing numerous other health complications. However, a tumour might or might not be cancerous. A benign (non-cancerous) tumour will not cause as much harm to the patient compared to a malignant one. With that in mind, an early diagnosis of a <strong>malignant tumour</strong> would give both patients and health care providers valuable time to quickly devise various treatment plans to stop the progression of the disease. This is important especially for a silent killer like cancer, in which the earlier a correct diagnosis has been made, the drastically better the prognosis <span id="id1">[<a class="reference internal" href="#id3" title="Vishabh Goel. Building a Simple Machine Learning Model on Breast Cancer Data. Towards Data Science, 2018. URL: https://towardsdatascience.com/building-a-simple-machine-learning-model-on-breast-cancer-data-eca4b3b99fa3.">Goel, 2018</a>, <a class="reference internal" href="#id4" title="Sid Lee. What Is Breast Cancer? URL: https://cancer.ca/en/cancer-information/cancer-types/breast/what-is-breast-cancer.">Lee, n.d.</a>, <a class="reference internal" href="#id5" title="Li. et al Shen. Deep Learning to Improve Breast Cancer Detection on Screening Mammography. Nature Publishing Group, 2019. URL: https://www.nature.com/articles/s41598-019-48995-4.">Shen, 2019</a>, <a class="reference internal" href="#id6" title="University of Wisconsin Hospitals WIlliam H. Wolberg. UCI Machine Learning Repository: Breast Cancer Wisconsin (Original) Data Set. 1992. URL: https://archive.ics.uci.edu/ml/datasets/breast+cancer+wisconsin+%28original%29.">WIlliam H. Wolberg, 1992</a>]</span>.
+<p>Breast cancer is the development of cancerous tissue of the breast. A malignant (cancerous) tumour can destroy other healthy tissue surrounding it and the disease could potentially metastasize, causing numerous other health complications. However, a tumour might or might not be cancerous. A benign (non-cancerous) tumour will not cause as much harm to the patient compared to a malignant one. With that in mind, an early diagnosis of a <strong>malignant tumour</strong> would give both patients and health care providers valuable time to quickly devise various treatment plans to stop the progression of the disease. This is important especially for a silent killer like cancer, in which the earlier a correct diagnosis has been made, the drastically better the prognosis <span id="id1">[<a class="reference internal" href="#id4" title="Vishabh Goel. Building a Simple Machine Learning Model on Breast Cancer Data. Towards Data Science, 2018. URL: https://towardsdatascience.com/building-a-simple-machine-learning-model-on-breast-cancer-data-eca4b3b99fa3.">Goel, 2018</a>, <a class="reference internal" href="#id5" title="Sid Lee. What Is Breast Cancer? URL: https://cancer.ca/en/cancer-information/cancer-types/breast/what-is-breast-cancer.">Lee, n.d.</a>, <a class="reference internal" href="#id6" title="Li. et al Shen. Deep Learning to Improve Breast Cancer Detection on Screening Mammography. Nature Publishing Group, 2019. URL: https://www.nature.com/articles/s41598-019-48995-4.">Shen, 2019</a>]</span>.
 This raises the question:</p>
 <p><strong>Can we predict whether a tumor is malignant or benign based  on the different features observed from the tumour?</strong></p>
 </div>
 <div class="section" id="dataset-description">
 <h3>Dataset Description<a class="headerlink" href="#dataset-description" title="Permalink to this headline">¶</a></h3>
-<p>The dataset we use: Breast Cancer Wisconsin (Original) Data Set, created by Dr. WIlliam H. Wolberg (physician), contains the following features with 699 observations:</p>
+<p>The dataset we use: Breast Cancer Wisconsin (Original) Data Set, created by Dr. WIlliam H. Wolberg (physician), contains the following features with 699 observations <span id="id2">[<a class="reference internal" href="#id7" title="University of Wisconsin Hospitals WIlliam H. Wolberg. UCI Machine Learning Repository: Breast Cancer Wisconsin (Original) Data Set. 1992. URL: https://archive.ics.uci.edu/ml/datasets/breast+cancer+wisconsin+%28original%29.">WIlliam H. Wolberg, 1992</a>]</span>:</p>
 <ol class="simple">
 <li><p>Sample code number: id number</p></li>
 <li><p>Clump Thickness: 1 - 10</p></li>
@@ -560,8 +560,8 @@ Name: class, dtype: float64
   <tbody>
     <tr>
       <th>kNN</th>
-      <td>0.003735</td>
-      <td>0.007036</td>
+      <td>0.003760</td>
+      <td>0.007023</td>
       <td>0.964452</td>
       <td>0.971236</td>
       <td>0.948880</td>
@@ -573,8 +573,8 @@ Name: class, dtype: float64
     </tr>
     <tr>
       <th>Decision Tree</th>
-      <td>0.004187</td>
-      <td>0.003784</td>
+      <td>0.004034</td>
+      <td>0.003673</td>
       <td>0.951842</td>
       <td>1.000000</td>
       <td>0.930415</td>
@@ -586,8 +586,8 @@ Name: class, dtype: float64
     </tr>
     <tr>
       <th>Logistic Regression</th>
-      <td>0.006517</td>
-      <td>0.003867</td>
+      <td>0.006276</td>
+      <td>0.003664</td>
       <td>0.964408</td>
       <td>0.966525</td>
       <td>0.948501</td>
@@ -710,8 +710,8 @@ Name: class, dtype: float64
 <a class="reference internal image-reference" href="_images/confusion_matrix.png"><img alt="_images/confusion_matrix.png" src="_images/confusion_matrix.png" style="height: 500px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Confusion matrix for Algorithms Classification</span><a class="headerlink" href="#conf-matrix" title="Permalink to this image">¶</a></p>
 </div>
-<p>After applying the model to the test set, we obtain the score of 0.985 which indicates that this model generalizes well for prediction task. Moreover, from the plot above <a class="reference internal" href="#conf-matrix"><span class="std std-ref">(Figure 3)</span></a>, we can see that out of 205 observations in test set, we only falsely predict 1 tumor to be benign and 2 tumors to malignant. This aligns with our decision at the beginning of the project which is to optimize recall score of the model.</p>
-<p>With the recall score of 0.99 for malignant tumors and 0.98 for benign tumors reported above, we have statistical evidence that the model generalizes well for the prediction task.</p>
+<p>After applying the model to the test set, we obtain the score of <span class="pasted-text">0.985</span> which indicates that this model generalizes well for prediction task. Moreover, from the plot above <a class="reference internal" href="#conf-matrix"><span class="std std-ref">(Figure 3)</span></a>, we can see that out of <strong>205</strong> observations in test set, we only falsely predict <strong>1</strong> tumor to be benign and <strong>2</strong> tumors to malignant. This aligns with our decision at the beginning of the project which is to optimize recall score of the model.</p>
+<p>With the recall score of <span class="pasted-text">0.986</span> for malignant tumors and <span class="pasted-text">0.985</span> for benign tumors reported above, we have statistical evidence that the model generalizes well for the prediction task.</p>
 </div>
 </div>
 <div class="section" id="iv-summary-of-results-and-discussion">
@@ -786,7 +786,7 @@ Name: class, dtype: float64
 <p>Chromatin (Figures <a class="reference internal" href="#histograms"><span class="std std-ref"> 1.7</span></a> &amp; <a class="reference internal" href="#boxplots"><span class="std std-ref"> 2.7</span></a>): It is a variable which at first sight could serve us as a way to determine the class label for a given test example. The problem with this variable is the intersection between 2 &amp; 4 in the x axis for figure <a class="reference internal" href="#histograms"><span class="std std-ref"> 1.7</span></a>. This is problematic because the probability of falsely predicting an observation increases if the value of chromatin of said observation lies within that given interval.</p>
 <p>Nucleoli (Figures<a class="reference internal" href="#histograms"><span class="std std-ref"> 1.8</span></a>  &amp; <a class="reference internal" href="#boxplots"><span class="std std-ref"> 2.8</span></a>): This feature plays an important role in classifying tumor types as shown in both plots. Observing <a class="reference internal" href="#histograms"><span class="std std-ref"> 1.8</span></a> we notice that benign tumors tend to have a nucleoli value in between 0 and 2 (for discrete values), and we primarily see malignant tumors for values greater than 2. This is further supported in <a class="reference internal" href="#boxplots"><span class="std std-ref"> 2.8</span></a>, where we see that only outliers from benign tumors are entangled with the malignant tumor’s box and lower whisker.</p>
 <p>Other variables like nuclei or adhesion can also be useful, but if we were able to set them only for certain values of the “x” variable. The problem is that if we, for example, take nuclei as the decisive rule to classify, we would have almost a 50/50 chance of correctly classifying it if “x” was between 2 and 4 approximately.</p>
-<p>By comparing cross-val scores (recall scores) among kNN, Decision Tree, and Logistics Regression, we found that kNN performs the best with highest recall score. By using <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> to computationally optimize the hyperparameters for <code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier</span></code>, it turns out our best model is <code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier(n_neighbors=5,</span> <span class="pre">weights='uniform')</span></code> with <strong>98.5% overall accuracy, 98.5% recall, 98.5% precision and an F1-score of 98.5%</strong> when deploying on test set. This means that the model generalized very well for this prediction problem, and with such a high recall we also achieved our goal of maximizing the True Positive and minimizing the False Negative instances, which would be of tremendous importance when it comes to computational-aided medical diagnostic.</p>
+<p>By comparing cross-val scores (recall scores) among kNN, Decision Tree, and Logistics Regression, we found that kNN performs the best with highest recall score. By using <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> to computationally optimize the hyperparameters for <code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier</span></code>, it turns out our best model is <code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier</span></code> with <code class="docutils literal notranslate"><span class="pre">n_neighbors=</span></code> <span class="pasted-text">5</span> and <code class="docutils literal notranslate"><span class="pre">weights=</span></code> <span class="pasted-text">uniform</span>. This model achieved an astounding <span class="pasted-text">98.5</span><strong>% overall accuracy</strong>, <span class="pasted-text">98.5</span><strong>% recall</strong>, <span class="pasted-text">98.5</span><strong>% precision and an F1-score of</strong> <span class="pasted-text">98.5</span><strong>%</strong> when deploying on test set. This means that the model generalized very well for this prediction problem, and with such a high recall we also achieved our goal of maximizing the True Positive and minimizing the False Negative instances, which would be of tremendous importance when it comes to computational-aided medical diagnostic.</p>
 </div>
 <div class="section" id="impacts-of-our-findings">
 <h3>Impacts of our Findings<a class="headerlink" href="#impacts-of-our-findings" title="Permalink to this headline">¶</a></h3>
@@ -804,17 +804,17 @@ Name: class, dtype: float64
 </div>
 <div class="section" id="v-references">
 <h2>V. References<a class="headerlink" href="#v-references" title="Permalink to this headline">¶</a></h2>
-<p id="id2"><dl class="citation">
-<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<p id="id3"><dl class="citation">
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>Vishabh Goel. <em>Building a Simple Machine Learning Model on Breast Cancer Data.</em> Towards Data Science, 2018. URL: <a class="reference external" href="https://towardsdatascience.com/building-a-simple-machine-learning-model-on-breast-cancer-data-eca4b3b99fa3">https://towardsdatascience.com/building-a-simple-machine-learning-model-on-breast-cancer-data-eca4b3b99fa3</a>.</p>
 </dd>
-<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id1">2</a></span></dt>
+<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id1">2</a></span></dt>
 <dd><p>Sid Lee. <em>What Is Breast Cancer?</em> URL: <a class="reference external" href="https://cancer.ca/en/cancer-information/cancer-types/breast/what-is-breast-cancer">https://cancer.ca/en/cancer-information/cancer-types/breast/what-is-breast-cancer</a>.</p>
 </dd>
-<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id1">3</a></span></dt>
+<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id1">3</a></span></dt>
 <dd><p>Li. et al Shen. <em>Deep Learning to Improve Breast Cancer Detection on Screening Mammography</em>. Nature Publishing Group, 2019. URL: <a class="reference external" href="https://www.nature.com/articles/s41598-019-48995-4">https://www.nature.com/articles/s41598-019-48995-4</a>.</p>
 </dd>
-<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id1">4</a></span></dt>
+<dt class="label" id="id7"><span class="brackets"><a class="fn-backref" href="#id2">4</a></span></dt>
 <dd><p>University of Wisconsin Hospitals WIlliam H. Wolberg. <em>UCI Machine Learning Repository: Breast Cancer Wisconsin (Original) Data Set</em>. 1992. URL: <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/breast+cancer+wisconsin+%28original%29">https://archive.ics.uci.edu/ml/datasets/breast+cancer+wisconsin+%28original%29</a>.</p>
 </dd>
 </dl>

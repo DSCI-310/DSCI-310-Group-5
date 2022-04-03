@@ -1,15 +1,51 @@
 {
   "breast_cancer_prediction": {
-    "knn-based-acc": {
+    "recall": {
       "output_type": "display_data",
       "metadata": {
         "scrapbook": {
-          "name": "knn-based-acc",
+          "name": "recall",
           "mime_prefix": ""
         }
       },
       "data": {
         "text/plain": "0.964"
+      }
+    },
+    "fin-be-rec": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "fin-be-rec",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "0.985"
+      }
+    },
+    "logit-rec": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "logit-rec",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "0.946"
+      }
+    },
+    "para2": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "para2",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "'uniform'"
       }
     },
     "predict": {
@@ -25,29 +61,40 @@
         "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>precision</th>\n      <th>recall</th>\n      <th>f1-score</th>\n      <th>support</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>benign</th>\n      <td>0.992366</td>\n      <td>0.984848</td>\n      <td>0.988593</td>\n      <td>132.000000</td>\n    </tr>\n    <tr>\n      <th>malignant</th>\n      <td>0.972973</td>\n      <td>0.986301</td>\n      <td>0.979592</td>\n      <td>73.000000</td>\n    </tr>\n    <tr>\n      <th>accuracy</th>\n      <td>0.985366</td>\n      <td>0.985366</td>\n      <td>0.985366</td>\n      <td>0.985366</td>\n    </tr>\n    <tr>\n      <th>macro avg</th>\n      <td>0.982670</td>\n      <td>0.985575</td>\n      <td>0.984092</td>\n      <td>205.000000</td>\n    </tr>\n    <tr>\n      <th>weighted avg</th>\n      <td>0.985460</td>\n      <td>0.985366</td>\n      <td>0.985388</td>\n      <td>205.000000</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
       }
     },
-    "tuned_para": {
+    "logit-prec": {
       "output_type": "display_data",
       "metadata": {
         "scrapbook": {
-          "name": "tuned_para",
+          "name": "logit-prec",
           "mime_prefix": ""
         }
       },
       "data": {
-        "text/plain": "       kneighborsclassifier__n_neighbors kneighborsclassifier__weights  \\\nValue                                  5                       uniform   \n\n       knn_best_score  \nValue        0.963971  ",
-        "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>kneighborsclassifier__n_neighbors</th>\n      <th>kneighborsclassifier__weights</th>\n      <th>knn_best_score</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>Value</th>\n      <td>5</td>\n      <td>uniform</td>\n      <td>0.963971</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+        "text/plain": "0.952"
       }
     },
-    "knn-based-prec": {
+    "fin-avg-acc": {
       "output_type": "display_data",
       "metadata": {
         "scrapbook": {
-          "name": "knn-based-prec",
+          "name": "fin-avg-acc",
           "mime_prefix": ""
         }
       },
       "data": {
-        "text/plain": "0.946"
+        "text/plain": "0.985"
+      }
+    },
+    "knn-based-acc": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "knn-based-acc",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "0.964"
       }
     },
     "knn-based-rec": {
@@ -62,43 +109,6 @@
         "text/plain": "0.952"
       }
     },
-    "logit-prec": {
-      "output_type": "display_data",
-      "metadata": {
-        "scrapbook": {
-          "name": "logit-prec",
-          "mime_prefix": ""
-        }
-      },
-      "data": {
-        "text/plain": "0.952"
-      }
-    },
-    "logit-rec": {
-      "output_type": "display_data",
-      "metadata": {
-        "scrapbook": {
-          "name": "logit-rec",
-          "mime_prefix": ""
-        }
-      },
-      "data": {
-        "text/plain": "0.946"
-      }
-    },
-    "predictions": {
-      "output_type": "display_data",
-      "metadata": {
-        "scrapbook": {
-          "name": "predictions",
-          "mime_prefix": ""
-        }
-      },
-      "data": {
-        "text/plain": "              precision    recall  f1-score     support\nbenign         0.992366  0.984848  0.988593  132.000000\nmalignant      0.972973  0.986301  0.979592   73.000000\naccuracy       0.985366  0.985366  0.985366    0.985366\nmacro avg      0.982670  0.985575  0.984092  205.000000\nweighted avg   0.985460  0.985366  0.985388  205.000000",
-        "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>precision</th>\n      <th>recall</th>\n      <th>f1-score</th>\n      <th>support</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>benign</th>\n      <td>0.992366</td>\n      <td>0.984848</td>\n      <td>0.988593</td>\n      <td>132.000000</td>\n    </tr>\n    <tr>\n      <th>malignant</th>\n      <td>0.972973</td>\n      <td>0.986301</td>\n      <td>0.979592</td>\n      <td>73.000000</td>\n    </tr>\n    <tr>\n      <th>accuracy</th>\n      <td>0.985366</td>\n      <td>0.985366</td>\n      <td>0.985366</td>\n      <td>0.985366</td>\n    </tr>\n    <tr>\n      <th>macro avg</th>\n      <td>0.982670</td>\n      <td>0.985575</td>\n      <td>0.984092</td>\n      <td>205.000000</td>\n    </tr>\n    <tr>\n      <th>weighted avg</th>\n      <td>0.985460</td>\n      <td>0.985366</td>\n      <td>0.985388</td>\n      <td>205.000000</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
-      }
-    },
     "df_table": {
       "output_type": "display_data",
       "metadata": {
@@ -108,20 +118,8 @@
         }
       },
       "data": {
-        "text/plain": "                     fit_time  score_time  test_accuracy  train_accuracy  \\\nkNN                  0.003735    0.007036       0.964452        0.971236   \nDecision Tree        0.004187    0.003784       0.951842        1.000000   \nLogistic Regression  0.006517    0.003867       0.964408        0.966525   \n\n                      test_f1  train_f1  test_recall  train_recall  \\\nkNN                  0.948880  0.958788     0.951872      0.963853   \nDecision Tree        0.930415  1.000000     0.927451      1.000000   \nLogistic Regression  0.948501  0.951652     0.945633      0.948804   \n\n                     test_precision  train_precision  \nkNN                        0.946145         0.953845  \nDecision Tree              0.934969         1.000000  \nLogistic Regression        0.951817         0.954543  ",
-        "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>fit_time</th>\n      <th>score_time</th>\n      <th>test_accuracy</th>\n      <th>train_accuracy</th>\n      <th>test_f1</th>\n      <th>train_f1</th>\n      <th>test_recall</th>\n      <th>train_recall</th>\n      <th>test_precision</th>\n      <th>train_precision</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>kNN</th>\n      <td>0.003735</td>\n      <td>0.007036</td>\n      <td>0.964452</td>\n      <td>0.971236</td>\n      <td>0.948880</td>\n      <td>0.958788</td>\n      <td>0.951872</td>\n      <td>0.963853</td>\n      <td>0.946145</td>\n      <td>0.953845</td>\n    </tr>\n    <tr>\n      <th>Decision Tree</th>\n      <td>0.004187</td>\n      <td>0.003784</td>\n      <td>0.951842</td>\n      <td>1.000000</td>\n      <td>0.930415</td>\n      <td>1.000000</td>\n      <td>0.927451</td>\n      <td>1.000000</td>\n      <td>0.934969</td>\n      <td>1.000000</td>\n    </tr>\n    <tr>\n      <th>Logistic Regression</th>\n      <td>0.006517</td>\n      <td>0.003867</td>\n      <td>0.964408</td>\n      <td>0.966525</td>\n      <td>0.948501</td>\n      <td>0.951652</td>\n      <td>0.945633</td>\n      <td>0.948804</td>\n      <td>0.951817</td>\n      <td>0.954543</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
-      }
-    },
-    "para2": {
-      "output_type": "display_data",
-      "metadata": {
-        "scrapbook": {
-          "name": "para2",
-          "mime_prefix": ""
-        }
-      },
-      "data": {
-        "text/plain": "'uniform'"
+        "text/plain": "                     fit_time  score_time  test_accuracy  train_accuracy  \\\nkNN                  0.003760    0.007023       0.964452        0.971236   \nDecision Tree        0.004034    0.003673       0.951842        1.000000   \nLogistic Regression  0.006276    0.003664       0.964408        0.966525   \n\n                      test_f1  train_f1  test_recall  train_recall  \\\nkNN                  0.948880  0.958788     0.951872      0.963853   \nDecision Tree        0.930415  1.000000     0.927451      1.000000   \nLogistic Regression  0.948501  0.951652     0.945633      0.948804   \n\n                     test_precision  train_precision  \nkNN                        0.946145         0.953845  \nDecision Tree              0.934969         1.000000  \nLogistic Regression        0.951817         0.954543  ",
+        "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>fit_time</th>\n      <th>score_time</th>\n      <th>test_accuracy</th>\n      <th>train_accuracy</th>\n      <th>test_f1</th>\n      <th>train_f1</th>\n      <th>test_recall</th>\n      <th>train_recall</th>\n      <th>test_precision</th>\n      <th>train_precision</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>kNN</th>\n      <td>0.003760</td>\n      <td>0.007023</td>\n      <td>0.964452</td>\n      <td>0.971236</td>\n      <td>0.948880</td>\n      <td>0.958788</td>\n      <td>0.951872</td>\n      <td>0.963853</td>\n      <td>0.946145</td>\n      <td>0.953845</td>\n    </tr>\n    <tr>\n      <th>Decision Tree</th>\n      <td>0.004034</td>\n      <td>0.003673</td>\n      <td>0.951842</td>\n      <td>1.000000</td>\n      <td>0.930415</td>\n      <td>1.000000</td>\n      <td>0.927451</td>\n      <td>1.000000</td>\n      <td>0.934969</td>\n      <td>1.000000</td>\n    </tr>\n    <tr>\n      <th>Logistic Regression</th>\n      <td>0.006276</td>\n      <td>0.003664</td>\n      <td>0.964408</td>\n      <td>0.966525</td>\n      <td>0.948501</td>\n      <td>0.951652</td>\n      <td>0.945633</td>\n      <td>0.948804</td>\n      <td>0.951817</td>\n      <td>0.954543</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
       }
     },
     "header": {
@@ -137,28 +135,52 @@
         "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>id</th>\n      <th>clump</th>\n      <th>unif_size</th>\n      <th>unif_shape</th>\n      <th>adhesion</th>\n      <th>epi_size</th>\n      <th>nuclei</th>\n      <th>chromatin</th>\n      <th>nucleoli</th>\n      <th>mitoses</th>\n      <th>class</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>1000025</td>\n      <td>5</td>\n      <td>1</td>\n      <td>1</td>\n      <td>1</td>\n      <td>2</td>\n      <td>1</td>\n      <td>3</td>\n      <td>1</td>\n      <td>1</td>\n      <td>2</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>1002945</td>\n      <td>5</td>\n      <td>4</td>\n      <td>4</td>\n      <td>5</td>\n      <td>7</td>\n      <td>10</td>\n      <td>3</td>\n      <td>2</td>\n      <td>1</td>\n      <td>2</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>1015425</td>\n      <td>3</td>\n      <td>1</td>\n      <td>1</td>\n      <td>1</td>\n      <td>2</td>\n      <td>2</td>\n      <td>3</td>\n      <td>1</td>\n      <td>1</td>\n      <td>2</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>1016277</td>\n      <td>6</td>\n      <td>8</td>\n      <td>8</td>\n      <td>1</td>\n      <td>3</td>\n      <td>4</td>\n      <td>3</td>\n      <td>7</td>\n      <td>1</td>\n      <td>2</td>\n    </tr>\n    <tr>\n      <th>4</th>\n      <td>1017023</td>\n      <td>4</td>\n      <td>1</td>\n      <td>1</td>\n      <td>3</td>\n      <td>2</td>\n      <td>1</td>\n      <td>3</td>\n      <td>1</td>\n      <td>1</td>\n      <td>2</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
       }
     },
-    "para1": {
+    "fin-avg-rec": {
       "output_type": "display_data",
       "metadata": {
         "scrapbook": {
-          "name": "para1",
+          "name": "fin-avg-rec",
           "mime_prefix": ""
         }
       },
       "data": {
-        "text/plain": "5"
+        "text/plain": "0.985"
       }
     },
-    "recall": {
+    "fin-avg-f1-per": {
       "output_type": "display_data",
       "metadata": {
         "scrapbook": {
-          "name": "recall",
+          "name": "fin-avg-f1-per",
           "mime_prefix": ""
         }
       },
       "data": {
-        "text/plain": "0.964"
+        "text/plain": "98.5"
+      }
+    },
+    "knn-based-prec": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "knn-based-prec",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "0.946"
+      }
+    },
+    "fin-mal-rec": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "fin-mal-rec",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "0.986"
       }
     },
     "vals": {
@@ -171,6 +193,91 @@
       },
       "data": {
         "text/plain": "0    0.650073\n1    0.349927\nName: class, dtype: float64"
+      }
+    },
+    "fin-avg-f1": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "fin-avg-f1",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "0.985"
+      }
+    },
+    "fin-avg-prec": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "fin-avg-prec",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "0.985"
+      }
+    },
+    "fin-avg-acc-per": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "fin-avg-acc-per",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "98.5"
+      }
+    },
+    "fin-avg-prec-per": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "fin-avg-prec-per",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "98.5"
+      }
+    },
+    "para1": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "para1",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "5"
+      }
+    },
+    "tuned_para": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "tuned_para",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "       kneighborsclassifier__n_neighbors kneighborsclassifier__weights  \\\nValue                                  5                       uniform   \n\n       knn_best_score  \nValue        0.963971  ",
+        "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>kneighborsclassifier__n_neighbors</th>\n      <th>kneighborsclassifier__weights</th>\n      <th>knn_best_score</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>Value</th>\n      <td>5</td>\n      <td>uniform</td>\n      <td>0.963971</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+      }
+    },
+    "fin-avg-rec-per": {
+      "output_type": "display_data",
+      "metadata": {
+        "scrapbook": {
+          "name": "fin-avg-rec-per",
+          "mime_prefix": ""
+        }
+      },
+      "data": {
+        "text/plain": "98.5"
       }
     }
   }
