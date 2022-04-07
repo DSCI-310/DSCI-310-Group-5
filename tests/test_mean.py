@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
@@ -10,16 +11,9 @@ from src.mean_cross_val_scores import mean_cross_val_scores
 class Data:
 
     def __init__(self):
-        col_names = ["id", "clump", "unif_size",
-                     "unif_shape", "adhesion", "epi_size", "nuclei",
-                     "chromatin", "nucleoli", "mitoses", "class"]
-        dataset = pd.read_csv("data/raw/breast_cancer.txt",
-                              names=col_names, sep=",")
-        dataset = dataset[(dataset != '?').all(axis=1)]
-        dataset['nuclei'] = dataset['nuclei'].astype(int)
-        dataset = dataset.drop(columns=["id"])
-        dataset['class'] = dataset['class'].replace([2], 0)
-        dataset['class'] = dataset['class'].replace([4], 1)
+        y_vals = np.random.choice([0, 1], size=40)
+        dataset = pd.DataFrame({'x1': np.linspace(2,10,40), 'x2': np.linspace(4,10,40),
+                   'x3': np.linspace(4,10,40), 'class': y_vals})
         train_df, test_df = train_test_split(dataset,
                                              test_size=0.3, random_state=123)
         self.X_train = train_df.drop(columns=["class"])
