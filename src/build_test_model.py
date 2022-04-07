@@ -14,6 +14,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from mean_cross_val_scores import mean_cross_val_scores
+from plot_confusion_matrix import plot_cm
 from sklearn.compose import make_column_transformer
 
 
@@ -90,9 +91,7 @@ def build_test_model(train_df, test_df, cross_val_output, tuned_para_output,
     report.to_csv(str(classification_output))
 
     #confusion matrix 
-    cm = confusion_matrix(y_test, pipe_knn_tuned.predict(X_test), labels=pipe_knn_tuned.classes_)
-    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=pipe_knn_tuned.classes_)
-    disp.plot()
+    plot_cm(pipe_knn_tuned, X_train, y_train, X_test, y_test, "Figure 3: Confusion Matrix")
     plt.savefig(str(confusion_matrix_output))
     
     
