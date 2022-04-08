@@ -15,7 +15,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from mean_cross_val_scores import mean_cross_val_scores
 from plot_confusion_matrix import plot_cm
-from tuned_para_table import *
+from dsci_prediction.dsci_prediction import *
 from sklearn.compose import make_column_transformer
 
 
