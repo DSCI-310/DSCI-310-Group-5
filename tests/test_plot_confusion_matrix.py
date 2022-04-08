@@ -1,5 +1,5 @@
 import numpy as np
-import matplotlib.pyplot as plt
+import pytest
 import pandas as pd
 import sklearn
 from sklearn.linear_model import LogisticRegression
@@ -7,6 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 from src.plot_confusion_matrix import plot_cm
+from sklearn.tree import DecisionTreeClassifier
 
 
 y_vals = np.random.choice([0, 1], size=40)
@@ -49,3 +50,38 @@ def test_cm_three_classes_target():
     assert plot3.ax_.get_ylabel() == 'True label'
     assert isinstance(plot3, sklearn.metrics._plot.confusion_matrix.
                       ConfusionMatrixDisplay)
+
+
+def test_edge_case_one_class_target():
+    """
+    Test confusion matrix readability (labels), return type, 
+    and number of return values for one target 
+    (y_train has one unique class, y_test has more than 1 class)
+    """
+    X_train_one_class = X_train[:1]
+    y_train_one_class = pd.DataFrame({'class':[1]})
+    X_test_classes = X_test[:3]
+    y_test_classes = pd.DataFrame({'class':[1,0,0]})
+    edge_plot = plot_cm(DecisionTreeClassifier(), X_train_one_class, y_train_one_class,
+                        X_test_classes, y_test_classes, "Fig")
+    assert edge_plot.text_.shape == (1, 1)
+    assert edge_plot.ax_.get_xlabel() == 'Predicted label'
+    assert edge_plot.ax_.get_ylabel() == 'True label'
+    assert isinstance(edge_plot, sklearn.metrics._plot.confusion_matrix.
+                      ConfusionMatrixDisplay)
+
+
+def test_wrong_input_X_train():
+    """
+    Check TypeError raised when inputting wrong type of X_train.
+    """
+    with pytest.raises(TypeError):
+        plot_cm(pipe_reg, "wrong input", y_train, X_test, y_test, "Fig 3")
+
+
+def test_wrong_input_y_train():
+    """ 
+    Check TypeError raised when inputting wrong type of y_train.
+    """
+    with pytest.raises(TypeError):
+        plot_cm(pipe_reg, X_train, "wrong input", X_test, y_test, "Fig 3")
