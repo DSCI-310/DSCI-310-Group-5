@@ -15,6 +15,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from mean_cross_val_scores import mean_cross_val_scores
 from plot_confusion_matrix import plot_cm
+from tuned_para_table import *
 from sklearn.compose import make_column_transformer
 
 
@@ -70,13 +71,8 @@ def build_test_model(train_df, test_df, cross_val_output, tuned_para_output,
                           scoring="recall", 
                           return_train_score=True)
 
-    search.fit(X_train, y_train)
-    best_score = search.best_score_.astype(type('float', (float,), {}))
-    tuned_para = pd.DataFrame.from_dict(search.best_params_, orient='index')
-    tuned_para = tuned_para.rename(columns = {0:"Value"})
-    tuned_para = tuned_para.T
-    tuned_para['knn_best_score'] = best_score
-    tuned_para.to_csv(str(tuned_para_output))
+    tune_result = tuned_para_table(search, X_train, y_train)
+    tune_result.to_csv(str(tuned_para_output))
 
     #model on test set 
     pipe_knn_tuned = make_pipeline(ct,KNeighborsClassifier(
