@@ -6,7 +6,7 @@ import numpy as np
 def tuned_para_table(search, X_train, y_train):
     """
     A function which returns a panda dataframe of tuned hyperparameters
-    and its best score given GridSearchCV object, X_train, y_train
+    and its best score given GridSearchCV object fitted X_train and y_train
     -------------------
     PARAMETERS:
     search: A sklearn.model_selection._search.GridSearchCV that has been
