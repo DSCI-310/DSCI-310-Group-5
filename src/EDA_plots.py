@@ -1,8 +1,7 @@
 import pandas as pd
 import numpy as np
 import argparse
-from plot_hist import plot_hist_overlay
-from plot_boxplot import boxplot_plotting
+from dsci_prediction.dsci_prediction import *
 import matplotlib.pyplot as plt
 
 

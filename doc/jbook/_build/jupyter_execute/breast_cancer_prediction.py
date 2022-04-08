@@ -75,7 +75,7 @@ from sklearn.neighbors import KNeighborsClassifier
 
 # Since the dataset did not come with column headers, we will first manually add them and load data. The headers will correspond to the order of their respective description above.
 
-# In[2]:
+# In[ ]:
 
 
 col_names = ["id", "clump", "unif_size", "unif_shape", "adhesion", "epi_size",
@@ -84,7 +84,7 @@ col_names = ["id", "clump", "unif_size", "unif_shape", "adhesion", "epi_size",
 dataset = pd.read_csv("../../data/raw/breast_cancer.txt", names=col_names, sep=",")
 
 
-# In[3]:
+# In[ ]:
 
 
 head = dataset.head()
@@ -94,7 +94,7 @@ glue("header", head)
 # ```{glue:} header
 # ```
 
-# In[4]:
+# In[ ]:
 
 
 dataset.info()
@@ -102,7 +102,7 @@ dataset.info()
 
 # We see that the dataset uses "?" for missing data so we eliminate rows that contain "?". As shown above, all of the variables are numeric except for variables nuclei, we decide to transform it into type int for ease of data analysis later on. Finally, "id" feature does not appear to be useful for the prediction task; hence, it is dropped before carrying on to further analysis.
 
-# In[5]:
+# In[ ]:
 
 
 dataset = dataset[(dataset != '?').all(axis=1)]
@@ -112,7 +112,7 @@ dataset = dataset.drop(columns=["id"])
 
 # We also decide to replace benign class from 2 to 0 and malignant class from 4 to 1 since if we keep values of 2 and 4, it would be hard for predictive models to calculate accuracy, precision, and so on.
 
-# In[6]:
+# In[ ]:
 
 
 dataset['class'] = dataset['class'].replace([2],0)
@@ -129,7 +129,7 @@ glue("vals", values)
 # 
 # Then we split the data into training and testing sets (X_train, X_test, y_train, y_test) and extract names of numeric features for further exploration.
 
-# In[7]:
+# In[ ]:
 
 
 train_df, test_df = train_test_split(dataset, test_size=0.3, random_state=123)
@@ -142,7 +142,7 @@ numeric_looking_columns = X_train.select_dtypes(include=np.number).columns.tolis
 train_df.info()
 
 
-# In[8]:
+# In[ ]:
 
 
 benign_cases = train_df[train_df["class"] == 0]
@@ -150,7 +150,7 @@ malignant_cases = train_df[train_df["class"] == 1]
 print(len(numeric_looking_columns))
 
 
-# In[9]:
+# In[ ]:
 
 
 fig = plot_hist_overlay(df0=benign_cases, df1=malignant_cases,
@@ -166,7 +166,7 @@ fig = plot_hist_overlay(df0=benign_cases, df1=malignant_cases,
 # Histograms of Class Targets with respecto to each Explanatory Variable 
 # ```
 
-# In[10]:
+# In[ ]:
 
 
 fig = boxplot_plotting(3,3,20,25,numeric_looking_columns,train_df,2)
@@ -188,7 +188,7 @@ fig = boxplot_plotting(3,3,20,25,numeric_looking_columns,train_df,2)
 # 
 # Lastly, mitoses and epi_size feature indicate to have an overlap in values between benign and malignant tumors shown in  {ref}`histogram <Histograms>`. Hence, they might not be as useful in prediction task as other features.
 
-# In[11]:
+# In[ ]:
 
 
 numeric_transformer = StandardScaler()
@@ -201,7 +201,7 @@ ct = make_column_transformer(
 # 
 # Even though the main score we will be comparing when choosing the models is recall, we still want to look into accuracy and decision. Because between a model performs well on recall but have very low accuracy and precision and a model performs just a bit worse on recall but have excellent accuracy and precision, the latter model will still have an upper hand and be more preferable.
 
-# In[12]:
+# In[ ]:
 
 
 scoring = [
@@ -214,7 +214,7 @@ scoring = [
 
 # We decide to test 3 models: Decision Tree, kNN and Logistic Regression. Decision Tree, kNN, Logistic Regression are simple models with fast fit_time and moderate precision and accuracy and suitable for the classification/prediction task.
 
-# In[13]:
+# In[ ]:
 
 
 np.random.seed(123)
@@ -257,7 +257,7 @@ glue("logit-rec", np.around(table.iloc[2]["test_recall"], 3))
 # 
 # After choosing the most efficient model, kNN, we move onto tuning its hyperparameters to increase its performance. We decide to tune n_neighbors which determines the number of neighbors k and weights which determines weight function used in prediction.
 
-# In[14]:
+# In[ ]:
 
 
 np.random.seed(123)
@@ -275,7 +275,7 @@ print(search.best_score_)
 print(search.best_params_)
 
 
-# In[15]:
+# In[ ]:
 
 
 tuned = pd.read_csv("../../results/tables/tuned_para.csv", index_col=0, sep=",")
@@ -296,7 +296,7 @@ glue("recall", np.around(tuned.iloc[0]["knn_best_score"], 3))
 # 
 # We also print a result plot and plot a confusion matrix for X_test and y_test to visualize the test results.
 
-# In[16]:
+# In[ ]:
 
 
 pipe_knn_tuned = make_pipeline(ct,KNeighborsClassifier(n_neighbors=5, weights='uniform'))
@@ -304,14 +304,14 @@ pipe_knn_tuned.fit(X_train, y_train)
 pipe_knn_tuned.score(X_test, y_test)
 
 
-# In[17]:
+# In[ ]:
 
 
 print(classification_report(
     y_test, pipe_knn_tuned.predict(X_test), target_names=["benign", "malignant"]))
 
 
-# In[18]:
+# In[ ]:
 
 
 predictions = pipe_knn_tuned.predict(X_test)
@@ -322,7 +322,7 @@ disp.plot()
 plt.title("Figure 3: Confusion Matrix")
 
 
-# In[19]:
+# In[ ]:
 
 
 preds = pd.read_csv("../../results/tables/classification_report.csv", index_col=0, sep=",")
@@ -352,7 +352,7 @@ glue("fin-be-rec", np.around(preds.iloc[0]["recall"], 3))
 
 # ## IV. Summary of results and discussion
 
-# In[20]:
+# In[ ]:
 
 
 print(

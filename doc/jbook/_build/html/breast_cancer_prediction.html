@@ -391,121 +391,8 @@ This raises the question:</p>
 <div class="section" id="exploratory-data-analysis">
 <h3>Exploratory Data Analysis<a class="headerlink" href="#exploratory-data-analysis" title="Permalink to this headline">¶</a></h3>
 <p>Since the dataset did not come with column headers, we will first manually add them and load data. The headers will correspond to the order of their respective description above.</p>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>id</th>
-      <th>clump</th>
-      <th>unif_size</th>
-      <th>unif_shape</th>
-      <th>adhesion</th>
-      <th>epi_size</th>
-      <th>nuclei</th>
-      <th>chromatin</th>
-      <th>nucleoli</th>
-      <th>mitoses</th>
-      <th>class</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1000025</td>
-      <td>5</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>2</td>
-      <td>1</td>
-      <td>3</td>
-      <td>1</td>
-      <td>1</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1002945</td>
-      <td>5</td>
-      <td>4</td>
-      <td>4</td>
-      <td>5</td>
-      <td>7</td>
-      <td>10</td>
-      <td>3</td>
-      <td>2</td>
-      <td>1</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1015425</td>
-      <td>3</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>2</td>
-      <td>2</td>
-      <td>3</td>
-      <td>1</td>
-      <td>1</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1016277</td>
-      <td>6</td>
-      <td>8</td>
-      <td>8</td>
-      <td>1</td>
-      <td>3</td>
-      <td>4</td>
-      <td>3</td>
-      <td>7</td>
-      <td>1</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1017023</td>
-      <td>4</td>
-      <td>1</td>
-      <td>1</td>
-      <td>3</td>
-      <td>2</td>
-      <td>1</td>
-      <td>3</td>
-      <td>1</td>
-      <td>1</td>
-      <td>2</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 <p>We see that the dataset uses “?” for missing data so we eliminate rows that contain “?”. As shown above, all of the variables are numeric except for variables nuclei, we decide to transform it into type int for ease of data analysis later on. Finally, “id” feature does not appear to be useful for the prediction task; hence, it is dropped before carrying on to further analysis.</p>
 <p>We also decide to replace benign class from 2 to 0 and malignant class from 4 to 1 since if we keep values of 2 and 4, it would be hard for predictive models to calculate accuracy, precision, and so on.</p>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0.650073
-1    0.349927
-Name: class, dtype: float64
-</pre></div>
-</div>
-</div>
 <p>There is an imbalance in the dataset between benign and malignant. We want to further investigate the malignant examples (class = 4); hence the classes should have same importance so recall would be the most appropriate and main metric for this project. This is due to the fact that in a medical diagnosis setting, false negative result for a disease like cancer will cause a lot more harm than a false positive result.</p>
 <p>Then we split the data into training and testing sets (X_train, X_test, y_train, y_test) and extract names of numeric features for further exploration.</p>
 <div class="figure align-default" id="histograms">
@@ -526,267 +413,31 @@ Name: class, dtype: float64
 <p>Since all features are numeric, we decide to scale our data to ensure that there is no bias presents when predicting results.</p>
 <p>Even though the main score we will be comparing when choosing the models is recall, we still want to look into accuracy and decision. Because between a model performs well on recall but have very low accuracy and precision and a model performs just a bit worse on recall but have excellent accuracy and precision, the latter model will still have an upper hand and be more preferable.</p>
 <p>We decide to test 3 models: Decision Tree, kNN and Logistic Regression. Decision Tree, kNN, Logistic Regression are simple models with fast fit_time and moderate precision and accuracy and suitable for the classification/prediction task.</p>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>fit_time</th>
-      <th>score_time</th>
-      <th>test_accuracy</th>
-      <th>train_accuracy</th>
-      <th>test_f1</th>
-      <th>train_f1</th>
-      <th>test_recall</th>
-      <th>train_recall</th>
-      <th>test_precision</th>
-      <th>train_precision</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>kNN</th>
-      <td>0.003760</td>
-      <td>0.007023</td>
-      <td>0.964452</td>
-      <td>0.971236</td>
-      <td>0.948880</td>
-      <td>0.958788</td>
-      <td>0.951872</td>
-      <td>0.963853</td>
-      <td>0.946145</td>
-      <td>0.953845</td>
-    </tr>
-    <tr>
-      <th>Decision Tree</th>
-      <td>0.004034</td>
-      <td>0.003673</td>
-      <td>0.951842</td>
-      <td>1.000000</td>
-      <td>0.930415</td>
-      <td>1.000000</td>
-      <td>0.927451</td>
-      <td>1.000000</td>
-      <td>0.934969</td>
-      <td>1.000000</td>
-    </tr>
-    <tr>
-      <th>Logistic Regression</th>
-      <td>0.006276</td>
-      <td>0.003664</td>
-      <td>0.964408</td>
-      <td>0.966525</td>
-      <td>0.948501</td>
-      <td>0.951652</td>
-      <td>0.945633</td>
-      <td>0.948804</td>
-      <td>0.951817</td>
-      <td>0.954543</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-<p>As shown above, kNN model is the best performing model with the highest <code class="docutils literal notranslate"><span class="pre">test_recall</span> <span class="pre">score</span></code>, <span class="pasted-text">0.952</span>, and high <code class="docutils literal notranslate"><span class="pre">test_precision</span></code> and <code class="docutils literal notranslate"><span class="pre">test_accuracy</span></code>, <span class="pasted-text">0.946</span> and <span class="pasted-text">0.964</span> respectively. Even though Logistics Regression has higher precision score <span class="pasted-text">0.952</span> than KNN’s, its recall score is lower than those of kNN (<span class="pasted-text">0.946</span> &lt; <span class="pasted-text">0.952</span> respectively). Overall, kNN model still performs better than Logistics Regression. Decision Tree performs the worst since it displays the lowest scores among 3 models.</p>
+<p>As shown above, kNN model is the best performing model with the highest <code class="docutils literal notranslate"><span class="pre">test_recall</span> <span class="pre">score</span></code>, , and high <code class="docutils literal notranslate"><span class="pre">test_precision</span></code> and <code class="docutils literal notranslate"><span class="pre">test_accuracy</span></code>,  and  respectively. Even though Logistics Regression has higher precision score  than KNN’s, its recall score is lower than those of kNN ( &lt;  respectively). Overall, kNN model still performs better than Logistics Regression. Decision Tree performs the worst since it displays the lowest scores among 3 models.</p>
 <p>After choosing the most efficient model, kNN, we move onto tuning its hyperparameters to increase its performance. We decide to tune n_neighbors which determines the number of neighbors k and weights which determines weight function used in prediction.</p>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>kneighborsclassifier__n_neighbors</th>
-      <th>kneighborsclassifier__weights</th>
-      <th>knn_best_score</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Value</th>
-      <td>5</td>
-      <td>uniform</td>
-      <td>0.963971</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-<p>After tuning hyperparameters, we successfully increase recall score from <span class="pasted-text">0.952</span> to <span class="pasted-text">0.964</span> with hyperparameters <code class="docutils literal notranslate"><span class="pre">n_neighbors=</span></code> <span class="pasted-text">5</span> and <code class="docutils literal notranslate"><span class="pre">weights=</span></code> <span class="pasted-text">uniform</span>.</p>
+<p>After tuning hyperparameters, we successfully increase recall score from  to  with hyperparameters <code class="docutils literal notranslate"><span class="pre">n_neighbors=</span></code>  and <code class="docutils literal notranslate"><span class="pre">weights=</span></code> .</p>
 </div>
 <div class="section" id="model-on-test-set">
 <h3>Model on test set<a class="headerlink" href="#model-on-test-set" title="Permalink to this headline">¶</a></h3>
-<p>We then apply tuned hyperparameters, <code class="docutils literal notranslate"><span class="pre">n_neighbors=</span></code> <span class="pasted-text">5</span> and <code class="docutils literal notranslate"><span class="pre">weights=</span></code> <span class="pasted-text">uniform</span>, to kNN model and test the model’s generalization on test set.</p>
+<p>We then apply tuned hyperparameters, <code class="docutils literal notranslate"><span class="pre">n_neighbors=</span></code>  and <code class="docutils literal notranslate"><span class="pre">weights=</span></code> , to kNN model and test the model’s generalization on test set.</p>
 <p>We also print a result plot and plot a confusion matrix for X_test and y_test to visualize the test results.</p>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>precision</th>
-      <th>recall</th>
-      <th>f1-score</th>
-      <th>support</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>benign</th>
-      <td>0.992366</td>
-      <td>0.984848</td>
-      <td>0.988593</td>
-      <td>132.000000</td>
-    </tr>
-    <tr>
-      <th>malignant</th>
-      <td>0.972973</td>
-      <td>0.986301</td>
-      <td>0.979592</td>
-      <td>73.000000</td>
-    </tr>
-    <tr>
-      <th>accuracy</th>
-      <td>0.985366</td>
-      <td>0.985366</td>
-      <td>0.985366</td>
-      <td>0.985366</td>
-    </tr>
-    <tr>
-      <th>macro avg</th>
-      <td>0.982670</td>
-      <td>0.985575</td>
-      <td>0.984092</td>
-      <td>205.000000</td>
-    </tr>
-    <tr>
-      <th>weighted avg</th>
-      <td>0.985460</td>
-      <td>0.985366</td>
-      <td>0.985388</td>
-      <td>205.000000</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 <div class="figure align-default" id="conf-matrix">
 <a class="reference internal image-reference" href="_images/confusion_matrix.png"><img alt="_images/confusion_matrix.png" src="_images/confusion_matrix.png" style="height: 500px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Confusion matrix for Algorithms Classification</span><a class="headerlink" href="#conf-matrix" title="Permalink to this image">¶</a></p>
 </div>
-<p>After applying the model to the test set, we obtain the score of <span class="pasted-text">0.985</span> which indicates that this model generalizes well for prediction task. Moreover, from the plot above <a class="reference internal" href="#conf-matrix"><span class="std std-ref">(Figure 3)</span></a>, we can see that out of <strong>205</strong> observations in test set, we only falsely predict <strong>1</strong> tumor to be benign and <strong>2</strong> tumors to malignant. This aligns with our decision at the beginning of the project which is to optimize recall score of the model.</p>
-<p>With the recall score of <span class="pasted-text">0.986</span> for malignant tumors and <span class="pasted-text">0.985</span> for benign tumors reported above, we have statistical evidence that the model generalizes well for the prediction task.</p>
+<p>After applying the model to the test set, we obtain the score of  which indicates that this model generalizes well for prediction task. Moreover, from the plot above <a class="reference internal" href="#conf-matrix"><span class="std std-ref">(Figure 3)</span></a>, we can see that out of <strong>205</strong> observations in test set, we only falsely predict <strong>1</strong> tumor to be benign and <strong>2</strong> tumors to malignant. This aligns with our decision at the beginning of the project which is to optimize recall score of the model.</p>
+<p>With the recall score of  for malignant tumors and  for benign tumors reported above, we have statistical evidence that the model generalizes well for the prediction task.</p>
 </div>
 </div>
 <div class="section" id="iv-summary-of-results-and-discussion">
 <h2>IV. Summary of results and discussion<a class="headerlink" href="#iv-summary-of-results-and-discussion" title="Permalink to this headline">¶</a></h2>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>precision</th>
-      <th>recall</th>
-      <th>f1-score</th>
-      <th>support</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>benign</th>
-      <td>0.992366</td>
-      <td>0.984848</td>
-      <td>0.988593</td>
-      <td>132.000000</td>
-    </tr>
-    <tr>
-      <th>malignant</th>
-      <td>0.972973</td>
-      <td>0.986301</td>
-      <td>0.979592</td>
-      <td>73.000000</td>
-    </tr>
-    <tr>
-      <th>accuracy</th>
-      <td>0.985366</td>
-      <td>0.985366</td>
-      <td>0.985366</td>
-      <td>0.985366</td>
-    </tr>
-    <tr>
-      <th>macro avg</th>
-      <td>0.982670</td>
-      <td>0.985575</td>
-      <td>0.984092</td>
-      <td>205.000000</td>
-    </tr>
-    <tr>
-      <th>weighted avg</th>
-      <td>0.985460</td>
-      <td>0.985366</td>
-      <td>0.985388</td>
-      <td>205.000000</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 <div class="section" id="summary-of-findings">
 <h3>Summary of Findings<a class="headerlink" href="#summary-of-findings" title="Permalink to this headline">¶</a></h3>
 <p>The boxplots and histograms allow us to see how the displayed data is distributed across our dataset and how they differentiate benign and malignant tumors. We believe certain variables will give us significantly more information on how to correctly classify a tumor. Such features which can play a decisive factor in prediction task are:</p>
 <p>Chromatin (Figures <a class="reference internal" href="#histograms"><span class="std std-ref"> 1.7</span></a> &amp; <a class="reference internal" href="#boxplots"><span class="std std-ref"> 2.7</span></a>): It is a variable which at first sight could serve us as a way to determine the class label for a given test example. The problem with this variable is the intersection between 2 &amp; 4 in the x axis for figure <a class="reference internal" href="#histograms"><span class="std std-ref"> 1.7</span></a>. This is problematic because the probability of falsely predicting an observation increases if the value of chromatin of said observation lies within that given interval.</p>
 <p>Nucleoli (Figures<a class="reference internal" href="#histograms"><span class="std std-ref"> 1.8</span></a>  &amp; <a class="reference internal" href="#boxplots"><span class="std std-ref"> 2.8</span></a>): This feature plays an important role in classifying tumor types as shown in both plots. Observing <a class="reference internal" href="#histograms"><span class="std std-ref"> 1.8</span></a> we notice that benign tumors tend to have a nucleoli value in between 0 and 2 (for discrete values), and we primarily see malignant tumors for values greater than 2. This is further supported in <a class="reference internal" href="#boxplots"><span class="std std-ref"> 2.8</span></a>, where we see that only outliers from benign tumors are entangled with the malignant tumor’s box and lower whisker.</p>
 <p>Other variables like nuclei or adhesion can also be useful, but if we were able to set them only for certain values of the “x” variable. The problem is that if we, for example, take nuclei as the decisive rule to classify, we would have almost a 50/50 chance of correctly classifying it if “x” was between 2 and 4 approximately.</p>
-<p>By comparing cross-val scores (recall scores) among kNN, Decision Tree, and Logistics Regression, we found that kNN performs the best with highest recall score. By using <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> to computationally optimize the hyperparameters for <code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier</span></code>, it turns out our best model is <code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier</span></code> with <code class="docutils literal notranslate"><span class="pre">n_neighbors=</span></code> <span class="pasted-text">5</span> and <code class="docutils literal notranslate"><span class="pre">weights=</span></code> <span class="pasted-text">uniform</span>. This model achieved an astounding <span class="pasted-text">98.5</span><strong>% overall accuracy</strong>, <span class="pasted-text">98.5</span><strong>% recall</strong>, <span class="pasted-text">98.5</span><strong>% precision and an F1-score of</strong> <span class="pasted-text">98.5</span><strong>%</strong> when deploying on test set. This means that the model generalized very well for this prediction problem, and with such a high recall we also achieved our goal of maximizing the True Positive and minimizing the False Negative instances, which would be of tremendous importance when it comes to computational-aided medical diagnostic.</p>
+<p>By comparing cross-val scores (recall scores) among kNN, Decision Tree, and Logistics Regression, we found that kNN performs the best with highest recall score. By using <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> to computationally optimize the hyperparameters for <code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier</span></code>, it turns out our best model is <code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier</span></code> with <code class="docutils literal notranslate"><span class="pre">n_neighbors=</span></code>  and <code class="docutils literal notranslate"><span class="pre">weights=</span></code> . This model achieved an astounding <strong>% overall accuracy</strong>, <strong>% recall</strong>, <strong>% precision and an F1-score of</strong> <strong>%</strong> when deploying on test set. This means that the model generalized very well for this prediction problem, and with such a high recall we also achieved our goal of maximizing the True Positive and minimizing the False Negative instances, which would be of tremendous importance when it comes to computational-aided medical diagnostic.</p>
 </div>
 <div class="section" id="impacts-of-our-findings">
 <h3>Impacts of our Findings<a class="headerlink" href="#impacts-of-our-findings" title="Permalink to this headline">¶</a></h3>
