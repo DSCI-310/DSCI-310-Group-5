@@ -9,8 +9,7 @@ def plot_hist_overlay(df0, df1, columns, labels, fig_no="1",alpha=0.7, bins=5, *
     The resulting histograms will be a grid layout contained in
     one single Figure object
 
-    REQUIRED: target label are binary i.e 0 or 1, negative or positive
-    Parameters
+    PARAMETERS:
     -------
     df0:
         A pandas DataFrame that is corresponded to the label 0
@@ -27,12 +26,17 @@ def plot_hist_overlay(df0, df1, columns, labels, fig_no="1",alpha=0.7, bins=5, *
     bin: optional, default=5
         An int denotes the number of bins for the matplotlib hist function
     **kwargs:
-        Other parameters for the plotting function 
-    Returns
+        Other parameters for the plotting function
+
+    REQUISITES: 
+    target label are binary i.e 0 or 1, negative or positive
+    -------
+
+    RETURNS:
     -------
     A matplotlib.figure.Figure object
 
-    Examples
+    Examples:
     -------
     benign_cases = train_df[train_df["class"] == 0]   # df0             
     malignant_cases = train_df[train_df["class"] == 1] # df1
@@ -51,6 +55,20 @@ def plot_hist_overlay(df0, df1, columns, labels, fig_no="1",alpha=0.7, bins=5, *
     # ax.set_title(f"Figure {fig_no}: Histogram of {column_name} for each target class label")
     # return ax
 
+    if not isinstance(df0, (pd.core.series.Series,
+                                pd.core.frame.DataFrame, np.ndarray)):
+        raise TypeError("'df0' should be of type numpy.array or pandas.Dataframe")
+    if not isinstance(df1, (pd.core.series.Series,
+                                pd.core.frame.DataFrame, np.ndarray)):
+        raise TypeError("'df1' should be of type numpy.array or pandas.Dataframe")
+    if not isinstance(columns, list):
+        raise TypeError("'columns' should be of type list")
+    if not isinstance(labels, list):
+        raise TypeError("'labels' should be of type list")
+    if not isinstance(fig_no, str):
+        raise TypeError("'fig_no' should be of 'str'")
+
+    ## other parameters are supplied into the matplotlib functions
 
     # To automatically calculating the size of dimension of the figures (Square shape)
     size = len(columns)
@@ -67,6 +85,5 @@ def plot_hist_overlay(df0, df1, columns, labels, fig_no="1",alpha=0.7, bins=5, *
         subplot.set_ylabel("Count", fontsize=14)
         subplot.set_title(f"Figure {fig_no}.{idx+1}: Histogram of {col_name} for each target class label", 
                           fontsize=14)
-    #fig.suptitle(f"Figure {fig_no}: Distribution of the target class for each numeric feature", fontsize=20)
 
-    return fig
+    return (fig, subplot)
