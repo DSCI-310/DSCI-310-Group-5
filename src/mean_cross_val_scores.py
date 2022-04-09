@@ -18,6 +18,8 @@ def mean_cross_val_scores(model, X_train, y_train, **kwargs):
     Returns
     -----------
         pandas Series with mean scores from cross_validation
+    -----------
+    Inspired by mean_std_cross_val_scores in UBC CPSC330 Lecture 8 term Winter 2021
     """
     scores = cross_validate(model, X_train, y_train, **kwargs)
     mean_scores = pd.DataFrame(scores).mean()
