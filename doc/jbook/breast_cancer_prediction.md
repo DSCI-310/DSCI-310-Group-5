@@ -144,7 +144,6 @@ There is an imbalance in the dataset between benign and malignant. We want to fu
 
 Then we split the data into training and testing sets (X_train, X_test, y_train, y_test) and extract names of numeric features for further exploration. 
  
-
 ```{code-cell} ipython3
 :tags: [remove-cell]
 
