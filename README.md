@@ -30,6 +30,11 @@ The dependencies needed are:
 
 In order to run the code, we advise you to use the Dockerfile in the main branch to initiate a proper containerized environment and avoid any problems with dependencies. The code is intended to run in JupyterLab.
 
+### Requirements:
+It is required to have 6GB of free storage in order to be able to succesfully pull the project's docker image. 
+
+### Container Steps:
+
 First, clone the project repository from Github to your local machine by running:
 `git clone https://github.com/DSCI-310/DSCI-310-Group-5.git`
 

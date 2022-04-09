@@ -46,6 +46,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 ```
+Authors: 
+Tien Nguyen, Edison Le, Claudio Torres Cantú, Clichy Bazenga
 
 ## I. Summary
 

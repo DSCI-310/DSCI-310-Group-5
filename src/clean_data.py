@@ -4,18 +4,19 @@ import argparse
 
 
 def clean_data(input_path, output_path_train, output_path_test):
+	"""The current function cleans up the data of any missing values. It also re-groups the data into only two target classes rather than 4. Further on the data is split into training and testing data."""
     #cleaning data
-    df = pd.read_csv(str(input_path))
-    df = df[(df != '?').all(axis=1)]
-    df['nuclei'] = df['nuclei'].astype(int)
-    df = df.drop(columns=["id"])
-    #replace 2 -> 0 & 4 -> 1 in target class 
-    df['class'] = df['class'].replace([2],0)
-    df['class'] = df['class'].replace([4],1) 
-    #split train/test data
-    train_df, test_df = train_test_split(df, test_size=0.3, random_state=123)
-    train_df.to_csv(str(output_path_train), index=False)
-    test_df.to_csv(str(output_path_test), index=False)
+	df = pd.read_csv(str(input_path))
+	df = df[(df != '?').all(axis=1)]
+	df['nuclei'] = df['nuclei'].astype(int)
+	df = df.drop(columns=["id"])
+	#replace 2 -> 0 & 4 -> 1 in target class 
+	df['class'] = df['class'].replace([2],0)
+	df['class'] = df['class'].replace([4],1) 
+	#split train/test data
+	train_df, test_df = train_test_split(df, test_size=0.3, random_state=123)
+	train_df.to_csv(str(output_path_train), index=False)
+	test_df.to_csv(str(output_path_test), index=False)
 
 
 if __name__ == '__main__':
