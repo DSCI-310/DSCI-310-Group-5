@@ -6,7 +6,7 @@ from plot_boxplot import boxplot_plotting
 import matplotlib.pyplot as plt
 
 
-def EDA_plot(train_df, hist_output, boxplot_output):
+def EDA_plot (train_df, hist_output, boxplot_output):
 	"""The purpose of this function is to plot the training data, with their given output class, in both histogram and boxplots. Afterwards, the plots are saved for further use. """
 	train_df = pd.read_csv(str(train_df))
 	X_train = train_df.drop(columns=["class"])

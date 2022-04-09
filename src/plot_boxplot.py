@@ -3,7 +3,7 @@ import numpy as np
 import seaborn as sns
 import pandas as pd
 
-def boxplot_plotting (num_rows,num_columns,width,height,variables,datafr,number):
+def boxplot_plotting(num_rows,num_columns,width,height,variables,datafr,number):
     """
 	A function which returns a given number of boxplots for different target against     each numerical feature. The returning objects are seaborn.boxplot types. 
     

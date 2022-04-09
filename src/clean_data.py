@@ -3,7 +3,7 @@ import pandas as pd
 import argparse
 
 
-def clean_data(input_path, output_path_train, output_path_test):
+def clean_data (input_path, output_path_train, output_path_test):
 	"""The current function cleans up the data of any missing values. It also re-groups the data into only two target classes rather than 4. Further on the data is split into training and testing data."""
     #cleaning data
 	df = pd.read_csv(str(input_path))

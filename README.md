@@ -31,7 +31,7 @@ The dependencies needed are:
 In order to run the code, we advise you to use the Dockerfile in the main branch to initiate a proper containerized environment and avoid any problems with dependencies. The code is intended to run in JupyterLab.
 
 ### Requirements:
-It is required to have 6GB of free storage in order to be able to succesfully pull the project's docker image. 
+It is required to have 6GB of free storage in order to be able to succesfully pull the project's docker image.  
 
 ### Container Steps:
 
