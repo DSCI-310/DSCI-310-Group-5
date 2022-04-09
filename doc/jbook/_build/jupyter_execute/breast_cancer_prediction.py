@@ -296,7 +296,7 @@ glue("recall", np.around(tuned.iloc[0]["knn_best_score"], 3))
 # 
 # We also print a result plot and plot a confusion matrix for X_test and y_test to visualize the test results.
 
-# In[16]:
+# In[ ]:
 
 
 pipe_knn_tuned = make_pipeline(ct,KNeighborsClassifier(n_neighbors=5, weights='uniform'))
@@ -304,14 +304,14 @@ pipe_knn_tuned.fit(X_train, y_train)
 pipe_knn_tuned.score(X_test, y_test)
 
 
-# In[17]:
+# In[ ]:
 
 
 print(classification_report(
     y_test, pipe_knn_tuned.predict(X_test), target_names=["benign", "malignant"]))
 
 
-# In[18]:
+# In[ ]:
 
 
 predictions = pipe_knn_tuned.predict(X_test)
@@ -322,7 +322,7 @@ disp.plot()
 plt.title("Figure 3: Confusion Matrix")
 
 
-# In[19]:
+# In[ ]:
 
 
 preds = pd.read_csv("../../results/tables/classification_report.csv", index_col=0, sep=",")
@@ -352,7 +352,7 @@ glue("fin-be-rec", np.around(preds.iloc[0]["recall"], 3))
 
 # ## IV. Summary of results and discussion
 
-# In[20]:
+# In[ ]:
 
 
 print(
