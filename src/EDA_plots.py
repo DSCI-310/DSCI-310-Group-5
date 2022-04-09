@@ -15,7 +15,7 @@ def EDA_plot (train_df, hist_output, boxplot_output):
 	benign_cases = train_df[train_df["class"] == 0]
 	malignant_cases = train_df[train_df["class"] == 1]
 	#plot histogram
-	fig,ax = plot_hist_overlay(df0=benign_cases, df1=malignant_cases,
+	fig = plot_hist_overlay(df0=benign_cases, df1=malignant_cases,
                  columns=numeric_looking_columns, labels=["0 - benign", "1 - malignant"],
                  fig_no="1")
 	fig.savefig(str(hist_output), facecolor="white")
