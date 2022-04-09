@@ -4,26 +4,28 @@ import seaborn as sns
 
 def boxplot_plotting (num_rows,num_columns,width,height,variables,datafr,number):
     """
-    A function which returns a given number of boxplots for different target  against each numerical feature. The returning objects are seaborn.boxplot types. 
+    A function which returns a given number of boxplots for different target against     each numerical feature. The returning objects are seaborn.boxplot types. 
     
     -------------------
     PARAMETERS:
-    A dataframe containing the variables and their correspondent labels
-    Variables: A list of each variable's name
-    num_rows and num_columns: An integer and positive number for both num_rows and num_columns for the
-    boxplot fig "canvas" object where our boxplots will go,
-    width: A positive width measure 
-    length: A positive length measure 
-    A binary class label 
-    A column array for managing variable names
-    A training dataframe object
-    Integer positive number for correct ordering  of graphs 
+	datafr:
+			A dataframe containing the variables and their correspondent labels
+	variables:
+			A list of string values corresponding to each variable's name (name of columns)
+	num_rows:
+			An integer and non negative number which corresponds to the number of rows for the boxplot canvas object where the boxplots (subplots) will be displayed.
+	num_columns: 
+				An integer and non negative number which corresponds to the number of columns for the boxplot canvas object where the boxplots (subplots) will be displayed.
+	Width: A positive numerical measure for the width of each of the subplots (boxplots)
+	Length: A positive numerical measure for the length of each of the subplots
+
     -------------------
     REQUISITES:
-    The target labels ("class label") must be within the data frame 
-    The multiplication between num_rows and num_columns must return be equal to num_variables.
-    It is possible for num_rows & num_columns to be values that when multiplied don't equal the "variables" numeric value,
-    but that will create more boxplots which will be empty. 
+	The target labels ("class label") must be within the data frame 
+	The class label must be binary
+	The multiplication between num_rows and num_columns must return be equal to num_variables.
+	It is possible for num_rows & num_columns to be values that when multiplied don't equal the "variables" numeric value,
+	but that will create more boxplots which will be empty. 
     
 
     --------------------
@@ -40,5 +42,5 @@ def boxplot_plotting (num_rows,num_columns,width,height,variables,datafr,number)
     """
     fig,ax= plt.subplots(num_rows,num_columns,figsize=(width,height))
     for idx, (var,subplot) in enumerate(zip(variables,ax.flatten())):
-        a = sns.boxplot(x='class',y=var,data=datafr,ax=subplot).set_title(f"Figure {number}.{idx}: Boxplot of {var} for each target class label")
+        a = sns.boxplot(x='class',y=var,data=datafr,ax=subplot, hue="class").set_title(f"Figure {number}.{idx+1}: Boxplot of {var} for each target class label")
     return fig
