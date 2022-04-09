@@ -4,6 +4,11 @@ from sklearn.model_selection import cross_validate
 
 def mean_cross_val_scores(model, X_train, y_train, **kwargs):
     """
+    We have been granted permission to reuse and build upon this function by
+    the UBC CPSC 330 Applied Machine Learning (2021W) instructor, Varada Kolhatkar and their teaching team. 
+    For further inquiry, please contact them directly at kvarada@cs.ubc.ca. ; you can reference
+    kimpdung47@gmail.com as the person who made the request to ask for permission to use this code.
+
     Returns mean of cross validation of given model, X_train, y_train 
 
     Parameters
