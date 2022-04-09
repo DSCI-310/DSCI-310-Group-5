@@ -29,7 +29,7 @@ scoring = [
 results = {}
 
 
-def build_test_model(train_df, test_df, cross_val_output, tuned_para_output,
+def build_test_model (train_df, test_df, cross_val_output, tuned_para_output,
                      classification_output, confusion_matrix_output):
 	"""This function takes the training and testing sets for the project from the preovious function clean_data. It creates the pipelines for testing the predictive machine learning models, it performs cross validation scores to find the best hyperparameters for each algorithm. Next we run it through the test set to obtain the prediction results and plot the best one using a confusion matrix."""
 	np.random.seed(123)

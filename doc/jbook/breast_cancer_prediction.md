@@ -47,6 +47,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 ```
 
+Authors: Tien Nguyen, Edison Le, Claudio Torres Cantú, Clichy Bazenga
 ## I. Summary
 
 In this project, we perform data analysis to look for the most efficient model to predict whether it is benign and malignant tumour based on different measurements/traits observed from the data. We use various machine learning algorithms that classify whether a breast tumour is malignant or benign accordingly, and eventually decide on the best algorithm for that task based on recall score. The dataset is obtained from https://archive.ics.uci.edu/ml/datasets/breast+cancer+wisconsin+%28original%29
@@ -143,7 +144,6 @@ There is an imbalance in the dataset between benign and malignant. We want to fu
 
 Then we split the data into training and testing sets (X_train, X_test, y_train, y_test) and extract names of numeric features for further exploration. 
  
-
 ```{code-cell} ipython3
 :tags: [remove-cell]
 

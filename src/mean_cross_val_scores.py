@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.model_selection import cross_validate
 
 
-def mean_cross_val_scores(model, X_train, y_train, **kwargs):
+def mean_cross_val_scores (model, X_train, y_train, **kwargs):
     """
     We have been granted permission to reuse and build upon this function by
     the UBC CPSC 330 Applied Machine Learning (2021W) instructor, Varada Kolhatkar and their teaching team. 
