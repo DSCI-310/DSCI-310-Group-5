@@ -5,7 +5,6 @@ import pandas as pd
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 from src.plot_boxplot import boxplot_plotting
-
 test_df = pd.DataFrame({'age':['25','48','30'], 'height': ['185','192','187'],'weight':['85','93','90'], 
 'class':['0','1','1'] })
 num_df=test_df.apply(pd.to_numeric)
@@ -14,6 +13,16 @@ number_of_rows=3
 number_of_columns=1
 width = 50
 height = 26
+incorrect_plotting_example_type = 3.2
+empty_data_frame = pd.DataFrame(columns ={'age':[''], 'height': [''],'weight':[''], 'class':[''] })
+single_value_data_frame = pd.DataFrame(columns ={'age':['19'], 'height': ['25'],'weight':['32'], 'class':['0'] })
+double_value_data_frame = pd.DataFrame(columns ={'age':['19','24'], 'height': ['25','54'],'weight':['32','75'], 'class':['0','1'] })
+
+
+
+
+#min([], default="EMPTY")
+
 list_example = ["apple", "banana", "cherry"]
 test_case = boxplot_plotting(number_of_rows,number_of_columns,width,height,var_names,num_df,3)
 b=mpl.figure.Figure()
@@ -47,3 +56,45 @@ def test_wrong_input_dataframe():
     """
     with pytest.raises(TypeError):
         boxplot_plotting(number_of_rows,number_of_columns,width,height,var_names,list_example,3)
+
+def test_wrong_type_input_number_rows():
+    """
+    Check TypeError raised when inputting wrong type for what should be an integer value for the number of rows.
+    """
+    with pytest.raises(TypeError):
+        boxplot_plotting(incorrect_plotting_example_type,number_of_columns,width,height,var_names,list_example,3)
+
+def test_wrong_type_input_number_columns():
+    """
+    Check TypeError raised when inputting wrong type for what should be an integer value for the number of columns.
+    """
+    with pytest.raises(TypeError):
+        boxplot_plotting(number_of_rows,incorrect_plotting_example_type,width,height,var_names,list_example,3)
+def test_edge_case_empty_dataframe():
+    """
+    Check edge case where we have an empty dataframe (only column names). We want to see if it will return a mpl.figure.Figure() data type 
+    """
+    try:
+        holder = boxplot_plotting(number_of_rows,number_of_columns,width,height,var_names,empty_data_frame,3)
+        assert type(holder) == type(b)
+    except ValueError:
+        pass
+    
+def test_edge_case_single_value_dataframe():
+    """
+    Check edge case where we have a dataframe with only one example (one of the binary class labels only). We want to see if it will return a mpl.figure.Figure() data type 
+    """
+    try:
+        holder1 = boxplot_plotting(number_of_rows,number_of_columns,width,height,var_names,single_value_data_frame,3)
+        assert type(holder1) == type(b)
+    except ValueError:
+        pass
+def test_edge_case_each_class():
+    """
+    Check edge case where we have a dataframe with one example of each of the binary class labels. We want to see if it will return a mpl.figure.Figure() data type 
+    """
+    try:
+        holder2 = boxplot_plotting(number_of_rows,number_of_columns,width,height,var_names,double_value_data_frame,3)
+        assert type(holder2) == type(b)
+    except ValueError:
+        pass

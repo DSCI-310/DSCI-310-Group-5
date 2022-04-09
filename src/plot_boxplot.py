@@ -65,6 +65,10 @@ def boxplot_plotting (num_rows,num_columns,width,height,variables,datafr,number)
     fig,ax= plt.subplots(num_rows,num_columns,figsize=(width,height))
     if not isinstance (datafr, pd.core.frame.DataFrame):
         raise TypeError("'datafr' should be a pandas dataframe")
+    if(isinstance(number, int) and number<0):
+        raise ValueError("'number' should be a value greater than zero")
+    if(not isinstance(number, int) and number>0):
+        raise TypeError("'number' should be of type int()")
     for idx, (var,subplot) in enumerate(zip(variables,ax.flatten())):
         a = sns.boxplot(x='class',y=var,data=datafr,ax=subplot, hue="class").set_title(f"Figure {number}.{idx+1}: Boxplot of {var} for each target class label")
     return fig
