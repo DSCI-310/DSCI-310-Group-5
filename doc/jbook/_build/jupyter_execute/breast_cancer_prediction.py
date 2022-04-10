@@ -13,8 +13,9 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 from src.mean_cross_val_scores import mean_cross_val_scores
-from src.plot_boxplot import boxplot_plotting
-from src.plot_hist import plot_hist_overlay
+# from dsci_prediction.dsci_prediction import *
+# from src.plot_boxplot import boxplot_plotting
+# from src.plot_hist import plot_hist_overlay
 get_ipython().run_line_magic('matplotlib', 'inline')
 from sklearn.metrics import (
     classification_report,
@@ -37,6 +38,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 
 
+# Authors: Tien Nguyen, Edison Le, Claudio Torres Cantú, Clichy Bazenga
 # ## I. Summary
 # 
 # In this project, we perform data analysis to look for the most efficient model to predict whether it is benign and malignant tumour based on different measurements/traits observed from the data. We use various machine learning algorithms that classify whether a breast tumour is malignant or benign accordingly, and eventually decide on the best algorithm for that task based on recall score. The dataset is obtained from https://archive.ics.uci.edu/ml/datasets/breast+cancer+wisconsin+%28original%29
@@ -153,9 +155,9 @@ print(len(numeric_looking_columns))
 # In[9]:
 
 
-fig = plot_hist_overlay(df0=benign_cases, df1=malignant_cases,
-                 columns=numeric_looking_columns, labels=["0 - benign", "1 - malignant"],
-                 fig_no="1")
+#fig = plot_hist_overlay(df0=benign_cases, df1=malignant_cases,
+#                 columns=numeric_looking_columns, labels=["0 - benign", "1 - malignant"],
+#                 fig_no="1")
 
 
 # ```{figure} ../../results/figures/hist_plot.png
@@ -169,7 +171,7 @@ fig = plot_hist_overlay(df0=benign_cases, df1=malignant_cases,
 # In[10]:
 
 
-fig = boxplot_plotting(3,3,20,25,numeric_looking_columns,train_df,2)
+#fig = boxplot_plotting(3,3,20,25,numeric_looking_columns,train_df,2)
 
 
 # ```{figure} ../../results/figures/boxplot_plot.png
@@ -177,7 +179,7 @@ fig = boxplot_plotting(3,3,20,25,numeric_looking_columns,train_df,2)
 # height: 700px
 # name: Boxplots
 # ---
-# Boxplots of Class Targets with respecto to each Explanatory Variable 
+# Boxplots of Class Targets with respect to to each Explanatory Variable 
 # ```
 # 
 # Judging from the {ref}`histograms <Histograms>`, it is indicated that benign tumors tend to have smaller values for all the features listed in the dataset (clump, unif_size and so on) while malignant tumors have different tendencies for each features.
@@ -212,7 +214,7 @@ scoring = [
 ]
 
 
-# We decide to test 3 models: Decision Tree, kNN and Logistic Regression. Decision Tree, kNN, Logistic Regression are simple models with fast fit_time and moderate precision and accuracy and suitable for the classification/prediction task.
+# We decide to test 3 models: Decision Tree, kNN and Logistic Regression. Decision Tree, kNN, Logistic Regression are simple models with fast fit_time and moderate precision and accuracy and suitable for the classification/prediction task. {cite}`cpsc330`
 
 # In[13]:
 
@@ -282,7 +284,7 @@ tuned = pd.read_csv("../../results/tables/tuned_para.csv", index_col=0, sep=",")
 glue("tuned_para", tuned)
 glue("para1", tuned.iloc[0]["kneighborsclassifier__n_neighbors"])
 glue("para2", tuned.iloc[0]["kneighborsclassifier__weights"])
-glue("recall", np.around(tuned.iloc[0]["knn_best_score"], 3))
+glue("recall", np.around(tuned.iloc[0]["best_score"], 3))
 
 
 # ```{glue:} tuned_para
@@ -296,7 +298,7 @@ glue("recall", np.around(tuned.iloc[0]["knn_best_score"], 3))
 # 
 # We also print a result plot and plot a confusion matrix for X_test and y_test to visualize the test results.
 
-# In[ ]:
+# In[16]:
 
 
 pipe_knn_tuned = make_pipeline(ct,KNeighborsClassifier(n_neighbors=5, weights='uniform'))
@@ -304,14 +306,14 @@ pipe_knn_tuned.fit(X_train, y_train)
 pipe_knn_tuned.score(X_test, y_test)
 
 
-# In[ ]:
+# In[17]:
 
 
 print(classification_report(
     y_test, pipe_knn_tuned.predict(X_test), target_names=["benign", "malignant"]))
 
 
-# In[ ]:
+# In[18]:
 
 
 predictions = pipe_knn_tuned.predict(X_test)
@@ -322,7 +324,7 @@ disp.plot()
 plt.title("Figure 3: Confusion Matrix")
 
 
-# In[ ]:
+# In[19]:
 
 
 preds = pd.read_csv("../../results/tables/classification_report.csv", index_col=0, sep=",")
@@ -352,7 +354,7 @@ glue("fin-be-rec", np.around(preds.iloc[0]["recall"], 3))
 
 # ## IV. Summary of results and discussion
 
-# In[ ]:
+# In[20]:
 
 
 print(
