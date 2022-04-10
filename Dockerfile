@@ -8,3 +8,5 @@ RUN conda install -y --quiet -c conda-forge \
 	scikit-learn=0.24.2 \
 	pytest=6.2.4 \
 	jupyter-book=0.12.2
+
+RUN pip install dsci-prediction
