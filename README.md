@@ -41,11 +41,11 @@ First, clone the project repository from Github to your local machine by running
 
 Using the command to pull the repository to your local machine:
 
-`docker pull nhantien/dsci310group5:v0.7.0`
+`docker pull nhantien/dsci310group5:v3.1.0`
 
-This command pulls the *nhantien/dsci310group5* image tagged *v0.7.0* from Docker Hub if it is not already present on the local host. It then starts a container running a Jupyter Server and exposes the container’s internal port 8888 to port 8888 of the host machine. It also mount a volume from the project folder on your machine to the Docker containter's folder at `/home/jovyan/work`:
+This command pulls the *nhantien/dsci310group5* image tagged *v3.1.0* from Docker Hub if it is not already present on the local host. It then starts a container running a Jupyter Server and exposes the container’s internal port 8888 to port 8888 of the host machine. It also mount a volume from the project folder on your machine to the Docker containter's folder at `/home/jovyan/work`:
 
-`docker run --rm -p 8888:8888 -v "${PWD}":/home/jovyan/work nhantien/dsci310group5:v0.7.0`
+`docker run --rm -p 8888:8888 -v "${PWD}":/home/jovyan/work nhantien/dsci310group5:v3.1.0`
 
 The container will be cleaned up and removed after the Jupyter Server exits with the flag `--rm`. Simply remove the flag from the origial command if you want the container to remain intact upon exit.
 
